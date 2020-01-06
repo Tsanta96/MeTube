@@ -12,7 +12,7 @@ import ProfileContainer from "./profile/profile_container";
 
 const App = () => (
   <div>
-    <NavBarContainer />
+    <Splash />
     <Switch>
       <AuthRoute exact path="/" component={Splash} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />

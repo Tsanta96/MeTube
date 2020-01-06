@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import NavBar from './navbar';
 
 import { logout, login } from '../actions/session_actions'; // verify session_actions
-import { postVideo } from '../actions/video_actions'; // verify video actions
 
 const mapStateToProps = (state, ownProps) => {
     
@@ -18,7 +17,6 @@ const mapDispatchToProps = dispatch => {
   return {
     logout: () => dispatch(logout()),
     login: user => dispatch(login(user)),
-    postVideo: (video) => dispatch(postVideo(video))
   }
 }
 
