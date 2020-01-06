@@ -2,11 +2,18 @@ const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
 const db = require('./config/keys').mongoURI;
+const passport = require('passport');
+const bodyParser = require('body-parser');
+const User = require('./models/User');
+
 
 mongoose
     .connect(db, { useNewUrlParser: true })
     .then(() => console.log("Connected to MongoDB successfully"))
     .catch(err => console.log(err));
+
+app.use(bodyParser.urlencoded({ extended: false }));
+require('./config/passport')(passport)
 
 app.get("/", (req, res) => res.send("Hello World"));
 
