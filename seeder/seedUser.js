@@ -5,9 +5,7 @@ const db = require('../config/keys').mongoURI;
 //Create seed user
 const firstUser = new User({
     username: "testTuber",
-    email: "testTuber@",
     password: "password",
-    password2: "password",
 })
 
 //Connect mongoose
