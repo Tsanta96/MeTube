@@ -12,7 +12,7 @@ import SignupFormContainer from "./session/signup_form_container";
 
 const App = () => (
   <div>
-    <Splash />
+    {/* <Splash /> */}
     <Switch>
       <Route exact path="/" component={Splash} />
       <AuthRoute exact path="/api/users/login" component={LoginFormContainer} />
