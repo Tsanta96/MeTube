@@ -17,13 +17,13 @@ class NavBar extends React.Component {
 
     handleUpload(e){
         e.preventDefault()
-        this.props.history.push("/")
+        this.props.history.push("/") // should be /videos??
     }
 
     renderSessionButton() {
       if (this.props.loggedIn) {
         return (
-          <div className="">
+          <div className="top-nav-signup-button">
             <button onClick={this.logoutUser}>Sign Out</button>
           </div>
         )
@@ -40,7 +40,7 @@ class NavBar extends React.Component {
       return (
         <div className="main">
           <div className="left">
-            <i class="fab fa-youtube-square"></i>
+            <i className="fab fa-youtube-square"></i>
           </div>
 
           <div className="center">
@@ -49,7 +49,7 @@ class NavBar extends React.Component {
           </div>
 
           <div className="right">
-            <i class="fas fa-video" onClick={this.handleUpload}></i>
+            <i className="fas fa-video" onClick={this.handleUpload}></i>
             {this.renderSessionButton}
           </div>
         </div>

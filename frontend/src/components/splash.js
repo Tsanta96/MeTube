@@ -8,21 +8,23 @@ class Splash extends React.Component {
 
     return (
       <div>
-        <div className='NavBar-Container'>
+        <div className="NavBar-Container">
           <NavBarContainer />
         </div>
         <section>
           {/* video index  */}
-          <Link to='/api/users/login' >Log In</Link>
-          <Link to='/api/users/register'>Sign Up</Link>
-          -----------TEST!!!!!!----------
+          <Link to="/api/users/login">Log In</Link>
+          <br />
+          <Link to="/api/users/register">Sign Up</Link>
         </section>
 
         <section>
-          <img height='' width='' />
+          <a href="https://www.youtube.com/watch?v=52yPafHXTLI">
+            <img height="180" width="320" />
+          </a>
         </section>
       </div>
-    )
+    );
   }
 }
 
