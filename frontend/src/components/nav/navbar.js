@@ -17,7 +17,7 @@ class NavBar extends React.Component {
 
     handleUpload(e){
         e.preventDefault()
-        this.props.history.push("/videos")
+        this.props.history.push("/")
     }
 
     renderSessionButton() {
@@ -43,7 +43,10 @@ class NavBar extends React.Component {
             <i class="fab fa-youtube-square"></i>
           </div>
 
-          <div className="center">{/* Search bar will be here */}</div>
+          <div className="center">
+            {/* Search bar will be here */}
+            <input type='submit' placeholder='Search' />
+          </div>
 
           <div className="right">
             <i class="fas fa-video" onClick={this.handleUpload}></i>

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import NavBar from './navbar';
 
-import { logout, login } from '../actions/session_actions'; // verify session_actions
+import { logout, login } from '../../actions/session_actions'; // verify session_actions
 
 const mapStateToProps = (state, ownProps) => {
     
