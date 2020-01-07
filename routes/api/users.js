@@ -41,11 +41,9 @@ router.post('/register', (req, res) => {
 
 router.post('/login', (req, res) => {
     const { errors, isValid } = validateLoginInput(req.body);
-  
     if (!isValid) {
-      return res.status(400).json(errors);
+        return res.status(400).json(errors);
     }
-  
     const username = req.body.username;
     const password = req.body.password;
   
@@ -53,6 +51,7 @@ router.post('/login', (req, res) => {
         .then(user => {
             if (!user) {
             // Use the validations to send the error
+                console.log("==============");
             errors.username = 'User not found';
             return res.status(404).json(errors);
             }
@@ -61,7 +60,7 @@ router.post('/login', (req, res) => {
                 .then(isMatch => {
                     if (isMatch) {
                         const payload = {id: user.id, username: user.username};
-
+                console.log("++++++++++++++");
                         jwt.sign(
                             payload,
                             keys.secretOrKey,
