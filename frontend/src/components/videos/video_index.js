@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import VideoIndexItemContainer from './video_index_item_container';
+import '../stylesheets/splash.css';
 
 export default class VideoIndex extends Component {
     constructor(props){
@@ -7,7 +8,7 @@ export default class VideoIndex extends Component {
     }
 
     componentDidMount() {
-        this.props.fetchVideos();
+        this.props.fetchVideos(); 
     }
     
     render() {
@@ -17,10 +18,10 @@ export default class VideoIndex extends Component {
             )
         } else {
             return (
-                <div>
-                    <ul>
+                <div className='video-content-container'>
+                    <ul className='video-index-ul'>
                         {this.props.videos.map(video =>
-                            <li>
+                            <li className='video-thumb'>
                                 <VideoIndexItemContainer key={video.id} video={video} />
                             </li>
                         )}

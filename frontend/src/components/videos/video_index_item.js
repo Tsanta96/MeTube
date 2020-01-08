@@ -21,3 +21,4 @@ export default class VideoIndexItem extends React.Component {
         )
     }
 }
+

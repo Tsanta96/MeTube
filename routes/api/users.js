@@ -51,7 +51,6 @@ router.post('/login', (req, res) => {
         .then(user => {
             if (!user) {
             // Use the validations to send the error
-                console.log("==============");
             errors.username = 'User not found';
             return res.status(404).json(errors);
             }
@@ -60,7 +59,6 @@ router.post('/login', (req, res) => {
                 .then(isMatch => {
                     if (isMatch) {
                         const payload = {id: user.id, username: user.username};
-                console.log("++++++++++++++");
                         jwt.sign(
                             payload,
                             keys.secretOrKey,

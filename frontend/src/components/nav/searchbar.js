@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router-dom'
 
-class NavSearch extends React.Component {
+class SearchBar extends React.Component {
 
     constructor(props) {
         super(props)
@@ -14,17 +14,17 @@ class NavSearch extends React.Component {
     }
 
     componentDidMount(){
-        this.props.fetchVideos()
+        this.props.fetchVideos();
     }
 
-    componentDidUpdate(prevProps){
-        if (prevProps.location.pathname != this.props.location.pathname) {
-            this.setState({
-                searchField: "",
-                matchedVideos: []
-            })
-        }
-    }
+    // componentDidUpdate(prevProps){
+    //     if (prevProps.location.pathname != this.props.location.pathname) {
+    //         this.setState({
+    //             searchField: "",
+    //             matchedVideos: []
+    //         })
+    //     }
+    // }
 
     update(field){
         return e => {
@@ -32,7 +32,7 @@ class NavSearch extends React.Component {
                 .filter(video => video.title.toLowerCase())
                     .includes(e.target.value.toLowerCase())
             
-            if(! e.target.value) matches = []
+            if(!e.target.value) matches = []
 
             this.setState({
                 [field]: e.target.value, 
@@ -42,8 +42,17 @@ class NavSearch extends React.Component {
     }
 
     render(){
+        let videoMatches = this.state.matchedVideos.map(video =>{
+            return(
+                <li className="search-result">
+                    <Link />
+                </li>
+            ) 
+        })
         return (
             <div> </div>
         )
     }
 }
+
+export default withRouter(SearchBar);
