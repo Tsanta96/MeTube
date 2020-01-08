@@ -1,9 +1,7 @@
 import React from 'react'
 
 class VideoDisplay extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+
     render() {
         const { video } = this.props;
         return (

@@ -1,5 +1,4 @@
 .main {
-  /* border: 1px solid red; */
   display:flex;
   position: fixed;
   overflow-y: hidden;
@@ -26,18 +25,16 @@
   color: rgb(83, 82, 82);
 }
 
-/* .left {
-  border: 1px solid black;
-  width: 25%;
-  display: inline-block;
-  margin-left: 10px;
-  font-family: Roboto, Arial, sans-serif;
-  font-stretch: condensed;
-} */
-
-.fa-youtube {
+/* .fa-youtube-nav + .fa-youtube-nav{
   font-size: 30px;
   color: red;
+} */
+
+.fa-youtube-square {
+  font-size: 35px;
+  color: white;
+  margin-right: 2px;
+  background-color: red;
 }
 
 .youTube-logo-text {
@@ -46,14 +43,6 @@
   letter-spacing: -0.1em;
   transform: scaleY(1.8);
 }
-
-/* .center {
-  border: 1px solid blue;
-  display:inline-flex;
-  margin: 0px 40px;
-  padding: 0px 10px;
-  border-radius: 2px;
-} */
 
 .searchbar {
   display: flex;
@@ -81,12 +70,10 @@
   color: rgb(83, 82, 82);
 }
 
-/* .right {
-  display: flex;
-  float: right;
-  border: 1px solid green;
-  width: 33%;
-} */
+.fa-plus {
+  font-size: 15px;
+  /* color: white; */
+}
 
 .fa-user-circle {
   font-size: 25px;
@@ -101,7 +88,6 @@
 .signin-button-container {
   display: flex;
   align-content: center;
-  /* border: 1px solid red; */
   font-size: 14px;
 }
 

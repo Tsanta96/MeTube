@@ -51,16 +51,15 @@ class NavBar extends React.Component {
         <div className="main">
           <i className="fas fa-bars"></i>
 
-          <i className="fab fa-youtube"></i>
+          <i class="fab fa-youtube-square"></i>
+          {/* <i className="fab fa-youtube fa-youtube-nav"></i> */}
           <p className="youTube-logo-text">MeTube</p>
-
 
           <input type="text" className="searchbar" placeholder="Search" />
           <i className="fas fa-search"></i>
 
           <i className="fas fa-video" onClick={this.handleUpload}></i>
           {this.renderSessionButton()}
-
         </div>
       );
     }

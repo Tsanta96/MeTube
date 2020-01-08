@@ -12,7 +12,8 @@ body {
   margin-left: calc(-1 * 16px / 2); */
   font-family: Roboto, Arial, sans-serif;
   width: 100%;
-  margin-top: 56px;
+  margin-top: 57px;
+  padding-left: 20px;
 }
 
 @media screen and (max-width: 1438px) {
@@ -51,7 +52,7 @@ video {
   display: block;
   position: relative;
   border: none;
-  margin: 0px 3px 10px 3px;
+  margin: 0px 5px 10px 5px;
   cursor: pointer;
   max-width: 100%;
   height: auto;
