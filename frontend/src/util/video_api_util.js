@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 export const fetchVideos = () => {
-    debugger;
     return axios.get('/api/videos')
 };
 
