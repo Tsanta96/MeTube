@@ -12,7 +12,6 @@ class VideoIndexItem extends React.Component {
     
 
     handleVideoClick(videoId){
-        debugger
         // e.preventDefault();
         this.props.fetchVideo(videoId);
         this.props.history.push(`/api/videos/${videoId}`);
@@ -23,12 +22,10 @@ class VideoIndexItem extends React.Component {
     }
 
     render() {
-        debugger;
-        console.log(this.props)
         const video = this.props.video;
         return (
             <div>
-                <button onClick={() => this.handleVideoClick(video.id)}><video controls height="180" width="320">
+                <button onClick={() => this.handleVideoClick(video._id)}><video height="180" width="320">
                     <source src={video.videoURL}></source>
                 </video></button>
                 <h1 className='video-thumb-title'>{video.title}</h1>
