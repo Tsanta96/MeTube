@@ -39,7 +39,7 @@ class NavBar extends React.Component {
               <i className="fas fa-user-circle"></i> Sign In
             </Link>
             <Link to="/api/users/register" className="session-button">
-              <i class="fas fa-user-plus"></i> Sign Up
+              <i className="fas fa-user-plus"></i> Sign Up
             </Link>
           </div>
         );
@@ -51,7 +51,7 @@ class NavBar extends React.Component {
         <div className="main">
           <i className="fas fa-bars"></i>
 
-          <i class="fab fa-youtube-square"></i>
+          <i className="fab fa-youtube-square"></i>
           {/* <i className="fab fa-youtube fa-youtube-nav"></i> */}
           <p className="youTube-logo-text">MeTube</p>
 
