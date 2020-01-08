@@ -16,6 +16,11 @@
     border-bottom: 1px solid lightgray;
 }
 
+.video-box .video-display {
+    height: 540px;
+    width: 900px;
+}
+
 .video-description {
     font-family: Roboto, Arial, sans-serif;
 }
@@ -54,4 +59,5 @@
     font-family: Roboto,Arial,sans-serif;
     color: darkgray;
     font-size: 20px;
+    margin-bottom: 15px;
 }

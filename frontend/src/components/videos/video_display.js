@@ -6,10 +6,6 @@ class VideoDisplay extends React.Component {
     constructor(props) {
         super(props);
     }
-
-    componentDidMount() {
-        console.log("hello from videoDisplay!")
-    }
     
     componentDidUpdate() {
         console.log("testing");
@@ -22,7 +18,7 @@ class VideoDisplay extends React.Component {
                 <div className="video-display-view">
                     <div className="main-section">
                         <div className="video-box">
-                            <video controls height="540" width="900">
+                            <video className="video-display" controls height="540" width="900">
                                 <source src={video.videoURL}></source>
                             </video>
                             <div className="video-description">
