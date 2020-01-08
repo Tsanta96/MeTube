@@ -4,8 +4,7 @@ import { Switch, Route } from "react-router-dom";
 
 // import NavBarContainer from "./nav/navbar_container";
 
-import Splash from "./splash";
-import LoginFormContainer from "./session/login_form_container";
+import Splash from "./splash"; 
 import SignupFormContainer from "./session/signup_form_container";
 // import ProfileContainer from "./profile/profile_container";
 import VideoDisplayContainer from "./videos/video_display_container";
@@ -16,7 +15,7 @@ const App = () => (
     {/* <Splash /> */}
     <Switch>
       <Route exact path="/" component={Splash} />
-      <AuthRoute exact path="/api/users/login" component={LoginFormContainer} />
+      <AuthRoute exact path="/api/users/login" component={SignupFormContainer} />
       <AuthRoute exact path="/api/users/register" component={SignupFormContainer} />
       <Route path="/api/videos/:video_id" component={VideoDisplayContainer} />
       {/* <Route exact path="/profile" component={ProfileContainer} /> */}
