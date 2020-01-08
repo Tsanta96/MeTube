@@ -28,18 +28,21 @@ class NavBar extends React.Component {
     renderSessionButton() {
       if (this.props.loggedIn) {
         return (
-          <div className="top-nav-signup-button">
-            <button onClick={this.logoutUser}>Sign Out</button>
+          <div>
+            <button className='signOut-button' onClick={this.logoutUser}>Sign Out</button>
           </div>
         )
       } else {
         return (
-          <div className='signin-button-container'>
-            <i className="fas fa-user-circle"></i>
-            <Link to='/api/users/login' className='signin-button'>Sign In</Link>
-            <Link to='/api/users/register' className='signUp-button'>Sign Up</Link>
+          <div className="signin-button-container">
+            <Link to="/api/users/login" className="session-button">
+              <i className="fas fa-user-circle"></i> Sign In
+            </Link>
+            <Link to="/api/users/register" className="session-button">
+              <i class="fas fa-user-plus"></i> Sign Up
+            </Link>
           </div>
-        )
+        );
       }
     }
 
@@ -47,22 +50,17 @@ class NavBar extends React.Component {
       return (
         <div className="main">
           <i className="fas fa-bars"></i>
-          <div className="left">
-            <i className="fab fa-youtube"></i>
-            YouTube
-          </div>
 
-          <div className="center">
-            {/* Search bar will be here */}
-            <input type='text' className='searchbar' placeholder='Search' />
-            <i className="fas fa-search"></i>
-          </div>
+          <i className="fab fa-youtube"></i>
+          <p className="youTube-logo-text">MeTube</p>
 
-          <div className="right">
-            <i className="fas fa-video" onClick={this.handleUpload}></i>
-            {this.renderSessionButton()}
-            {/* <button onClick={this.renderSessionButton}>Sign Out</button> */}
-          </div>
+
+          <input type="text" className="searchbar" placeholder="Search" />
+          <i className="fas fa-search"></i>
+
+          <i className="fas fa-video" onClick={this.handleUpload}></i>
+          {this.renderSessionButton()}
+
         </div>
       );
     }

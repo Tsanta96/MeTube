@@ -12,9 +12,7 @@ class Splash extends React.Component {
         <div className="navBar-Container">
           <NavBarContainer />
         </div>
-        <div>
-          <VideoIndexContainer />
-        </div>
+        <VideoIndexContainer />
       </div>
     );
   }
