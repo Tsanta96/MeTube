@@ -3,27 +3,30 @@
     align-items: center;
     flex-direction: column;
     margin-top: 20%;
+    min-width: 1000px;
+    min-height: 750px;
 }
 
 .fa-youtube {
+    position: absolute;
     font-size: 1000px;
     margin-right: 3px;
-    position: absolute;
     color: red;
     z-index: -1;
-    top: -100px;
+    top: -10%;
+    left: 13%;
 }
 
 .signup-header {
-    position: relative;
-    top: -150px;
+    position: absolute;
+    top: 15%;
     font-size: 48px;
 }
 
 .signup-form {
-    position: relative;
-    left: -300px;
-    top: -70px;
+    position: absolute;
+    left: 20%;
+    top: 33%;
 }
 
 .session-form-input {
@@ -52,9 +55,9 @@
 
 .signup-description-container {
     position: absolute;
-    right: 260px;
+    right: 17%;
     flex-direction: column;
-    top: 230px;
+    top: 30%;
 }
 
 .signup-description {
@@ -69,15 +72,20 @@
     color: #1a1515;
 }
 
+#signup-video-logo {
+    color: black;
+    margin: 0;
+}
+
 .signup-span {
     font-weight: bold;
     color: black;
 }
 
 .signup-video {
-    bottom: 150px;
+    bottom: 15%;
     position: absolute;
-    right: 270px;
+    right: 18%;
 }
 
 .signup-to-login {
@@ -93,8 +101,8 @@
 .signup-errors-container {
     display: flex;
     position: absolute;
-    bottom: 150px;
-    left: 300px;
+    bottom: 18%;
+    left: 20%;
     align-items: center;
 }
 
