@@ -9,10 +9,8 @@ class VideoIndexItem extends React.Component {
         this.handleVideoClick = this.handleVideoClick.bind(this);
     }
 
-    
-
     handleVideoClick(videoId){
-        debugger
+        // debugger
         // e.preventDefault();
         this.props.fetchVideo(videoId);
         this.props.history.push(`/api/videos/${videoId}`);
@@ -23,18 +21,25 @@ class VideoIndexItem extends React.Component {
     }
 
     render() {
-        debugger;
+        // debugger;
         console.log(this.props)
         const video = this.props.video;
         return (
-            <div>
-                <button onClick={() => this.handleVideoClick(video.id)}><video controls height="180" width="320">
-                    <source src={video.videoURL}></source>
-                </video></button>
-                <h1 className='video-thumb-title'>{video.title}</h1>
-                <p>{video.user_id}</p>
+          <div>
+            <button className='video-thumb-button' onClick={() => this.handleVideoClick(video._id)}>
+              <video controls>
+                <source src={video.videoURL}></source>
+              </video>
+            </button>
+            <div className="video-thumb-title-container">
+              <i className="fas fa-poo"></i>
+              <h1 className="video-thumb-title">{video.title}</h1>
             </div>
-        )
+            <div>
+              <p>User ID: {video.user_id}</p>
+            </div>
+          </div>
+        );
     }
 }
 
