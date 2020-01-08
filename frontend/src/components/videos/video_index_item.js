@@ -10,7 +10,7 @@ export default class VideoIndexItem extends React.Component {
     }
 
     render() {
-        const { video } = this.props.video;
+        const video = this.props.video;
         return (
             <div>
                 <h1>{video.title}</h1>

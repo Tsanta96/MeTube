@@ -1,0 +1,16 @@
+.video-content-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.video-index-ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.video-thumb{
+  display: block;
+  position: relative;
+  border: none;
+  margin: 0px 0px 10px 0px;
+}

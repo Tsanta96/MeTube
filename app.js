@@ -6,6 +6,7 @@ const db = require('./config/keys').mongoURI;
 const users = require("./routes/api/users");
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const videos = require("./routes/api/videos");
 
 mongoose
   .connect(db, { useNewUrlParser: true })
@@ -16,6 +17,7 @@ mongoose
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/api/users", users);
+app.use("/api", videos);
 app.use(passport.initialize());
 require('./config/passport')(passport);
 
