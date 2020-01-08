@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+import { fetchVideos } from '../../actions/video_actions';
+import SearchBar from './searchbar';
 
 const mapStateToProps = state => {
     let videos = Object.values(state.entities.videos)
@@ -13,3 +15,5 @@ const mapDispatchToProps = dispatch => {
         fetchVideos: () => dispatch(fetchVideos())
     })
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar)
