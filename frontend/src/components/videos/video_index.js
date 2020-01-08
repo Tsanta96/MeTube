@@ -7,10 +7,12 @@ export class VideoIndex extends Component {
     }
 
     componentDidMount() {
+        debugger;
         this.props.fetchVideos();
     }
     
     render() {
+        debugger;
         return (
             <div>
                 <ul>
