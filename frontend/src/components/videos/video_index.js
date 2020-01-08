@@ -3,9 +3,9 @@ import VideoIndexItemContainer from './video_index_item_container';
 import '../stylesheets/splash.css';
 
 export default class VideoIndex extends Component {
-    constructor(props){
-        super(props);
-    }
+    // constructor(props){
+    //     super(props);
+    // }
 
     componentDidMount() {
         this.props.fetchVideos(); 

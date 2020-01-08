@@ -1,6 +1,9 @@
 .video-content-container{
   display: flex;
   flex-wrap: wrap;
+  background-color: rgb(240, 238, 238);
+  margin-right: calc(-1 * 16px / 2);
+  margin-left: calc(-1 * 16px / 2);
 }
 
 .video-index-ul {
@@ -12,5 +15,12 @@
   display: block;
   position: relative;
   border: none;
-  margin: 0px 0px 10px 0px;
+  margin: 0px 5px 10px 5px;
+  cursor: pointer;
+  max-width: 100%;
+  height: auto;
+}
+
+.video-thumb-title {
+
 }
