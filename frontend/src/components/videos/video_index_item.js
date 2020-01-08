@@ -12,7 +12,7 @@ class VideoIndexItem extends React.Component {
     handleVideoClick(videoId){
         // e.preventDefault();
         this.props.fetchVideo(videoId);
-        this.props.history.push(`/api/videos/${videoId}`);
+        this.props.history.push(`/api/videos/${videoId}`); //remove "api"
     }
 
     componentDidMount(){
