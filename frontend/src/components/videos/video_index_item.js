@@ -1,6 +1,6 @@
 import React from 'react'
 
-export class video_index_item extends Component {
+export default class VideoIndexItem extends React.Component {
     constructor(props){
         super(props);
     }
@@ -10,7 +10,7 @@ export class video_index_item extends Component {
     }
 
     render() {
-        const { video } = this.props.video;
+        const video = this.props.video;
         return (
             <div>
                 <h1>{video.title}</h1>
@@ -21,5 +21,3 @@ export class video_index_item extends Component {
         )
     }
 }
-
-export default video_index_item;
