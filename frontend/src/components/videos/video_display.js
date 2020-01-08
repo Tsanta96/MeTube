@@ -6,19 +6,25 @@ class VideoDisplay extends React.Component {
     constructor(props) {
         super(props);
     }
+
+    // componentDidMount() {
+    //     debugger;
+    //     this.props.fetchVideo(this.props.video._id);
+    // }
     
-    componentDidUpdate() {
-        console.log("testing");
-    }
+    // componentDidUpdate() {
+    //     console.log("testing");
+    // }
 
     render() {
         const { video } = this.props;
+        console.log(video.videoURL);
         return (
             <div className="entire-video-display-view">
                 <div className="video-display-view">
                     <div className="main-section">
                         <div className="video-box">
-                            <video className="video-display" controls height="540" width="900">
+                            <video key={video._id} className="video-display" controls height="540" width="900">
                                 <source src={video.videoURL}></source>
                             </video>
                             <div className="video-description">
@@ -34,8 +40,8 @@ class VideoDisplay extends React.Component {
                 <div className="rightside-vids">
                     <h1 className="up-next">Up next</h1>
                     {this.props.videos.map(video =>
-                            <li className='video-thumb'>
-                                <VideoIndexItemContainer key={video.id} video={video} />
+                            <li key={video._id} className='video-thumb'>
+                                <VideoIndexItemContainer key={video._id} video={video} />
                             </li>
                         )}
                 </div>
