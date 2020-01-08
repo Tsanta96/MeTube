@@ -24,7 +24,7 @@ class VideoIndexItem extends React.Component {
         return (
           <div>
             <button className='video-thumb-button' onClick={() => this.handleVideoClick(video._id)}>
-              <video controls>
+              <video>
                 <source src={video.videoURL}></source>
               </video>
             </button>
