@@ -3,7 +3,7 @@ import VideoIndexItem from './video_index_item';
 import { fetchVideo, deleteVideo } from '../../actions/video_actions';
 
 const mapStateToProps = (state, { video }) => {
-    console.log(state)
+    // console.log(state)
     return {
         video
     }

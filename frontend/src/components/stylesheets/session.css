@@ -1,0 +1,119 @@
+.signup-form-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20%;
+}
+
+.fa-youtube {
+    font-size: 1000px;
+    margin-right: 3px;
+    position: absolute;
+    color: red;
+    z-index: -1;
+    top: -100px;
+}
+
+.signup-header {
+    position: relative;
+    top: -150px;
+    font-size: 48px;
+}
+
+.signup-form {
+    position: relative;
+    left: -300px;
+    top: -70px;
+}
+
+.session-form-input {
+    font-size: 24px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.session-form-submit {
+    font-size: 28px;
+    border-radius: 5px;
+    padding: 5px;
+    width: 31vh;
+    background-color: #db251f;
+    color: white;
+    box-shadow: inset 1px 1px 1px #ed3c2f;
+    border: 2px solid #c92418;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.session-form-submit:hover {
+    cursor: pointer;
+}
+
+.signup-description-container {
+    position: absolute;
+    right: 260px;
+    flex-direction: column;
+    top: 230px;
+}
+
+.signup-description {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.signup-description-text {
+    margin-left: 5px;
+    font-size: 24px;
+    color: #1a1515;
+}
+
+.signup-span {
+    font-weight: bold;
+    color: black;
+}
+
+.signup-video {
+    bottom: 150px;
+    position: absolute;
+    right: 270px;
+}
+
+.signup-to-login {
+    font-weight: bold;
+    color: white;
+}
+
+.login-link {
+    color: #385898;
+    text-decoration: underline;
+}
+
+.signup-errors-container {
+    display: flex;
+    position: absolute;
+    bottom: 150px;
+    left: 300px;
+    align-items: center;
+}
+
+.fa-exclamation-triangle {
+    font-size: 64px;
+    color: #FAD201;
+}
+
+.signup-errors {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid black;
+    border-radius: 5px;
+    background-color: #FFFFC3;
+    font-weight: bold;
+    padding: 10px;
+    margin-left: 30px;
+}
+
+.hidden-session-form-input {
+    display: none;
+}
