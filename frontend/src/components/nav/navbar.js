@@ -37,6 +37,7 @@ class NavBar extends React.Component {
           <div className='signin-button-container'>
             <i className="fas fa-user-circle"></i>
             <Link to='/api/users/login' className='signin-button'>Sign In</Link>
+            <Link to='/api/users/register' className='signUp-button'>Sign Up</Link>
           </div>
         )
       }
