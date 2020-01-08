@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Route, withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import '../stylesheets/navbar.css'
 
 class NavBar extends React.Component {
@@ -44,7 +44,6 @@ class NavBar extends React.Component {
     }
 
     render() {
-      console.log(this.props)
       return (
         <div className="main">
           <i className="fas fa-bars"></i>

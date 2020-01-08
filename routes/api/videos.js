@@ -14,4 +14,10 @@ router.get('/videos/:video_id', (req, res) => {
         .catch(error => res.status(404).json({ noVideo: 'No video found with that id' }))
 });
 
+router.get('/results', (req, res) => {
+    Video.includes({title: req.params.body})
+        .then(videos => res.json(videos))
+        .catch(error => res.status(404).json({ noVideos: "No videos found" }))
+})
+
 module.exports = router;

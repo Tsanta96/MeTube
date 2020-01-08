@@ -9,7 +9,7 @@ class Splash extends React.Component {
 
     return (
       <div>
-        <div className="NavBar-Container">
+        <div className="navBar-Container">
           <NavBarContainer />
         </div>
         <div>
