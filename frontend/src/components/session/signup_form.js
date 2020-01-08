@@ -18,8 +18,11 @@ class SignupForm extends React.Component {
     this.clearedErrors = false;
   }
 
+  componentDidMount(){
+    this.setState({errors: ''});
+  }
+
   componentWillReceiveProps(nextProps) {
-    debugger;
     if (nextProps.signedIn === true && this.props.loginOrSignup === "register") {
       this.props.history.push('/api/users/login');
     } else if (nextProps.currentUser === true) {
@@ -153,7 +156,7 @@ class SignupForm extends React.Component {
             <p className="signup-description-text"><span className="signup-span">See</span> what your friends are doing</p>
           </div>
           <div className="signup-description">
-            <i class="fas fa-video"></i>
+            <i class="fas fa-video" id="signup-video-logo"></i>
             <p className="signup-description-text"><span className="signup-span">Share</span> your life</p>
           </div>
         </div>
