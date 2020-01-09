@@ -5,20 +5,37 @@ import VideoIndexItemContainer from './video_index_item_container';
 class VideoDisplay extends React.Component {
     constructor(props) {
         super(props);
+        this.upNextVideos = this.upNextVideos.bind(this);
     }
 
     componentDidMount() {
-        // debugger;
-        this.props.fetchVideo(this.props.video._id);
+        this.props.fetchVideos();
     }
     
     // componentDidUpdate() {
     //     console.log("testing");
     // }
 
+    upNextVideos(){
+        if (Object.keys(this.props.videos).length > 0){
+            return (
+                <ul>
+                    {this.props.videos.map(video => 
+                        <li>
+                            <VideoIndexItemContainer key={video._id} video={video} />
+                        </li>    
+                    )}
+                </ul>
+            )
+        } else {
+            return (
+                <p>Loading...</p>
+            )
+        }
+    }
+
     render() {
         const { video } = this.props;
-        console.log(video.videoURL);
         return (
             <div className="entire-video-display-view">
                 <div className="video-display-view">
@@ -39,11 +56,7 @@ class VideoDisplay extends React.Component {
                 </div>
                 <div className="rightside-vids">
                     <h1 className="up-next">Up next</h1>
-                    {this.props.videos.map(video =>
-                            <li key={video._id} className='video-thumb'>
-                                <VideoIndexItemContainer key={video._id} video={video} />
-                            </li>
-                        )}
+                    {this.upNextVideos()}
                 </div>
             </div>
         )
