@@ -13,7 +13,9 @@ class VideoDisplay extends React.Component {
             disliked: false
         }
         this.createLike = this.createLike.bind(this);
+        this.createDislike = this.createDislike.bind(this);
         this.likeButton = this.likeButton.bind(this);
+        this.dislikeButton = this.dislikeButton.bind(this);
     }
 
     componentDidMount() {
@@ -97,6 +99,16 @@ class VideoDisplay extends React.Component {
         return button;
     }
 
+    dislikeButton(){
+        let button;
+        if (this.state.disliked){
+            button = <i class="fas fa-thumbs-down disliked" onClick={this.createDislike}></i>
+        } else {
+            button = <i class="fas fa-thumbs-down" onClick={this.createDislike}></i>
+        }
+        return button;
+    }
+
     render() {
         const { video } = this.props;
         if (!video) return null;
@@ -116,7 +128,7 @@ class VideoDisplay extends React.Component {
                                 <div>
                                     {this.likeButton()}
                                     {this.state.numLikes}
-                                    <i class="fas fa-thumbs-down"></i>
+                                    {this.dislikeButton()}
                                     {this.state.numDislikes}
                                 </div>
                             </div>

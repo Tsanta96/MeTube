@@ -65,3 +65,7 @@
 .liked {
     color: rgb(32, 120, 244);
 }
+
+.disliked {
+    color: red;
+}
