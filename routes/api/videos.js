@@ -14,6 +14,11 @@ router.get('/videos/:video_id', (req, res) => {
         .catch(error => res.status(404).json({ noVideo: 'No video found with that id' }))
 });
 
+//Create (upload) video route
+router.post('/videos', (req, res) => {
+    
+});
+
 router.get('/results', (req, res) => {
     Video.includes({title: req.params.body})
         .then(videos => res.json(videos))

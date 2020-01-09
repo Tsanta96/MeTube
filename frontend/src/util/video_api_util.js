@@ -22,4 +22,7 @@ export const fetchSearchVideos = search => {
         Object.assign(data,search)
     }
     return axios.get(`/api/videos/`,data)
+}  
+export const getUserUploads = id => {
+    return axios.get(`/api/user/${id}/`)
 }

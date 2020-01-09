@@ -85,4 +85,10 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
     });
 })
 
+router.get('/profile', (req, res) => {
+    User.findById(req.params.id)
+        .then(user => res.json(user))
+        .catch(error => res.status(404).json({ noUser: 'No user found with that id' }))
+});
+
 module.exports = router;

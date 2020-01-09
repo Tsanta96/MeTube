@@ -3,7 +3,11 @@ import * as VideoApiUtil from '../util/video_api_util';
 export const RECEIVE_ALL_VIDEOS = "RECEIVE_ALL_VIDEOS";
 export const RECEIVE_VIDEO = 'RECEIVE_VIDEO';
 export const REMOVE_VIDEO = 'REMOVE_VIDEO';
+<<<<<<< HEAD
 export const RECEIVE_SEARCH_VIDEOS = 'RECEIVE_SEARCH_VIDEOS'
+=======
+export const RECEIVE_USER_UPLOADS = 'RECEIVE_USER_UPLOADS';
+>>>>>>> 37dc91843589cd5a716a232f044dd8ffa1734e2f
 
 export const receiveAllVideos = videos => ({
     type: RECEIVE_ALL_VIDEOS,
@@ -23,6 +27,11 @@ const receiveSearchVideos = (videos) => ({
 export const removeVideo = (videoId) => ({
     type: REMOVE_VIDEO,
     videoId
+})
+
+export const receiveUserUploads = videos => ({
+    type: RECEIVE_USER_UPLOADS,
+    videos
 })
 
 export const fetchVideos = () => dispatch => (
@@ -52,3 +61,7 @@ export const fetchSearchVideos = search => dispatch => {
     }
 }
 
+export const fetchUserUploads = id => dispatch => (
+    VideoApiUtil.getUserUploads(id)
+        .then(videos => dispatch(receiveUserUploads(videos)))
+)
