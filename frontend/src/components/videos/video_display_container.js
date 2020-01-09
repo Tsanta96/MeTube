@@ -1,24 +1,25 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { fetchVideo } from '../../actions/video_actions';
+import { fetchVideo, fetchVideos } from '../../actions/video_actions';
 import VideoDisplay from './video_display';
 
 const mapStateToProps = (state, ownProps) => {
-    let fetchedVideo;
-    let videosArr = state.entities.videos;
-    videosArr.data.forEach((video) => {
-        if (video._id === ownProps.match.params.video_id) {
-            fetchedVideo = video;
+    if (!state.entities.videos.data){
+        return {
+            video: '',
+            videos: ''
         }
-    })
-    return {
-        video: fetchedVideo,
-        videos: state.entities.videos.data
+    }else {
+        return {
+            video: state.entities.videos.data.filter((video) => video._id === ownProps.match.params.video_id)[0],
+            videos: state.entities.videos.data
+        }
     }
 }
 
-const mapDispatchToProps = {
-    fetchVideo: (videoId) => dispatchEvent(fetchVideo(videoId))
-}
+const mapDispatchToProps = dispatch => ({
+    fetchVideo: (videoId) => dispatch(fetchVideo(videoId)),
+    fetchVideos: videos => dispatch(fetchVideos(videos))
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(VideoDisplay);
