@@ -15,3 +15,7 @@ export const createVideo = (videoData) => {
 export const deleteVideo = videoId => {
     return axios.delete(`/api/videos/${videoId}`)
 }
+
+export const getUserUploads = id => {
+    return axios.get(`/api/user/${id}/`)
+}
