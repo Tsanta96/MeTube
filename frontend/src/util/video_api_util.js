@@ -15,3 +15,11 @@ export const createVideo = (videoData) => {
 export const deleteVideo = videoId => {
     return axios.delete(`/api/videos/${videoId}`)
 }
+
+export const fetchSearchVideos = search => {
+    const data = {};
+    if (search && search.search !== ''){
+        Object.assign(data,search)
+    }
+    return axios.get(`/api/videos/`,data)
+}
