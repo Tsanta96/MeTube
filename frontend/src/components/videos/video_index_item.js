@@ -32,7 +32,7 @@ class VideoIndexItem extends React.Component {
               <i className="fas fa-poo"></i>
               <h1 className="video-thumb-title">{video.title}</h1>
             </div>
-            <div>
+            <div className='video-thumb-detail'>
               <p>User ID: {video.user_id}</p>
             </div>
           </div>
