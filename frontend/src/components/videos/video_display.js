@@ -12,8 +12,10 @@ class VideoDisplay extends React.Component {
         this.props.fetchVideos();
     }
     
-    // componentDidUpdate() {
-    //     console.log("testing");
+    // componentDidUpdate(prevProps) {
+    //     if (prevProps.video._id !== this.props.video._id) {
+    //         this.props.fetchVideo(this.props.video._id);
+    //     }
     // }
 
     upNextVideos(){
