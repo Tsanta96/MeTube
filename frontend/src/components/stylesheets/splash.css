@@ -15,12 +15,11 @@ body {
   margin-top: 56px;
 }
 
-@media screen and (max-width: 1438px) {
+/* @media screen and (max-width: 1438px) {
   .body {
     width: 80%;
   }
 }
-
 @media screen and (max-width: 1362px) {
   .body {
     width: 60%;
@@ -30,7 +29,7 @@ body {
   .body {
     width: 30%;
   }
-} 
+}  */
 /* @media screen and (max-width: 746px) {
   .video-content-container {
     width: 40%;
@@ -45,6 +44,8 @@ video {
 .video-index-ul {
   display: flex;
   flex-wrap: wrap;
+  margin: auto auto;
+  width: 70%;
 }
 
 .video-thumb{

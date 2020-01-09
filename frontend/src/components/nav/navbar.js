@@ -39,7 +39,7 @@ class NavBar extends React.Component {
               <i className="fas fa-user-circle"></i> Sign In
             </Link>
             <Link to="/api/users/register" className="session-button">
-              <i class="fas fa-user-plus"></i> Sign Up
+              <i className="fas fa-user-plus"></i> Sign Up
             </Link>
           </div>
         );

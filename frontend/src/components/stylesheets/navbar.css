@@ -26,15 +26,6 @@
   color: rgb(83, 82, 82);
 }
 
-/* .left {
-  border: 1px solid black;
-  width: 25%;
-  display: inline-block;
-  margin-left: 10px;
-  font-family: Roboto, Arial, sans-serif;
-  font-stretch: condensed;
-} */
-
 .fa-youtube {
   font-size: 30px;
   color: red;
@@ -47,13 +38,6 @@
   transform: scaleY(1.8);
 }
 
-/* .center {
-  border: 1px solid blue;
-  display:inline-flex;
-  margin: 0px 40px;
-  padding: 0px 10px;
-  border-radius: 2px;
-} */
 
 .searchbar {
   display: flex;
@@ -80,13 +64,6 @@
   margin: 0px 20px 0px 10px;
   color: rgb(83, 82, 82);
 }
-
-/* .right {
-  display: flex;
-  float: right;
-  border: 1px solid green;
-  width: 33%;
-} */
 
 .fa-user-circle {
   font-size: 25px;
