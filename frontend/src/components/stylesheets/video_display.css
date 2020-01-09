@@ -61,3 +61,7 @@
     font-size: 20px;
     margin-bottom: 15px;
 }
+
+.liked {
+    color: rgb(32, 120, 244);
+}
