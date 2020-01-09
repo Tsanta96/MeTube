@@ -51,7 +51,7 @@ class NavBar extends React.Component {
         <div className="main">
           <i className="fas fa-bars"></i>
 
-          <i className="fab fa-youtube"></i>
+          <i className="fab fa-youtube-square"></i>
           <p className="youTube-logo-text">MeTube</p>
 
 
