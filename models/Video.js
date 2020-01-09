@@ -12,11 +12,11 @@ const VideoSchema = new Schema ({
     },
     like_ids: {
         type: Array,
-        required: true
+        // required: true
     },
     comment_ids: {
         type: Array,
-        required: true
+        // required: true
     },
     videoURL: {
         type: String,
