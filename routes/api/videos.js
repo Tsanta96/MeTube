@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const upload = require('../../services/file-upload');
 const Video = require('../../models/Video');
+
+// 'video' is key where the video will be sent to the server on request
+const singleUpload = upload.single('video');
 
 router.get('/videos', (req, res) => {
     Video.find()
@@ -15,8 +19,25 @@ router.get('/videos/:video_id', (req, res) => {
 });
 
 //Create (upload) video route
-router.post('/videos', (req, res) => {
-    
+router.post('/videos', singleUpload, (req, res) => {
+    // singleUpload(req, res, function(err) {
+    //     console.log(req.file);
+    //     return res.json({'videoURL': req.file.location});
+    // });
+    // console.log("Body",req.body);
+    // // console.log("reqFile", req.file);
+
+
+    video = new Video({
+        title: req.body.title,
+        user_id: req.body.user_id,
+        videoURL: req.file.location
+    });
+    // console.log("uploaded video", video);
+
+    video.save()
+        .then((video) => res.send(video))
+        
 });
 
 router.get('/results', (req, res) => {
