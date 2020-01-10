@@ -124,7 +124,7 @@ class SignupForm extends React.Component {
     if (Object.keys(this.state.errors).length > 0) {
       return(
         <div className="signup-errors-container">
-          <i class="fas fa-exclamation-triangle"></i>
+          <i className="fas fa-exclamation-triangle"></i>
           <ul className="signup-errors">
             {Object.keys(this.state.errors).map((error, i) => (
               <li key={`error-${i}`}>
@@ -157,20 +157,20 @@ class SignupForm extends React.Component {
 
               <div className="signup-description-container">
                 <div className="signup-description">
-                  <i class="fas fa-globe-americas"></i>
+                  <i className="fas fa-globe-americas"></i>
                   <p className="signup-description-text">
                     <span className="signup-span">Connect</span> with the world
                   </p>
                 </div>
                 <div className="signup-description">
-                  <i class="fas fa-users"></i>
+                  <i className="fas fa-users"></i>
                   <p className="signup-description-text">
                     <span className="signup-span">See</span> what your friends
                     are doing
                   </p>
                 </div>
                 <div className="signup-description">
-                  <i class="fas fa-video" id="signup-video-logo"></i>
+                  <i className="fas fa-video" id="signup-video-logo"></i>
                   <p className="signup-description-text">
                     <span className="signup-span">Share</span> your life
                   </p>
