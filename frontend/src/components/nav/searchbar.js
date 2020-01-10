@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router-dom'
+import VideoSearchItem from './results_index';
 
 class SearchBar extends React.Component {
 

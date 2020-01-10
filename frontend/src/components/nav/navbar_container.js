@@ -3,6 +3,8 @@ import NavBar from './navbar';
 
 import { logout } from '../../actions/session_actions'; // verify session_actions
 import {fetchSearchVideos} from '../../actions/video_actions';
+import {updateSearchField} from '../../actions/ui_actions';
+
 
 const mapStateToProps = (state, ownProps) => {
     // console.log(state)

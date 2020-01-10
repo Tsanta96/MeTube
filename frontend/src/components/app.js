@@ -20,12 +20,7 @@ const App = () => (
       <AuthRoute exact path="/api/users/register" component={SignupFormContainer} />
       <Route path="/api/search" component={SearchBarContainer} />
       <Route path="/api/videos/:video_id" component={VideoDisplayContainer} />
-<<<<<<< HEAD
-      {/* <Route exact path="/profile" component={ProfileContainer} /> */}
-      
-=======
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
->>>>>>> 37dc91843589cd5a716a232f044dd8ffa1734e2f
     </Switch>
 
   </div>
