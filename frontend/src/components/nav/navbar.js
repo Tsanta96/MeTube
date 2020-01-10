@@ -6,7 +6,9 @@ class NavBar extends React.Component {
 
     constructor(props){
         super(props)
-
+      
+      this.state = {search: this.props.search ? this.props.search : '' }
+      this.search = this.search.bind(this)
       this.logoutUser = this.logoutUser.bind(this);
       this.handleUpload = this.handleUpload.bind(this);
     }
@@ -23,6 +25,19 @@ class NavBar extends React.Component {
     handleUpload(e){
         e.preventDefault()
         this.props.history.push("/") // should be /videos??
+    }
+
+    search(e) {
+      e.preventDefault();
+      this.props.fetchSearchVideos(this.state)
+      this.props.history.push('/search')
+    }
+
+    updateField(field) {
+      return e => {
+        this.setState({[field]: e.target.value});
+        this.props.updateSearchField(e.target.value);
+      }
     }
 
     renderSessionButton() {
@@ -55,8 +70,8 @@ class NavBar extends React.Component {
           <p className="youTube-logo-text">MeTube</p>
 
 
-          <input type="text" className="searchbar" placeholder="Search" />
-          <i className="fas fa-search"></i>
+          <input type="text" className="searchbar" placeholder="Search" onChange={this.updateField('search')} />
+          <i className="fas fa-search" onClick={this.search}></i>
 
           <i className="fas fa-video" onClick={this.handleUpload}></i>
           {this.renderSessionButton()}
