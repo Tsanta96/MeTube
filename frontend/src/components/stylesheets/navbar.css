@@ -27,8 +27,9 @@
 }
 
 .fa-youtube-square {
-  font-size: 30px;
+  font-size: 32px;
   color: red;
+  padding-right: 2px;
 }
 
 .youTube-logo-text {
@@ -110,9 +111,14 @@
   font-weight: 500;
   text-transform: uppercase;
   padding: 0px 10px;
+  margin-right: 20px;
   border-radius: 2px;
   width: auto;
   letter-spacing: -0.05em;
+}
+
+.signOut-button:hover {
+  cursor: pointer;
 }
 
 .clearfix:after {
