@@ -1,19 +1,19 @@
 import { connect } from 'react-redux';
 import Profile from './profile';
-import { fetchUserUploads, fetchVideos } from '../../actions/video_actions'
+import { fetchVideos } from '../../actions/video_actions'
 
 const mapStatetoProps = (state, ownProps) => {
   console.log(state)
 
   if(!state.entities.videos.data) {
-  return {
-    uploadedVideos: '',
-    user: state.session.user, 
+    return {
+      user: state.session.user, 
+      uploadedVideos: '',
+      
     }
   } else {
     return {
       user: state.session.user,
-      // uploadedVideos: Object.values(state.entities.videos.data)
       uploadedVideos: state.entities.videos.data.filter((videos) => videos.user_id === state.session.user.id)
     }
   }
@@ -22,7 +22,6 @@ const mapStatetoProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchVideos: () => dispatch(fetchVideos()),
-    // fetchUserUploads: (id) => dispatch(fetchUserUploads(id))
   }
 }
 
