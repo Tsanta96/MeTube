@@ -1,4 +1,4 @@
-import { UPDATE_SEARDH_FIELD, UPDATE_SEARCH_FIELD } from '../actions/ui_actions';
+import { UPDATE_SEARCH_FIELD, UPDATE_SEARCH_FIELD } from '../actions/ui_actions';
 import { merge } from 'lodash';
 
 const uiReducer = (state={},action) => {
