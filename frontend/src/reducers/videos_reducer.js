@@ -7,8 +7,8 @@ const VideosReducer = (state = {}, action) => {
             return Object.assign({}, state, action.videos);
         case RECEIVE_VIDEO:  
             return Object.assign({}, state, {[action.video.id]: action.video})
-            case RECEIVE_USER_UPLOADS:
-                return Object.assign({}, state, {[state.user]: action.videos})  
+        case RECEIVE_USER_UPLOADS:
+            return Object.assign({}, state, {[state.user]: action.videos})  
         case REMOVE_VIDEO:
             let newState = Object.assign({}, state);
             delete newState[action.videoId];

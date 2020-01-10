@@ -1,4 +1,3 @@
-import React from 'react'
 import { connect } from 'react-redux';
 import { fetchVideo, fetchVideos } from '../../actions/video_actions';
 import VideoDisplay from './video_display';
