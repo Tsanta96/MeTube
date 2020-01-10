@@ -7,14 +7,20 @@ class SearchBar extends React.Component {
     constructor(props) {
         super(props)
 
-        this.state = {
-            searchField: "",
-            matchedVideos: []
-        }
+        // this.state = {
+        //     searchField: "",
+        //     matchedVideos: []
+        // }
     }
 
     componentDidMount(){
-        this.props.fetchVideos();
+
+        if (this.props.search === 'undefined'){
+            this.props.search = []
+        }
+        this.props.fetchSearchVideos({search: this.props.search}).then(() => {
+            this.props.fetchUsers()
+        })
     }
 
     // componentDidUpdate(prevProps){
@@ -26,31 +32,50 @@ class SearchBar extends React.Component {
     //     }
     // }
 
-    update(field){
-        return e => {
-            let matches = this.props.videos
-                .filter(video => video.title.toLowerCase())
-                    .includes(e.target.value.toLowerCase())
-            
-            if(!e.target.value) matches = []
+    
 
-            this.setState({
-                [field]: e.target.value, 
-                matchedVideos: matches
-            })
-        }
-    }
+    // update(field){
+    //     return e => {
+    //         let matches = this.props.videos
+    //             .filter(video => video.title.toLowerCase())
+    //                 .includes(e.target.value.toLowerCase())
+            
+    //         if(!e.target.value) matches = []
+
+    //         this.setState({
+    //             [field]: e.target.value, 
+    //             matchedVideos: matches
+    //         })
+    //     }
+    // }
 
     render(){
-        let videoMatches = this.state.matchedVideos.map(video =>{
-            return(
-                <li className="search-result">
-                    <Link />
-                </li>
-            ) 
+        let videoMatches = this.props.videos.map(video =>{
+            
+            const user = this.props.users[video.user_id]
+
+            return (
+                <VideoSearchItem key={video.id} video={video} user={user} />
+            )
+
+             
         })
         return (
-            <div> </div>
+            <div className="search-outer">
+                <input className="user-search" type="text" placeholder="Search Users" onChange={this.update('searchField')} value={this.state.searchField} />    
+                   <ul className="search-list"> 
+                    <div className="search-main">
+                      <div className="search-results">{`Search Results for "${this.props.matches}"`}</div>
+                      {videoMatches.length > 0 ? (
+                           videoMatches 
+
+                        ):(
+                            <p className="no-result-message">Sorry! No matches"</p>
+                        )}
+        
+                    </div>
+                   </ul> 
+             </div>
         )
     }
 }
