@@ -24,7 +24,8 @@
 .video-description {
     font-family: Roboto, Arial, sans-serif;
     display: flex;
-    justify-content: space-between
+    justify-content: space-between;
+    align-items: center;
 }
 
 .video-description h1 {
@@ -79,6 +80,13 @@
 
 .likes-dislikes {
     font-size: 24px;
-    margin-top: 20px;
     display: flex;
+}
+
+.like-errors {
+    padding: 20px;
+    border: 3px solid red;
+    border-radius: 5px;
+    background-color: #FFFFC3;
+    font-weight: bold;
 }
