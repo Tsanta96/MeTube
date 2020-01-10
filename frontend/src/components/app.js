@@ -8,6 +8,7 @@ import Splash from "./splash";
 import SignupFormContainer from "./session/signup_form_container";
 // import ProfileContainer from "./profile/profile_container";
 import VideoDisplayContainer from "./videos/video_display_container";
+import VideoUploadContainer from "./videos/video_upload_container";
 
 
 const App = () => (
@@ -19,6 +20,7 @@ const App = () => (
       <AuthRoute exact path="/api/users/register" component={SignupFormContainer} />
       <Route path="/api/videos/:video_id" component={VideoDisplayContainer} />
       {/* <Route exact path="/profile" component={ProfileContainer} /> */}
+      <Route path="/api/upload" component={VideoUploadContainer} />
     </Switch>
 
   </div>
