@@ -1,5 +1,7 @@
 import React from 'react';
 import VideoIndexItemContainer from '../videos/video_index_item_container';
+import '../stylesheets/splash.css';
+import '../stylesheets/profile.css';
 
 class Profile extends React.Component {
   constructor(props){
@@ -10,13 +12,12 @@ class Profile extends React.Component {
 
   componentDidMount(){
     this.props.fetchVideos();
-    // this.props.fetchUserUploads(this.props.user.id);
   }
 
   uploadedVideosRender() {
     if (Object.keys(this.props.uploadedVideos).length > 0) {
       return (
-        <ul>
+        <ul className>
           {this.props.uploadedVideos.map(video =>
             <li>
               <VideoIndexItemContainer key={video._id} video={video} />
@@ -38,14 +39,23 @@ class Profile extends React.Component {
     const { user } = this.props;
 
       return (
-        <div>
-          <div>
-            {user.username}
+        <div className='profile-main-cont'>
+          <div className = 'username-cont'>
+            <i className="fas fa-camera-retro"></i>{user.username}
           </div>
 
-            <label>Uploads</label>
-          <div>
+          <label className='uploaded-label'>
+            Uploads
+            <i className="fas fa-chevron-circle-right"></i>
+          </label>
+
+          <div className ='uploaded-video-cont'>
             {this.uploadedVideosRender()}
+          </div>
+          {/* <div className='border-bottom'></div> */}
+
+          <div className='liked-videos-cont'>
+
           </div>
           
         </div>
