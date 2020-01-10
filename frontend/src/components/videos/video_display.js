@@ -10,12 +10,14 @@ class VideoDisplay extends React.Component {
             numLikes: 0,
             numDislikes: 0,
             liked: false,
-            disliked: false
+            disliked: false,
+            errors: ''
         }
         this.createLike = this.createLike.bind(this);
         this.createDislike = this.createDislike.bind(this);
         this.likeButton = this.likeButton.bind(this);
         this.dislikeButton = this.dislikeButton.bind(this);
+        this.displayErrors = this.displayErrors.bind(this);
     }
 
     componentDidMount() {
@@ -58,7 +60,9 @@ class VideoDisplay extends React.Component {
     }
 
     createLike(){
-        if (!this.state.liked){
+        if (!this.props.userId){
+            this.setState({ errors: 'You must be logged in to like or dislike' })
+        } else if (!this.state.liked){
             this.props.createLike({
                 dislike: false,
                 likeable_type: 'video',
@@ -86,7 +90,9 @@ class VideoDisplay extends React.Component {
     }
 
     createDislike(){
-        if (!this.state.disliked){
+        if (!this.props.userId){
+            this.setState({ errors: 'You must be logged in to like or dislike' })
+        } else if (!this.state.disliked){
             this.props.createLike({
                 dislike: true,
                 likeable_type: 'video',
@@ -132,6 +138,18 @@ class VideoDisplay extends React.Component {
         return button;
     }
 
+    displayErrors(){
+        if (this.state.errors != ''){
+            return (
+                <div className="like-errors">
+                    {this.state.errors}
+                </div>
+            )
+        } else {
+            return
+        }
+    }
+
     render() {
         const { video } = this.props;
         if (!video) return null;
@@ -148,6 +166,7 @@ class VideoDisplay extends React.Component {
                                     <h1>{video.title}</h1>
                                     <h2>{video._id}</h2>
                                 </div>
+                                {this.displayErrors()}
                                 <div className="likes-dislikes">
                                     {this.likeButton()}
                                     {this.state.numLikes}
