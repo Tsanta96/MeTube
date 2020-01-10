@@ -1,7 +1,6 @@
-import React from 'react'
 import { connect } from 'react-redux';
-import { fetchVideo, fetchVideos } from '../../actions/video_actions';
-import { createLike, fetchVideoLikes } from '../../actions/like_actions';
+import { fetchVideos } from '../../actions/video_actions';
+import { createLike, fetchVideoLikes, deleteLike } from '../../actions/like_actions';
 import VideoDisplay from './video_display';
 
 const mapStateToProps = (state, ownProps) => {
@@ -36,7 +35,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
     fetchVideos: videos => dispatch(fetchVideos(videos)),
     createLike: like => dispatch(createLike(like)),
-    fetchVideoLikes: videoId => dispatch(fetchVideoLikes(videoId))
+    fetchVideoLikes: videoId => dispatch(fetchVideoLikes(videoId)),
+    deleteLike: likeId => dispatch(deleteLike(likeId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(VideoDisplay);

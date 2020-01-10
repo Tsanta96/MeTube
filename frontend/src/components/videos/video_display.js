@@ -64,12 +64,24 @@ class VideoDisplay extends React.Component {
                 likeable_type: 'video',
                 likeable_id: this.props.video._id,
                 user_id: this.props.userId
-            }).then(() => {
-                this.setState({
-                    numLikes: this.state.numLikes + 1,
-                    liked: true
-                })
-            });
+            })
+                .then(() => this.setState(
+                    {
+                        numLikes: this.state.numLikes + 1,
+                        liked: true
+                    })
+                );
+        } else {
+            const like = this.props.likes.filter(like => like.userId === this.props.userId);
+            if (like.length > 0){
+                this.props.deleteLike(like[0]._id)
+                    .then(() => this.setState(
+                        {
+                            numLikes: this.state.numLikes - 1,
+                            liked: false
+                        })
+                    )
+                }
         }
     }
 
@@ -86,6 +98,17 @@ class VideoDisplay extends React.Component {
                     disliked: true
                 })
             });
+        } else {
+            const dislike = this.props.dislikes.filter(dislike => dislike.userId === this.props.userId);
+            if (dislike.length > 0){
+                this.props.deleteLike(dislike[0]._id)
+                    .then(() => this.setState(
+                        {
+                            numDislikes: this.state.numDislikes - 1,
+                            disliked: false
+                        }
+                    ))
+            }
         }
     }
 
@@ -125,7 +148,7 @@ class VideoDisplay extends React.Component {
                                     <h1>{video.title}</h1>
                                     <h2>{video._id}</h2>
                                 </div>
-                                <div>
+                                <div className="likes-dislikes">
                                     {this.likeButton()}
                                     {this.state.numLikes}
                                     {this.dislikeButton()}

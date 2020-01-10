@@ -32,4 +32,9 @@ router.get('/likes/comments/:comment_id', (req, res) => {
         .catch(error => res.status(404).json({ noLikes: 'No likes found with that comment id' }))
 });
 
+router.delete('/likes/:id', (req, res) => {
+    Like.findByIdAndDelete(req.params.id)
+        .then(likeId => res.json(likeId))
+        .catch(error => res.status(404).json({ likeDelete: 'Unable to delete like with that id' }))
+});
 module.exports = router;
