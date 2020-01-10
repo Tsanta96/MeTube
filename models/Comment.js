@@ -1,16 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const LikeSchema = new Schema ({
-    dislike: {
-        type: Boolean,
-        required: true
-    },
-    likeableType: {
-        type: String,
-        required: true
-    },
-    likeableId: {
+const CommentSchema = new Schema({
+    body: {
         type: String,
         required: true
     },
@@ -18,10 +10,14 @@ const LikeSchema = new Schema ({
         type: String,
         required: true
     },
-    date: {
-        type: Date,
-        default: Date.now()
+    username: {
+        type: String,
+        required: true
+    },
+    videoId: {
+        type: String,
+        required: true
     }
 });
 
-module.exports = Like = mongoose.model('Like', LikeSchema);
+module.exports = Comment = mongoose.model('Comment', CommentSchema);
