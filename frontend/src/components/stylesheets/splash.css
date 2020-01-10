@@ -7,12 +7,13 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  background-color: rgb(240, 238, 238);
+  background-color: rgb(241, 241, 239);
   /* margin-right: calc(-1 * 16px / 2);
   margin-left: calc(-1 * 16px / 2); */
   font-family: Roboto, Arial, sans-serif;
   width: 100%;
   margin-top: 56px;
+  padding-top: 40px;
 }
 
 /* @media screen and (max-width: 1438px) {
