@@ -1,6 +1,7 @@
 import * as LikeApiUtil from '../util/like_api_util';
 
-export const RECEIVE_LIKE = "RECEIVE_LIKE"
+export const RECEIVE_LIKE = "RECEIVE_LIKE";
+export const RECEIVE_LIKES = "RECEIVE_LIKES";
 export const RECEIVE_VIDEO_LIKES = "RECEIVE_VIDEO_LIKES";
 export const RECEIVE_COMMENT_LIKES = "RECEIVE_COMMENT_LIKES";
 export const REMOVE_LIKE = "REMOVE_LIKE";
@@ -8,6 +9,11 @@ export const REMOVE_LIKE = "REMOVE_LIKE";
 export const receiveLike = like => ({
     type: RECEIVE_LIKE,
     like
+});
+
+export const receiveLikes = likes => ({
+    type: RECEIVE_LIKES,
+    likes
 });
 
 export const receiveVideoLikes = likes => ({
@@ -28,6 +34,11 @@ export const removeLike = likeId => ({
 export const fetchLike = likeId => dispatch => (
     LikeApiUtil.fetchLike(likeId)
         .then(like => dispatch(receiveLike(like)))
+);
+
+export const fetchLikes = () => dispatch => (
+    LikeApiUtil.fetchLikes()
+        .then(likes => dispatch(receiveLikes(likes)))
 );
 
 export const fetchVideoLikes = videoId => dispatch => {

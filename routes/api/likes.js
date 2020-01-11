@@ -14,6 +14,12 @@ router.post('/likes', (req, res) => {
         .catch(error => console.log(error));
 });
 
+router.get('/likes', (req, res) => {
+    Like.find()
+        .then(likes => res.json(likes))
+        .catch(error => res.status(404).json({noLikes: "No likes found"}))
+});
+
 router.get('/likes/:id', (req, res) => {
     Like.findById(req.params.id)
         .then(like => res.json(like))

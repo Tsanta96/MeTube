@@ -51,7 +51,7 @@
   /* flex-wrap: wrap; */
   background-color: rgb(241, 241, 239);
   padding: 0px 0px 0px 30px;
-  height: 355px;
+  height: 295px;
   position: relative;
 
   overflow-x: auto;
@@ -81,25 +81,70 @@
 .uploaded-video-cont ul::after {
   content: '';
   display: block;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid rgb(143, 142, 142);
+  opacity: .3;
   background-color: rgb(240, 238, 238);
   width: 70%;
   margin: 0 auto;
   position: absolute;
-  top: 75%;
+  top: 99%;
   right: 15%;
 }
 
 .liked-videos-cont {
+  /* border: 1px solid red; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   background-color: rgb(241, 241, 239);
-  padding: 0px 0px 0px 30px;
-  height: 355px;
+  padding: 0px 0px 30px 30px;
+  height: 295px;
+  position: relative;
 
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   white-space: nowrap;
+}
+
+.liked-videos-cont ul {
+  /* border: 1px solid blue; */
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 180px;
+  margin: 20px 0px;
+
+  margin-left: 11px;
+  padding-left: 11px;
+}
+.liked-videos-cont li {
+  /* border: 1px solid green; */
+}
+
+.liked-videos-cont::-webkit-scrollbar {
+  display: none;
+}
+
+.liked-videos-cont ul::after {
+  content: '';
+  display: block;
+  border-bottom: 2px solid rgb(143, 142, 142);
+  opacity: .3;
+  background-color: rgb(240, 238, 238);
+  width: 70%;
+  margin: 0 auto;
+  position: absolute;
+  top: 99%;
+  right: 15%;
+}
+
+
+.some-other-cont {
+  content: '';
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: rgb(241, 241, 239);
+  height: 355px;
 }

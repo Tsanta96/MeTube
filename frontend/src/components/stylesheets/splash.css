@@ -42,6 +42,10 @@ video {
   width: 320px;
 }
 
+video:hover{
+  cursor: pointer;
+}
+
 .video-index-ul {
   display: flex;
   flex-wrap: wrap;
