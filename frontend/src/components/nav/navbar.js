@@ -30,7 +30,7 @@ class NavBar extends React.Component {
     search(e) {
       e.preventDefault();
       this.props.fetchSearchVideos(this.state)
-      this.props.history.push('/search')
+      this.props.history.push('/api/search')
     }
 
     updateField(field) {

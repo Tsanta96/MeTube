@@ -19,7 +19,7 @@ router.post('/videos', (req, res) => {
     
 });
 
-router.get('/results', (req, res) => {
+router.get('/search', (req, res) => {
     Video.includes({title: req.params.body})
         .then(videos => res.json(videos))
         .catch(error => res.status(404).json({ noVideos: "No videos found" }))

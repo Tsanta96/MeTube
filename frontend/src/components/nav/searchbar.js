@@ -16,7 +16,9 @@ class SearchBar extends React.Component {
 
     componentDidMount(){
 
+      debugger
         if (this.props.search === 'undefined'){
+            
             this.props.search = []
         }
         this.props.fetchSearchVideos({search: this.props.search}).then(() => {
@@ -53,20 +55,19 @@ class SearchBar extends React.Component {
     render(){
         let videoMatches = this.props.videos.map(video =>{
             
-            const user = this.props.users[video.user_id]
+             const user = this.props.users[video.user_id]
 
             return (
-                <VideoSearchItem key={video.id} video={video} user={user} />
+                 <VideoSearchItem key={video.id} video={video} user={user}  />
             )
 
              
         })
         return (
-            <div className="search-outer">
-                <input className="user-search" type="text" placeholder="Search Users" onChange={this.update('searchField')} value={this.state.searchField} />    
+            <div className="search-outer"> 
                    <ul className="search-list"> 
                     <div className="search-main">
-                      <div className="search-results">{`Search Results for "${this.props.matches}"`}</div>
+                      <div className="search-results">{`Search Results for "${this.props.search}"`}</div>
                       {videoMatches.length > 0 ? (
                            videoMatches 
 

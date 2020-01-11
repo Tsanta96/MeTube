@@ -6,7 +6,7 @@ const VideoSearchItem = (props) => {
       const user = props.user;
     
     const handleClick = () => {
-       props.history.push(`/videos/${video.id}`)
+        props.history.push(`/videos/${video.id}`)
     }
 
     let username; 
@@ -15,10 +15,13 @@ const VideoSearchItem = (props) => {
       username = <h2 className="username"> {user.username}</h2>
     }
 
+  
     return (
 
+      
        <div className="main" onClick={handleClick}> 
-                <video width="250" heigth="140">
+         
+                <video width="250" height="140">
                    <source src={video.videoUrl} />
                  
                 </video>
@@ -30,7 +33,7 @@ const VideoSearchItem = (props) => {
        </div>
 
     )
-
+  
   }
 
 
