@@ -101,6 +101,12 @@
   margin: 0px 5px;
 }
 
+.fa-sign-out-alt {
+  font-size: 20px;
+  color: blue;
+  margin-right: 3px;
+}
+
 .signOut-button {
   display: flex;
   justify-content: space-around;

@@ -21,7 +21,6 @@ const App = () => (
       <AuthRoute exact path="/api/users/register" component={SignupFormContainer} />
       <Route path="/api/search" component={SearchBarContainer} />
       <Route path="/api/videos/:video_id" component={VideoDisplayContainer} />
-      {/* <Route exact path="/profile" component={ProfileContainer} /> */}
       <Route path="/api/upload" component={VideoUploadContainer} />
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
     </Switch>
