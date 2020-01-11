@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import '../stylesheets/navbar.css'
+import VideoUploadContainer from '../videos/video_upload_container';
 
 class NavBar extends React.Component {
 
@@ -22,9 +23,14 @@ class NavBar extends React.Component {
       }
     }
 
-    handleUpload(e){
-        e.preventDefault()
-        this.props.history.push("/") // should be /videos??
+    handleUpload(){
+        // e.preventDefault()
+        return (
+          <div>
+            <VideoUploadContainer />
+          </div>
+        )
+        // this.props.history.push("/api/upload") // should be /videos??
     }
 
     search(e) {
@@ -78,7 +84,7 @@ class NavBar extends React.Component {
 
           <i className="fas fa-video" onClick={this.handleUpload}></i>
           {this.renderSessionButton()}
-
+          {/* {this.handleUpload()} */}
         </div>
       );
     }

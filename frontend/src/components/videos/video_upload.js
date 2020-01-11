@@ -8,11 +8,12 @@ class VideoUpload extends React.Component {
         this.state = {
             title: "",
             user_id: this.props.currentUser.id,
-            video: ""
-        }
+            video: "",
+        };
 
         this.update = this.update.bind(this);
         this.upload = this.upload.bind(this);
+        this.handleClose = this.handleClose.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -41,6 +42,11 @@ class VideoUpload extends React.Component {
         return e => this.setState({ [field]: e.currentTarget.value})
     };
 
+    handleClose(e) {
+        e.preventDefault();
+        this.props.history.push('/');
+    }
+
 
     render() {
         return (
@@ -49,19 +55,20 @@ class VideoUpload extends React.Component {
                 <div className="video-upload-container">
                     <div className="v-u-header">
                         <h1 className="upload-video">Upload video</h1>
-                        <div>&times;</div>
+                        <button onClick={this.handleClose}>&times;</button>
                     </div>
                     <div className="v-u-form-container">
                         <form onSubmit={this.handleSubmit} className="v-u-form">
-                            <label className="video-title">Title
+                            <label className="video-title">
                                 <input
                                     type="text"
+                                    placeholder="Title"
                                     value={this.state.title}
                                     onChange={this.update('title')}
                                     />
                             </label>
                             <br></br>
-                            <label className="video-upload">Upload!
+                            <label id="video-upload" className="video-upload">Click To Select File
                                 <input
                                     type="file"
                                     name="video"
@@ -69,7 +76,9 @@ class VideoUpload extends React.Component {
                                     />
                             </label>
                             <br></br>
-                            <input type="submit" value="Submit" />
+                            <input className="submit" type="submit" value="Upload" />
+                            <p className="v-u-form-terms">By submitting your videos to MeTube, you acknowledge that you agree to MeTube's Terms of Service.
+                                Please be sure not to violate others' copyright or privacy rights</p>
                         </form>
                     </div>
                 </div>
