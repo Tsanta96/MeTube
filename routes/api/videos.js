@@ -20,24 +20,16 @@ router.get('/videos/:video_id', (req, res) => {
 
 //Create (upload) video route
 router.post('/videos', singleUpload, (req, res) => {
-    // singleUpload(req, res, function(err) {
-    //     console.log(req.file);
-    //     return res.json({'videoURL': req.file.location});
-    // });
-    // console.log("Body",req.body);
-    // // console.log("reqFile", req.file);
-
 
     video = new Video({
         title: req.body.title,
         user_id: req.body.user_id,
         videoURL: req.file.location
     });
-    // console.log("uploaded video", video);
+    console.log("uploaded video", video);
 
     video.save()
         .then((video) => res.send(video))
-        
 });
 
 router.get('/results', (req, res) => {

@@ -8,8 +8,8 @@ export const fetchVideo = videoId => {
     return axios.get(`/api/videos/${videoId}`)
 }
 
-export const createVideo = (videoData) => {
-    return axios.post('/api/videos', videoData)
+export const createVideo = (videoData, config) => {
+    return axios.post('/api/videos', videoData, config)
 };
 
 export const deleteVideo = videoId => {

@@ -33,7 +33,7 @@ router.get('/likes/videos/:video_id', (req, res) => {
 });
 
 router.get('/likes/comments/:comment_id', (req, res) => {
-    Like.find({likeableType: 'comment', likeableId: req.params.id})
+    Like.find({likeableType: 'comment', likeableId: req.params.comment_id})
         .then(likes => res.json(likes))
         .catch(error => res.status(404).json({ noLikes: 'No likes found with that comment id' }))
 });

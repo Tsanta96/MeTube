@@ -41,11 +41,10 @@ export const fetchVideo = (videoId) => dispatch => (
         .then((video) => dispatch(receiveVideo(video)))
 )
 
-export const createVideo = video => dispatch => {
-    debugger;
-    return VideoApiUtil.createVideo(video)
-    .then(video => dispatch(receiveVideo(video)))
-}
+export const createVideo = (video, config) => dispatch => (
+    VideoApiUtil.createVideo(video, config)
+        .then(video => dispatch(receiveVideo(video)))
+)
 
 export const deleteVideo = (videoId) => dispatch => (
     VideoApiUtil.deleteVideo(videoId)
