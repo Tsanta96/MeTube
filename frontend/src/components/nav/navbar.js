@@ -11,6 +11,7 @@ class NavBar extends React.Component {
       this.search = this.search.bind(this)
       this.logoutUser = this.logoutUser.bind(this);
       this.handleUpload = this.handleUpload.bind(this);
+      this.renderSplash = this.renderSplash.bind(this);
     }
   
     logoutUser(e) {
@@ -40,6 +41,11 @@ class NavBar extends React.Component {
       }
     }
 
+    renderSplash(e){
+      e.preventDefault();
+      this.props.history.push("/")
+    }
+
     renderSessionButton() {
       if (this.props.loggedIn) {
         return (
@@ -65,11 +71,19 @@ class NavBar extends React.Component {
     }
 
     render() {
+      console.log(this.props)
+
+      if (this.props.location.pathname === '/api/users/login' || this.props.location.pathname === '/api/users/register') {
+        return (
+          <div className='hidden'></div>
+        )
+      } else {
+
       return (
         <div className="main">
           <i className="fas fa-bars"></i>
 
-          <i className="fab fa-youtube-square"></i>
+          <i className="fab fa-youtube-square">{this.renderSplash}</i>
           <p className="youTube-logo-text">MeTube</p>
 
 
@@ -82,6 +96,7 @@ class NavBar extends React.Component {
         </div>
       );
     }
+  }
 
 }
 
