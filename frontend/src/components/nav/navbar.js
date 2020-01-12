@@ -8,10 +8,23 @@ class NavBar extends React.Component {
     constructor(props){
         super(props)
       
-      this.state = {search: this.props.search ? this.props.search : '' }
+      this.state = { 
+        search: this.props.search ? this.props.search : '',
+        showModal: false 
+      }
+
       this.search = this.search.bind(this)
       this.logoutUser = this.logoutUser.bind(this);
-      this.handleUpload = this.handleUpload.bind(this);
+      this.showModal = this.showModal.bind(this);
+      this.hideModal = this.hideModal.bind(this);
+    }
+
+    showModal() {
+      this.setState({ showModal: true });
+    }
+
+    hideModal() {
+      this.setState({ showModal: false });
     }
   
     logoutUser(e) {
@@ -21,16 +34,6 @@ class NavBar extends React.Component {
       } else {
         this.props.history.push('/')
       }
-    }
-
-    handleUpload(){
-        // e.preventDefault()
-        return (
-          <div>
-            <VideoUploadContainer />
-          </div>
-        )
-        // this.props.history.push("/api/upload") // should be /videos??
     }
 
     search(e) {
@@ -82,9 +85,9 @@ class NavBar extends React.Component {
           <input type="text" className="searchbar" placeholder="Search" onChange={this.updateField('search')} />
           <i className="fas fa-search" onClick={this.search}></i>
 
-          <i className="fas fa-video" onClick={this.handleUpload}></i>
+          <VideoUploadContainer show={this.state.showModal} hideModal={this.hideModal} />
+          <i className="fas fa-video" onClick={this.showModal}></i>
           {this.renderSessionButton()}
-          {/* {this.handleUpload()} */}
         </div>
       );
     }
