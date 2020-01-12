@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import VideoUploadContainer from '../videos/video_upload_container';
 import '../stylesheets/navbar.css';
 import '../stylesheets/sidenav.css';
 
@@ -12,15 +13,29 @@ class NavBar extends React.Component {
           sidenav: false
         }
       
-      this.state = {search: this.props.search ? this.props.search : '' }
+      this.state = { 
+        search: this.props.search ? this.props.search : '',
+        showModal: false 
+      }
+
       this.search = this.search.bind(this)
       this.logoutUser = this.logoutUser.bind(this);
-      this.handleUpload = this.handleUpload.bind(this);
+      this.showModal = this.showModal.bind(this);
+      this.hideModal = this.hideModal.bind(this);
+
       this.renderSplash = this.renderSplash.bind(this);
 
       this.renderSidenav = this.renderSidenav.bind(this);
       this.toggleSidenav = this.toggleSidenav.bind(this);
       this.closeSidenav = this.closeSidenav.bind(this);
+    }
+
+    showModal() {
+      this.setState({ showModal: true });
+    }
+
+    hideModal() {
+      this.setState({ showModal: false });
     }
   
     logoutUser(e) {
@@ -30,11 +45,6 @@ class NavBar extends React.Component {
       } else {
         this.props.history.push('/')
       }
-    }
-
-    handleUpload(e){
-        e.preventDefault()
-        this.props.history.push("/") // should be /videos??
     }
 
     search(e) {
@@ -141,8 +151,9 @@ class NavBar extends React.Component {
             <input type="text" className="searchbar" placeholder="Search" onChange={this.updateField('search')} />
             <i className="fas fa-search" onClick={this.search}></i>
 
-            <i className="fas fa-video" onClick={this.handleUpload}></i>
-            {this.renderSessionButton()}
+          <VideoUploadContainer show={this.state.showModal} hideModal={this.hideModal} />
+          <i className="fas fa-video" onClick={this.showModal}></i>
+          {this.renderSessionButton()}
 
           </div>
           <div>{this.renderSidenav()}</div>
