@@ -3,6 +3,7 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import { Switch, Route } from "react-router-dom";
 
 import NavBarContainer from "./nav/navbar_container";
+// import SideNavContainer from '../components/nav/sidenav_container';
 
 import Splash from "./splash"; 
 import SignupFormContainer from "./session/signup_form_container";
@@ -17,6 +18,7 @@ const App = () => {
   return (
   <div>
     <NavBarContainer />
+    {/* <SideNavContainer /> */}
     <Switch>
       <Route exact path="/" component={Splash} />
       <AuthRoute exact path="/api/users/login" component={SignupFormContainer} />
