@@ -20,7 +20,7 @@
 }
 
 .fa-bars {
-  margin: 0 3%;
+  margin: auto 30px auto 13px;
   font-size: 20px;
   transform: scaleX(1.3);
   color: rgb(83, 82, 82);
@@ -35,7 +35,7 @@
 .youTube-logo-text {
   font-size: 15px;
   font-weight: bold;
-  letter-spacing: -0.1em;
+  letter-spacing: -0.05em;
   transform: scaleY(1.8);
 }
 
@@ -131,4 +131,8 @@
   content: "++++++++++++++++++++";
   display: block;
   clear: both;
+}
+
+.hidden {
+  display: none;
 }

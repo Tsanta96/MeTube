@@ -1,0 +1,100 @@
+.min-sidenav-cont {
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  width: 72px;
+  top: 0;
+  left: 0;
+  background-color: white;
+  overflow-x: hidden;
+  transition: 0.5s;
+  margin-top: 56px;
+  display: flex;
+  flex-direction: column;
+}
+
+.min-sidenav-cont i {
+  font-size: 20px;
+  display: block;
+  transition: 0.3s;
+  margin: 7px auto;
+}
+
+.min-sidenav-icons {
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto;
+  padding: 10px 0px;
+}
+
+.min-sidenav-icons:hover {
+  /* color: red; */
+  width: 100%;
+  background-color: rgb(236, 233, 233);
+}
+
+/* .min-sidenav-cont .fa-home {
+  margin-top: 40px;
+} */
+
+.min-sidenav-cont p {
+  font-size: 12px;
+  margin: 0px auto;
+  /* margin: 0px auto 25px auto; */
+}
+
+.sidenav-cont {
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  width: 240px;
+  top: 0;
+  left: 0;
+  background-color: white;
+  overflow-x: hidden;
+  transition: 0.5s;
+  margin-top: 56px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidenav-cont .sidenav-close {
+  position: absolute;
+  top: 5;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.sidenav-close:hover {
+  cursor: pointer;
+}
+
+.sidenav-cont i {
+  font-size: 20px;
+  padding: 10px 10px 10px 32px;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav-cont i:hover {
+  /* color: red; */
+  width: 100%;
+  background-color: rgb(236, 233, 233);
+}
+
+.sidenav-cont .fa-home {
+  margin-top: 40px;
+}
+
+/* .fa-home {
+
+}
+
+.fa-fire {
+
+}
+
+.fa-photo-video {
+
+} */
