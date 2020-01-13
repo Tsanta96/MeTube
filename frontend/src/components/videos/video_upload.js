@@ -50,7 +50,7 @@ class VideoUpload extends React.Component {
         this.setState({ 'video': e.target.files[0]});
         document.getElementById("v-u-submit").classList.remove('submit');
         document.getElementById("v-u-submit").classList.add('submit-ready');
-        // document.getElementById("video-upload").innerText = `${e.target.files[0].name}`;
+        document.getElementById("select-file").innerText = `${e.target.files[0].name}`;
         console.log(document.getElementById("vid-upload").value);
     }
 
@@ -66,6 +66,7 @@ class VideoUpload extends React.Component {
             user_id: this.props.currentUser.id,
             video: ""
         })
+        document.getElementById("select-file").innerText = "Click To Select File";
         document.getElementById("vid-upload").value = "";
     }
 
@@ -92,7 +93,8 @@ class VideoUpload extends React.Component {
                                         />
                                 </label>
                                 <br></br>
-                                <label id="video-upload" className="video-upload">Click To Select File
+                                <label id="video-upload" className="video-upload">
+                                    <p id="select-file">Click to Select File</p>
                                     <input
                                         id="vid-upload"
                                         type="file"
