@@ -23,7 +23,7 @@ const s3 = new aws.S3();
 const upload = multer({
     storage: multerS3({
         s3: s3,
-        bucket: 'metube-aa-pro',
+        bucket: 'metube-aa-dev',
         acl: 'public-read',
         metadata: function (req, file, cb) {
             cb(null, {fieldName: 'TESTING META DATA!' });
