@@ -1,16 +1,41 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import '../stylesheets/navbar.css'
+import VideoUploadContainer from '../videos/video_upload_container';
+import '../stylesheets/navbar.css';
+import '../stylesheets/sidenav.css';
 
 class NavBar extends React.Component {
 
     constructor(props){
         super(props)
+
+        this.state = {
+          sidenav: false
+        }
       
-      this.state = {search: this.props.search ? this.props.search: '' }
+      this.state = { 
+        search: this.props.search ? this.props.search : '',
+        showModal: false 
+      }
+
       this.search = this.search.bind(this)
       this.logoutUser = this.logoutUser.bind(this);
-      this.handleUpload = this.handleUpload.bind(this);
+      this.showModal = this.showModal.bind(this);
+      this.hideModal = this.hideModal.bind(this);
+
+      this.renderSplash = this.renderSplash.bind(this);
+
+      this.renderSidenav = this.renderSidenav.bind(this);
+      this.toggleSidenav = this.toggleSidenav.bind(this);
+      this.closeSidenav = this.closeSidenav.bind(this);
+    }
+
+    showModal() {
+      this.setState({ showModal: true });
+    }
+
+    hideModal() {
+      this.setState({ showModal: false });
     }
   
     logoutUser(e) {
@@ -20,11 +45,6 @@ class NavBar extends React.Component {
       } else {
         this.props.history.push('/')
       }
-    }
-
-    handleUpload(e){
-        e.preventDefault()
-        this.props.history.push("/") // should be /videos??
     }
 
     search(e) {
@@ -38,6 +58,11 @@ class NavBar extends React.Component {
         this.setState({[field]: e.target.value});
         this.props.updateSearchField(e.target.value);
       }
+    }
+
+    renderSplash(e){
+      e.preventDefault();
+      this.props.history.push("/")
     }
 
     renderSessionButton() {
@@ -64,24 +89,78 @@ class NavBar extends React.Component {
       }
     }
 
+    renderSidenav(){
+      // e.preventDefault();
+      if (this.state.sidenav) {
+        return (
+          <div className='sidenav-cont'>
+            <p className='sidenav-close' onClick={this.closeSidenav}>&times;</p>
+            <i className="fas fa-home fa-fw">Home</i>
+            <i className="fas fa-fire fa-fw">Trending</i>
+            <i className="fas fa-photo-video fa-fw">Subscriptions</i>
+          </div>
+        )
+      } else {
+        return (
+          <div className='min-sidenav-cont'>
+            <div className='min-sidenav-icons'>
+              <i className="fas fa-home fa-fw"></i><p>Home</p>
+            </div>
+            <div className='min-sidenav-icons'>
+              <i className="fas fa-fire fa-fw"></i><p>Trending</p>
+            </div>
+            <div className='min-sidenav-icons'>
+              <i className="fas fa-photo-video fa-fw"></i><p>Subscriptions</p>
+            </div>
+          </div>
+        )
+      }
+    }
+
+    closeSidenav(e){
+      e.preventDefault();
+      this.setState({ sidenav: false })
+    }
+
+    toggleSidenav(e) {
+      e.preventDefault();
+      if (this.state.sidenav) {
+        this.setState({ sidenav: false })
+      } else {
+        this.setState({ sidenav: true });
+      }
+    }
+
     render() {
+      console.log(this.state)
+      if (this.props.location.pathname === '/api/users/login' || this.props.location.pathname === '/api/users/register') {
+        return (
+          <div className='hidden'></div>
+        )
+      } else {
+
       return (
-        <div className="main">
-          <i className="fas fa-bars"></i>
+        <div>
+          <div className="main">
+            <i className="fas fa-bars" onClick={this.toggleSidenav}></i>
 
-          <i className="fab fa-youtube-square"></i>
-          <p className="youTube-logo-text">MeTube</p>
+            <i className="fab fa-youtube-square" onClick={this.renderSplash}></i>
+            <p className="youTube-logo-text">MeTube</p>
 
 
-          <input type="text" className="searchbar" placeholder="Search" onChange={this.updateField('search')} />
-          <i className="fas fa-search" onClick={this.search}></i>
+            <input type="text" className="searchbar" placeholder="Search" onChange={this.updateField('search')} />
+            <i className="fas fa-search" onClick={this.search}></i>
 
-          <i className="fas fa-video" onClick={this.handleUpload}></i>
+          <VideoUploadContainer show={this.state.showModal} hideModal={this.hideModal} />
+          <i className="fas fa-video" onClick={this.showModal}></i>
           {this.renderSessionButton()}
 
+          </div>
+          <div>{this.renderSidenav()}</div>
         </div>
       );
     }
+  }
 
 }
 

@@ -1,69 +1,161 @@
-.video-upload-container-background {
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.modal .video-upload-container-background {
+    position: fixed;
     background-color: #737373;
-    width:100%;
-    height:2000px;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.top-margin {
-    height: 70px;
-}
-
-.video-upload-container {
+.modal .video-upload-container {
     margin: 0 auto;
-    height: 785px;
+    height: 650px;
     width: 960px;
     background-color: white;
     border-radius: 5px;
 }
 
-.v-u-header {
+.modal .v-u-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     border-bottom: 1px solid lightgray;
 }
 
-.v-u-header > h1 {
+.modal .v-u-header>h1 {
     margin-top: 25px;
     margin-left: 25px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     font-family: 'Roboto', 'Noto', sans-serif;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 25px;
     color: #212121;
 }
 
-.v-u-header > div {
-    margin-top: 20px;
+.modal .v-u-header>button {
     margin-right: 25px;
     font-size: 30px;
+    cursor: pointer;
 }
 
-.v-u-form-container {
+.modal .v-u-header>button:focus {
+    display: none;
+}
+
+.modal .v-u-header>button:focus {
+    display: none;
+}
+
+
+.modal .v-u-form-container {
     width: 100%;
     height: 720px;
-    background-color: lightgray;
     display: flex;
     flex-direction: column;
 }
 
-.v-u-form-container > form {
+.modal .v-u-form-container>form {
     width: 860px;
     height: 600px;
     margin: 0 auto;
     margin-top: 50px;
-    border: 1px solid black;
 }
 
-.v-u-form .video-title {
-    border: 1px solid red;
+.modal .v-u-form {
+    width: 100%;
+}
+
+.modal .video-title {
+    display: flex;
+    width: 100%;
     font-size: 25px;
     font-family: 'Roboto', 'Noto', sans-serif;
     margin-bottom: 30px;
+    margin-top: 10px;
 }
 
-.v-u-form .video-upload {
-    margin-top: 50px;
-    border: 1px solid blue;
+.modal .video-title input {
+    text-decoration: none;
+    width: 300px;
+    margin-left: 20px;
+    border: none;
+    margin-left: 20px;
+    border-bottom: 1px solid red;
+    font-family: 'Roboto', 'Noto', sans-serif;
+    font-size: 20px;
+}
+
+.modal .video-title input:focus {
+    outline: none;
+}
+
+.modal .v-u-form .video-upload {
+    position: relative;
+    justify-content: center;
+    display: flex;
+    border: 1px dashed lightgray;
+    width: 100%;
+    height: 300px;
+    border-radius: 5px;
+    align-items: center;
+    font-family: 'Roboto', 'Noto', sans-serif;
+    font-size: 30px;
+    color: darkgray;
+    cursor: pointer;
+}
+
+.modal .video-upload input[type="file"] {
+    display: none;
+}
+
+.modal .v-u-form .submit {
+    font-family: 'Roboto', 'Noto', sans-serif;
+    font-size: 15px;
+    background-color: lightgray;
+    height: 40px;
+    width: 120px;
+    color: white;
+    border-radius: 3px;
+    margin-left: 740px;
+}
+
+.modal .v-u-form .submit-ready {
+    font-family: 'Roboto', 'Noto', sans-serif;
+    font-size: 15px;
+    background-color: #ff0000;
+    height: 40px;
+    width: 120px;
+    color: white;
+    border-radius: 3px;
+    margin-left: 740px;
+    cursor: pointer;
+}
+
+.modal .v-u-form-terms {
+    margin: 0 auto;
+    display: flex;
+    margin-top: 15px;
+    color: darkgray;
+    font-size: 10px;
+    width: 700px;
+    text-align: center;
+    font-family: 'Roboto', 'Noto', sans-serif;
+} 
+
+.display-block {
+    display: block;
+}
+
+.display-none {
+    display: none;
 }
 

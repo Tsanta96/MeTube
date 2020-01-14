@@ -8,13 +8,21 @@ class VideoUpload extends React.Component {
         this.state = {
             title: "",
             user_id: this.props.currentUser.id,
-            video: ""
-        }
+            video: "",
+            uploadText: "Click to Select File",
+            uploadButtonClass: 'submit',
+            uniqueId: 1
+        };
 
         this.update = this.update.bind(this);
         this.upload = this.upload.bind(this);
+        this.handleClose = this.handleClose.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    // componentDidUpdate() {
+    //     debugger;
+    // }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -31,46 +39,83 @@ class VideoUpload extends React.Component {
         };
 
         this.props.createVideo(formData, config);
+
+        this.setState({
+            title: "",
+            user_id: this.props.currentUser.id,
+            video: "",
+            uploadText: "Success! Click to Select Another File",
+            uploadButtonClass: 'submit',
+            uniqueId: this.state.uniqueId + 1
+        })
     }
 
+    //ONLY WORKS ONE TIME??
     upload(e) {
-        this.setState({ 'video': e.target.files[0]});
+        this.setState({ 
+            video: e.target.files[0],
+            uploadText: e.target.files[0].name,
+            uploadButtonClass: 'submit-ready'
+        });
     }
 
     update(field) {
         return e => this.setState({ [field]: e.currentTarget.value})
     };
 
+    handleClose(e) {
+        e.preventDefault();
+        this.props.hideModal();
+        this.setState({
+            title: "",
+            user_id: this.props.currentUser.id,
+            video: "",
+            uploadText: "Click to Select File",
+            uploadButtonClass: 'submit',
+            uniqueId: this.state.uniqueId + 1
+        })
+    }
+
 
     render() {
+        const { uniqueId } = this.state;
+        console.log("UNIQUE ID", uniqueId);
+        const showHideClassName = this.props.show ? 'modal display-block' : 'modal display-none';
         return (
-            <div className="video-upload-container-background">
-                <div className="top-margin"></div>
-                <div className="video-upload-container">
-                    <div className="v-u-header">
-                        <h1 className="upload-video">Upload video</h1>
-                        <div>&times;</div>
-                    </div>
-                    <div className="v-u-form-container">
-                        <form onSubmit={this.handleSubmit} className="v-u-form">
-                            <label className="video-title">Title
-                                <input
-                                    type="text"
-                                    value={this.state.title}
-                                    onChange={this.update('title')}
-                                    />
-                            </label>
-                            <br></br>
-                            <label className="video-upload">Upload!
-                                <input
-                                    type="file"
-                                    name="video"
-                                    onChange={this.upload}
-                                    />
-                            </label>
-                            <br></br>
-                            <input type="submit" value="Submit" />
-                        </form>
+            <div className={showHideClassName}>
+                <div className="video-upload-container-background">
+                    <div className="top-margin"></div>
+                    <div className="video-upload-container">
+                        <div className="v-u-header">
+                            <h1 className="upload-video">Upload video</h1>
+                            <button onClick={this.handleClose}>&times;</button>
+                        </div>
+                        <div className="v-u-form-container">
+                            <form onSubmit={this.handleSubmit} className="v-u-form">
+                                <label className="video-title">
+                                    <input
+                                        type="text"
+                                        placeholder="Title"
+                                        value={this.state.title}
+                                        onChange={this.update('title')}
+                                        />
+                                </label>
+                                <br></br>
+                                <label id="video-upload" className="video-upload" key={uniqueId} htmlFor={uniqueId}>
+                                    <p id="select-file">{this.state.uploadText}</p>
+                                    <input
+                                        id={uniqueId}
+                                        type="file"
+                                        name="video"
+                                        onChange={this.upload}
+                                        />
+                                </label>
+                                <br></br>
+                                <input id="v-u-submit" className={this.state.uploadButtonClass} type="submit" value="Upload" />
+                                <p className="v-u-form-terms">By submitting your videos to MeTube, you acknowledge that you agree to MeTube's Terms of Service.
+                                    Please be sure not to violate others' copyright or privacy rights</p>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
