@@ -8,7 +8,9 @@ class VideoUpload extends React.Component {
         this.state = {
             title: "",
             user_id: this.props.currentUser.id,
-            video: ""
+            video: "",
+            uploadText: "Click to Select File",
+            uploadButtonClass: 'submit'
         };
 
         this.update = this.update.bind(this);
@@ -40,18 +42,19 @@ class VideoUpload extends React.Component {
         this.setState({
             title: "",
             user_id: this.props.currentUser.id,
-            video: ""
+            video: "",
+            uploadText: "Success! Click to Select Another File",
+            uploadButtonClass: 'submit'
         })
-        // document.getElementById("v-u-submit").classList.remove('submit-ready');
-        // document.getElementById("v-u-submit").classList.add('submit');
     }
 
+    //ONLY WORKS ONE TIME??
     upload(e) {
-        this.setState({ 'video': e.target.files[0]});
-        document.getElementById("v-u-submit").classList.remove('submit');
-        document.getElementById("v-u-submit").classList.add('submit-ready');
-        document.getElementById("select-file").innerText = `${e.target.files[0].name}`;
-        console.log(document.getElementById("vid-upload").value);
+        this.setState({ 
+            video: e.target.files[0],
+            uploadText: e.target.files[0].name,
+            uploadButtonClass: 'submit-ready'
+        });
     }
 
     update(field) {
@@ -64,10 +67,10 @@ class VideoUpload extends React.Component {
         this.setState({
             title: "",
             user_id: this.props.currentUser.id,
-            video: ""
+            video: "",
+            uploadText: "Click to Select File",
+            uploadButtonClass: 'submit'
         })
-        document.getElementById("select-file").innerText = "Click To Select File";
-        document.getElementById("vid-upload").value = "";
     }
 
 
@@ -94,16 +97,15 @@ class VideoUpload extends React.Component {
                                 </label>
                                 <br></br>
                                 <label id="video-upload" className="video-upload">
-                                    <p id="select-file">Click to Select File</p>
+                                    <p id="select-file">{this.state.uploadText}</p>
                                     <input
-                                        id="vid-upload"
                                         type="file"
                                         name="video"
                                         onChange={this.upload}
                                         />
                                 </label>
                                 <br></br>
-                                <input id="v-u-submit" className="submit" type="submit" value="Upload" />
+                                <input id="v-u-submit" className={this.state.uploadButtonClass} type="submit" value="Upload" />
                                 <p className="v-u-form-terms">By submitting your videos to MeTube, you acknowledge that you agree to MeTube's Terms of Service.
                                     Please be sure not to violate others' copyright or privacy rights</p>
                             </form>
