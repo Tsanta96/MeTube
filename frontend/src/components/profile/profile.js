@@ -12,6 +12,7 @@ class Profile extends React.Component {
   }
 
   componentDidMount(){
+    this.props.fetchUsers();
     this.props.fetchVideos();
     this.props.fetchLikes();
   }
@@ -55,7 +56,7 @@ class Profile extends React.Component {
   }
 
   render(){
-    // console.log(this.props)
+    console.log(this.props)
     // console.log(this.props.likeVideos)
 
     const { user } = this.props;

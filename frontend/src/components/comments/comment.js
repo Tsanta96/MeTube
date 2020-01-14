@@ -85,9 +85,9 @@ export default class Comment extends React.Component {
     likeButton(){
         let button;
         if (this.state.liked){
-            button = <i class="fas fa-thumbs-up liked" onClick={this.createLike}></i>
+            button = <i className="fas fa-thumbs-up liked" onClick={this.createLike}></i>
         } else {
-            button = <i class="fas fa-thumbs-up" onClick={this.createLike}></i>
+            button = <i className="fas fa-thumbs-up" onClick={this.createLike}></i>
         }
         return button;
     }
@@ -95,9 +95,9 @@ export default class Comment extends React.Component {
     dislikeButton(){
         let button;
         if (this.state.disliked){
-            button = <i class="fas fa-thumbs-down disliked" onClick={this.createDislike}></i>
+            button = <i className="fas fa-thumbs-down disliked" onClick={this.createDislike}></i>
         } else {
-            button = <i class="fas fa-thumbs-down" onClick={this.createDislike}></i>
+            button = <i className="fas fa-thumbs-down" onClick={this.createDislike}></i>
         }
         return button;
     }

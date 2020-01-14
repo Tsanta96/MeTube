@@ -56,45 +56,34 @@
   margin-top: 56px;
   display: flex;
   flex-direction: column;
+  padding-top: 40px;
 }
 
-.sidenav-cont .sidenav-close {
-  position: absolute;
+/* .sidenav-cont .sidenav-close {
   top: 5;
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
-}
+} */
 
-.sidenav-close:hover {
+/* .sidenav-close:hover {
   cursor: pointer;
-}
+} */
 
-.sidenav-cont i {
+.sidenav-cont p {
   font-size: 20px;
   padding: 10px 10px 10px 32px;
   display: block;
   transition: 0.3s;
 }
 
-.sidenav-cont i:hover {
+.sidenav-cont p:hover {
   /* color: red; */
   width: 100%;
   background-color: rgb(236, 233, 233);
+  cursor: pointer;
 }
 
-.sidenav-cont .fa-home {
+/* .sidenav-cont .fa-home {
   margin-top: 40px;
-}
-
-/* .fa-home {
-
-}
-
-.fa-fire {
-
-}
-
-.fa-photo-video {
-
 } */

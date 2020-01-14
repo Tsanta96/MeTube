@@ -7,3 +7,7 @@ export const fetchUser = userId => {
 export const fetchUsers = () => {
     return axios.get(`/api/users`)
 }
+
+export const fetchUserProfile = userId => {
+    return axios.get(`/profile/${userId}`)
+}

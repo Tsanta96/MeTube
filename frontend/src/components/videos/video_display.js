@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom';
 import '../stylesheets/video_display.css';
 import VideoIndexItemContainer from './video_index_item_container';
 import CommentFormContainer from '../comments/comment_form_container';
@@ -13,7 +14,10 @@ class VideoDisplay extends React.Component {
             numDislikes: 0,
             liked: false,
             disliked: false,
-            errors: ''
+            errors: '',
+            subscriber_id: '',
+            subscription_id: '',
+            // subscriptions: '',
         }
         this.createLike = this.createLike.bind(this);
         this.createDislike = this.createDislike.bind(this);
@@ -21,9 +25,14 @@ class VideoDisplay extends React.Component {
         this.dislikeButton = this.dislikeButton.bind(this);
         this.displayErrors = this.displayErrors.bind(this);
         this.comments = this.comments.bind(this);
+        
+        this.subscribe = this.subscribe.bind(this);
+        this.unsubscribe = this.unsubscribe.bind(this);
+        this.toggleSubscribeButton = this.toggleSubscribeButton.bind(this);
     }
 
     componentDidMount() {
+        this.props.fetchSubscriptions();
         this.props.fetchVideos()
             .then(() => this.props.fetchVideoLikes(this.props.video._id)
                 .then(() => this.setState(
@@ -36,7 +45,14 @@ class VideoDisplay extends React.Component {
                 )
             )
             .then(() => this.props.fetchVideoComments(this.props.video._id))
-    }
+        }
+		
+    // componentDidUpdate(prevProps) {
+    //     debugger
+    //     if (this.props.subscriptions.length !== prevProps.subscriptions.length) {
+    //         this.props.fetchSubscriptions();
+    //     }
+    // }
 
     upNextVideos(){
         if ((Object.keys(this.props.videos).length > 0)){
@@ -149,12 +165,48 @@ class VideoDisplay extends React.Component {
 
     comments(){
         if (!this.props.comments) return '';
-        return this.props.comments.map(comment => 
-            <CommentContainer comment={comment} user={this.props.user}/>
-        )
-    }
+            return this.props.comments.map(comment => 
+                <CommentContainer comment={comment} user={this.props.user}/>
+            )
+		}
+		
+
+	subscribe() {
+		this.props.createSubscription({
+			subscriber_id: this.props.user.id,
+			subscription_id: this.props.video.user_id
+		})
+			// .then(() => this.setState({
+			// 	subscriber_id: this.props.user.id,
+			// 	subscription_id: this.props.video.user_id
+			// }))
+	}
+
+	unsubscribe() {
+		const subId = Object.values(this.props.subscriptions.map(sub => sub._id))
+		this.props.deleteSubscription(subId);
+	}
+
+	toggleSubscribeButton() {
+		// debugger
+		const subIds = Object.values(this.props.subscriptions.map(subId => subId.subscription_id))
+		const checkSub = subIds.includes(this.props.video.user_id)
+        // debugger
+		if (checkSub) {
+			return (
+				<button onClick={this.unsubscribe} className='subscription-button'>UNSUBSCRIBE</button>
+			)
+		} else {
+			return (
+                <button onClick={this.subscribe} className='subscription-button'>SUBSCRIBE</button>
+			)
+		}
+	}
+
 
     render() {
+        console.log(this.props)
+
         const { video } = this.props;
         if (!video) return null;
         return (
@@ -166,9 +218,10 @@ class VideoDisplay extends React.Component {
                                 <source src={video.videoURL}></source>
                             </video>
                             <div className="video-description">
-                                <div>
+                                <div className='video-title-id'>
                                     <h1>{video.title}</h1>
-                                    <h2>{video._id}</h2>
+                                    {/* <h2>{video._id}</h2> */}
+                                    <h2>{this.props.user.username}</h2>
                                 </div>
                                 {this.displayErrors()}
                                 <div className="likes-dislikes">
@@ -177,6 +230,7 @@ class VideoDisplay extends React.Component {
                                     {this.dislikeButton()}
                                     {this.state.numDislikes}
                                 </div>
+                                {this.toggleSubscribeButton()}
                             </div>
                         </div>
                         <div className="comments">
@@ -196,4 +250,4 @@ class VideoDisplay extends React.Component {
     }
 }
 
-export default VideoDisplay;
+export default withRouter(VideoDisplay);

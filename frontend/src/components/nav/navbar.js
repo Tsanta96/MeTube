@@ -24,6 +24,7 @@ class NavBar extends React.Component {
       this.hideModal = this.hideModal.bind(this);
 
       this.renderSplash = this.renderSplash.bind(this);
+      this.renderProfile = this.renderProfile.bind(this);
 
       this.renderSidenav = this.renderSidenav.bind(this);
       this.toggleSidenav = this.toggleSidenav.bind(this);
@@ -65,6 +66,11 @@ class NavBar extends React.Component {
       this.props.history.push("/")
     }
 
+    renderProfile(e){
+      e.preventDefault();
+      this.props.history.push(`/profile/${this.props.currentUser}`)
+    }
+
     renderSessionButton() {
       if (this.props.loggedIn) {
         return (
@@ -94,17 +100,17 @@ class NavBar extends React.Component {
       if (this.state.sidenav) {
         return (
           <div className='sidenav-cont'>
-            <p className='sidenav-close' onClick={this.closeSidenav}>&times;</p>
-            <i className="fas fa-home fa-fw">Home</i>
-            <i className="fas fa-fire fa-fw">Trending</i>
-            <i className="fas fa-photo-video fa-fw">Subscriptions</i>
+            {/* <p className='sidenav-close' onClick={this.closeSidenav}>&times;</p> */}
+            <p onClick={this.renderProfile}><i className="fas fa-home fa-fw"></i> Home</p>
+            <p><i className="fas fa-fire fa-fw"></i> Trending</p>
+            <p><i className="fas fa-photo-video fa-fw"></i> Subscriptions</p>
           </div>
         )
       } else {
         return (
           <div className='min-sidenav-cont'>
             <div className='min-sidenav-icons'>
-              <i className="fas fa-home fa-fw"></i><p>Home</p>
+              <i className="fas fa-home fa-fw" onClick={this.renderProfile}></i><p>Home</p>
             </div>
             <div className='min-sidenav-icons'>
               <i className="fas fa-fire fa-fw"></i><p>Trending</p>
@@ -132,7 +138,7 @@ class NavBar extends React.Component {
     }
 
     render() {
-      console.log(this.state)
+      // console.log(this.props)
       if (this.props.location.pathname === '/api/users/login' || this.props.location.pathname === '/api/users/register') {
         return (
           <div className='hidden'></div>

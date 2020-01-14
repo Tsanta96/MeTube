@@ -1,10 +1,14 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { fetchVideos } from '../../actions/video_actions';
 import { createLike, fetchVideoLikes, deleteLike } from '../../actions/like_actions';
 import { fetchVideoComments } from '../../actions/comment_actions';
+import { fetchSubscriptions, createSubscription, deleteSubscription } from '../../actions/subscription_actions';
 import VideoDisplay from './video_display';
 
 const mapStateToProps = (state, ownProps) => {
+    console.log(state)
+    
     if (!state.entities.videos.data){
         return {}
     } else {
@@ -30,8 +34,11 @@ const mapStateToProps = (state, ownProps) => {
             likes,
             dislikes,
             user: state.session.user,
-            comments
+            comments,
+
+            subscriptions: Object.values(state.entities.subscriptions)
         }
+        
     }
 }
 
@@ -40,7 +47,11 @@ const mapDispatchToProps = dispatch => ({
     createLike: like => dispatch(createLike(like)),
     fetchVideoLikes: videoId => dispatch(fetchVideoLikes(videoId)),
     deleteLike: likeId => dispatch(deleteLike(likeId)),
-    fetchVideoComments: videoId => dispatch(fetchVideoComments(videoId))
+    fetchVideoComments: videoId => dispatch(fetchVideoComments(videoId)),
+    createSubscription: data => dispatch(createSubscription(data)),
+    deleteSubscription: subId => dispatch(deleteSubscription(subId)),
+    fetchSubscriptions: () => dispatch(fetchSubscriptions()),
+
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(VideoDisplay);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(VideoDisplay));
