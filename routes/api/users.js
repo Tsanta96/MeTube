@@ -85,17 +85,17 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
     });
 })
 
-router.get('/profile', (req, res) => {
+router.get('/profile/:user_id', (req, res) => {
     User.findById(req.params.id)
         .then(user => res.json(user))
         .catch(error => res.status(404).json({ noUser: 'No user found with that id' }))
 });
 
-
-router.get('/users', (req, res) => {
-   User.find()
-    .then(users => res.json(users) )
-    .catch(error => res.status(404).json({noUser: 'No users found'}))
-})
+router.get('/',(req, res) => {
+    // console.log('---!!!!!!----I MADE IT----!!!!!!-----')
+    User.find()
+        .then(users => res.json(users))
+        .catch(error => res.status(404).json({nousers: "No users found"}))
+});
 
 module.exports = router;
