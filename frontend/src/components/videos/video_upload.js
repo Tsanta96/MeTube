@@ -10,7 +10,8 @@ class VideoUpload extends React.Component {
             user_id: this.props.currentUser.id,
             video: "",
             uploadText: "Click to Select File",
-            uploadButtonClass: 'submit'
+            uploadButtonClass: 'submit',
+            uniqueId: 1
         };
 
         this.update = this.update.bind(this);
@@ -44,7 +45,8 @@ class VideoUpload extends React.Component {
             user_id: this.props.currentUser.id,
             video: "",
             uploadText: "Success! Click to Select Another File",
-            uploadButtonClass: 'submit'
+            uploadButtonClass: 'submit',
+            uniqueId: this.state.uniqueId + 1
         })
     }
 
@@ -69,12 +71,15 @@ class VideoUpload extends React.Component {
             user_id: this.props.currentUser.id,
             video: "",
             uploadText: "Click to Select File",
-            uploadButtonClass: 'submit'
+            uploadButtonClass: 'submit',
+            uniqueId: this.state.uniqueId + 1
         })
     }
 
 
     render() {
+        const { uniqueId } = this.state;
+        console.log("UNIQUE ID", uniqueId);
         const showHideClassName = this.props.show ? 'modal display-block' : 'modal display-none';
         return (
             <div className={showHideClassName}>
@@ -96,9 +101,10 @@ class VideoUpload extends React.Component {
                                         />
                                 </label>
                                 <br></br>
-                                <label id="video-upload" className="video-upload">
+                                <label id="video-upload" className="video-upload" key={uniqueId} htmlFor={uniqueId}>
                                     <p id="select-file">{this.state.uploadText}</p>
                                     <input
+                                        id={uniqueId}
                                         type="file"
                                         name="video"
                                         onChange={this.upload}
