@@ -8,7 +8,10 @@ class VideoUpload extends React.Component {
         this.state = {
             title: "",
             user_id: this.props.currentUser.id,
-            video: ""
+            video: "",
+            uploadText: "Click to Select File",
+            uploadButtonClass: 'submit',
+            uniqueId: 1
         };
 
         this.update = this.update.bind(this);
@@ -40,18 +43,20 @@ class VideoUpload extends React.Component {
         this.setState({
             title: "",
             user_id: this.props.currentUser.id,
-            video: ""
+            video: "",
+            uploadText: "Success! Click to Select Another File",
+            uploadButtonClass: 'submit',
+            uniqueId: this.state.uniqueId + 1
         })
-        // document.getElementById("v-u-submit").classList.remove('submit-ready');
-        // document.getElementById("v-u-submit").classList.add('submit');
     }
 
+    //ONLY WORKS ONE TIME??
     upload(e) {
-        this.setState({ 'video': e.target.files[0]});
-        document.getElementById("v-u-submit").classList.remove('submit');
-        document.getElementById("v-u-submit").classList.add('submit-ready');
-        // document.getElementById("video-upload").innerText = `${e.target.files[0].name}`;
-        console.log(document.getElementById("vid-upload").value);
+        this.setState({ 
+            video: e.target.files[0],
+            uploadText: e.target.files[0].name,
+            uploadButtonClass: 'submit-ready'
+        });
     }
 
     update(field) {
@@ -64,13 +69,17 @@ class VideoUpload extends React.Component {
         this.setState({
             title: "",
             user_id: this.props.currentUser.id,
-            video: ""
+            video: "",
+            uploadText: "Click to Select File",
+            uploadButtonClass: 'submit',
+            uniqueId: this.state.uniqueId + 1
         })
-        document.getElementById("vid-upload").value = "";
     }
 
 
     render() {
+        const { uniqueId } = this.state;
+        console.log("UNIQUE ID", uniqueId);
         const showHideClassName = this.props.show ? 'modal display-block' : 'modal display-none';
         return (
             <div className={showHideClassName}>
@@ -92,16 +101,17 @@ class VideoUpload extends React.Component {
                                         />
                                 </label>
                                 <br></br>
-                                <label id="video-upload" className="video-upload">Click To Select File
+                                <label id="video-upload" className="video-upload" key={uniqueId} htmlFor={uniqueId}>
+                                    <p id="select-file">{this.state.uploadText}</p>
                                     <input
-                                        id="vid-upload"
+                                        id={uniqueId}
                                         type="file"
                                         name="video"
                                         onChange={this.upload}
                                         />
                                 </label>
                                 <br></br>
-                                <input id="v-u-submit" className="submit" type="submit" value="Upload" />
+                                <input id="v-u-submit" className={this.state.uploadButtonClass} type="submit" value="Upload" />
                                 <p className="v-u-form-terms">By submitting your videos to MeTube, you acknowledge that you agree to MeTube's Terms of Service.
                                     Please be sure not to violate others' copyright or privacy rights</p>
                             </form>

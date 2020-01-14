@@ -26,7 +26,6 @@ router.post('/videos', singleUpload, (req, res) => {
         user_id: req.body.user_id,
         videoURL: req.file.location
     });
-    console.log("uploaded video", video);
 
     video.save()
         .then((video) => res.send(video))
