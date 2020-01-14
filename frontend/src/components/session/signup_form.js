@@ -51,6 +51,7 @@ class SignupForm extends React.Component {
 
   handleLogin(e){
     e.preventDefault();
+    console.log("test")
     let user = {
       username: this.state.username,
       password: this.state.password
