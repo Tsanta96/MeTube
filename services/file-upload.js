@@ -4,14 +4,11 @@ const multerS3 = require('multer-s3');
 const keys = require('../config/keys');
 
 
-console.log("PROCESS ENV", process.env);
 let bucketName;
 if (process.env.NODE_ENV === 'production') {
     bucketName = 'metube-aa-pro';
-    console.log("Bucketname: " + bucketName);
 } else {
     bucketName = 'metube-aa-dev';
-    console.log("Bucketname: " + bucketName);
 }
 
 aws.config.update({
