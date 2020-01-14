@@ -5,10 +5,8 @@ import { fetchLikes } from '../../actions/like_actions';
 import { fetchUsers, fetchUserProfile } from '../../actions/user_actions';
 
 const mapStatetoProps = (state, ownProps) => {
-  // console.log(state)
   
   if(!state.entities.videos.data || !state.entities.likes.data ||!state.entities.users.data ) {
-    // debugger
     return {
       user: state.session.user, 
       uploadedVideos: '',
@@ -25,7 +23,6 @@ const mapStatetoProps = (state, ownProps) => {
         
       const allUsersIds = state.entities.users.data.map(userId => userId._id)
       const currentUserId = allUsersIds.filter(userId => userId === state.session.user.id)
-      // debugger
     return {
       user: state.session.user, 
       userId: currentUserId,

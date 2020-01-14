@@ -16,7 +16,6 @@ class Subscription extends React.Component {
   renderSubscriptions(){
     let subIds = Object.values(this.props.subscriptions.map(sub => sub.subscription_id))
     
-    // debugger
     let uniqSubIds = [];
     subIds.forEach(id => { 
       if(!uniqSubIds.includes(id)) {
@@ -27,7 +26,6 @@ class Subscription extends React.Component {
   }
 
   render(){
-    // debugger
     return (
       <div className='subscription-cont'>
         Subscription Test Page

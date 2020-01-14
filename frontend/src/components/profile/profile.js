@@ -18,8 +18,6 @@ class Profile extends React.Component {
   }
 
   likedVideosRender(){
-    // console.log(this.props.likedVideos)
-    // debugger
     if (Object.keys(this.props.likedVideos).length > 0) {
       return (
         <ul>
@@ -56,9 +54,6 @@ class Profile extends React.Component {
   }
 
   render(){
-    console.log(this.props)
-    // console.log(this.props.likeVideos)
-
     const { user } = this.props;
 
       return (

@@ -138,7 +138,6 @@ class NavBar extends React.Component {
     }
 
     render() {
-      // console.log(this.props)
       if (this.props.location.pathname === '/api/users/login' || this.props.location.pathname === '/api/users/register') {
         return (
           <div className='hidden'></div>

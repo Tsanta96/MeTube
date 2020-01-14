@@ -7,8 +7,6 @@ import { fetchSubscriptions, createSubscription, deleteSubscription } from '../.
 import VideoDisplay from './video_display';
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(state)
-    
     if (!state.entities.videos.data){
         return {}
     } else {

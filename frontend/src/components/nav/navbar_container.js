@@ -7,7 +7,6 @@ import {updateSearchField} from '../../actions/ui_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-    // console.log(state)
     let currentUser = state.session.user.id
       return {
           currentUser,
