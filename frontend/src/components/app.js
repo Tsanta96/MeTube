@@ -12,7 +12,7 @@ import ProfileContainer from "./profile/profile_container";
 import VideoDisplayContainer from "./videos/video_display_container";
 import VideoUploadContainer from "./videos/video_upload_container";
 import SearchBarContainer from "./nav/searchbar_container";
-
+import SubscriptionsContainer from "./subscriptions/subscription_container";
 
 const App = () => {
   return (
@@ -26,7 +26,8 @@ const App = () => {
       <Route path="/api/search" component={SearchBarContainer} />
       <Route path="/api/videos/:video_id" component={VideoDisplayContainer} />
       <Route path="/api/upload" component={VideoUploadContainer} />
-      <ProtectedRoute exact path="/profile" component={ProfileContainer} />
+      <Route path="/profile/:user_id" component={ProfileContainer} />
+      <Route path="/subscriptions" component={SubscriptionsContainer} />
     </Switch>
 
   </div>

@@ -10,6 +10,7 @@ const passport = require('passport');
 const videos = require("./routes/api/videos");
 const likes = require("./routes/api/likes");
 const comments = require("./routes/api/comments");
+const subscriptions = require("./routes/api/subscriptions");
 
 mongoose
   .connect(db, { useNewUrlParser: true })
@@ -23,6 +24,7 @@ app.use("/api/users", users);
 app.use("/api", videos);
 app.use("/api", likes);
 app.use("/api", comments);
+app.use("/api", subscriptions);
 app.use(passport.initialize());
 require('./config/passport')(passport);
 

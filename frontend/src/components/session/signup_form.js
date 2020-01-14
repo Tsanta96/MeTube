@@ -140,6 +140,7 @@ class SignupForm extends React.Component {
   }
 
   render() {
+    
     return (
       <div className="session-main">
   
