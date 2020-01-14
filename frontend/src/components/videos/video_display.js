@@ -1,6 +1,8 @@
 import React from 'react'
 import '../stylesheets/video_display.css';
 import VideoIndexItemContainer from './video_index_item_container';
+import CommentFormContainer from '../comments/comment_form_container';
+import CommentContainer from '../comments/comment_container';
 
 class VideoDisplay extends React.Component {
     constructor(props) {
@@ -18,28 +20,23 @@ class VideoDisplay extends React.Component {
         this.likeButton = this.likeButton.bind(this);
         this.dislikeButton = this.dislikeButton.bind(this);
         this.displayErrors = this.displayErrors.bind(this);
+        this.comments = this.comments.bind(this);
     }
 
     componentDidMount() {
         this.props.fetchVideos()
-            .then(() => {
-                this.props.fetchVideoLikes(this.props.video._id)
-                    .then(() => {
-                        this.setState({
-                            numLikes: this.props.likes.length,
-                            numDislikes: this.props.dislikes.length,
-                            liked: this.props.likes.filter(like => like.userId === this.props.userId).length > 0,
-                            disliked: this.props.dislikes.filter(dislike => dislike.userId === this.props.userId).length > 0
-                        })
-                    });
-            })
+            .then(() => this.props.fetchVideoLikes(this.props.video._id)
+                .then(() => this.setState(
+                    {
+                        numLikes: this.props.likes.length,
+                        numDislikes: this.props.dislikes.length,
+                        liked: this.props.likes.filter(like => like.userId === this.props.user.id).length > 0,
+                        disliked: this.props.dislikes.filter(dislike => dislike.userId === this.props.user.id).length > 0
+                    })
+                )
+            )
+            .then(() => this.props.fetchVideoComments(this.props.video._id))
     }
-    
-    // componentDidUpdate(prevProps) {
-    //     if (prevProps.video._id !== this.props.video._id) {
-    //         this.props.fetchVideo(this.props.video._id);
-    //     }
-    // }
 
     upNextVideos(){
         if ((Object.keys(this.props.videos).length > 0)){
@@ -60,14 +57,14 @@ class VideoDisplay extends React.Component {
     }
 
     createLike(){
-        if (!this.props.userId){
+        if (!this.props.user.id){
             this.setState({ errors: 'You must be logged in to like or dislike' })
         } else if (!this.state.liked){
             this.props.createLike({
                 dislike: false,
                 likeable_type: 'video',
                 likeable_id: this.props.video._id,
-                user_id: this.props.userId
+                user_id: this.props.user.id
             })
                 .then(() => this.setState(
                     {
@@ -76,7 +73,7 @@ class VideoDisplay extends React.Component {
                     })
                 );
         } else {
-            const like = this.props.likes.filter(like => like.userId === this.props.userId);
+            const like = this.props.likes.filter(like => like.userId === this.props.user.id);
             if (like.length > 0){
                 this.props.deleteLike(like[0]._id)
                     .then(() => this.setState(
@@ -90,14 +87,14 @@ class VideoDisplay extends React.Component {
     }
 
     createDislike(){
-        if (!this.props.userId){
+        if (!this.props.user.id){
             this.setState({ errors: 'You must be logged in to like or dislike' })
         } else if (!this.state.disliked){
             this.props.createLike({
                 dislike: true,
                 likeable_type: 'video',
                 likeable_id: this.props.video._id,
-                user_id: this.props.userId
+                user_id: this.props.user.id
             }).then(() => {
                 this.setState({
                     numDislikes: this.state.numDislikes + 1,
@@ -105,7 +102,7 @@ class VideoDisplay extends React.Component {
                 })
             });
         } else {
-            const dislike = this.props.dislikes.filter(dislike => dislike.userId === this.props.userId);
+            const dislike = this.props.dislikes.filter(dislike => dislike.userId === this.props.user.id);
             if (dislike.length > 0){
                 this.props.deleteLike(dislike[0]._id)
                     .then(() => this.setState(
@@ -121,9 +118,9 @@ class VideoDisplay extends React.Component {
     likeButton(){
         let button;
         if (this.state.liked){
-            button = <i class="fas fa-thumbs-up liked" onClick={this.createLike}></i>
+            button = <i className="fas fa-thumbs-up liked" onClick={this.createLike}></i>
         } else {
-            button = <i class="fas fa-thumbs-up" onClick={this.createLike}></i>
+            button = <i className="fas fa-thumbs-up" onClick={this.createLike}></i>
         }
         return button;
     }
@@ -131,9 +128,9 @@ class VideoDisplay extends React.Component {
     dislikeButton(){
         let button;
         if (this.state.disliked){
-            button = <i class="fas fa-thumbs-down disliked" onClick={this.createDislike}></i>
+            button = <i className="fas fa-thumbs-down disliked" onClick={this.createDislike}></i>
         } else {
-            button = <i class="fas fa-thumbs-down" onClick={this.createDislike}></i>
+            button = <i className="fas fa-thumbs-down" onClick={this.createDislike}></i>
         }
         return button;
     }
@@ -148,6 +145,13 @@ class VideoDisplay extends React.Component {
         } else {
             return
         }
+    }
+
+    comments(){
+        if (!this.props.comments) return '';
+        return this.props.comments.map(comment => 
+            <CommentContainer comment={comment} user={this.props.user}/>
+        )
     }
 
     render() {
@@ -176,7 +180,10 @@ class VideoDisplay extends React.Component {
                             </div>
                         </div>
                         <div className="comments">
-                            <h1>Comments Gonna Go Here</h1>
+                            <CommentFormContainer user={this.props.user} videoId={this.props.video._id} />
+                            <div className="comment-div">
+                                {this.comments()}
+                            </div>
                         </div>
                     </div>
                 </div>

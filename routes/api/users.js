@@ -91,4 +91,11 @@ router.get('/profile', (req, res) => {
         .catch(error => res.status(404).json({ noUser: 'No user found with that id' }))
 });
 
+
+router.get('/users', (req, res) => {
+   User.find()
+    .then(users => res.json(users) )
+    .catch(error => res.status(404).json({noUser: 'No users found'}))
+})
+
 module.exports = router;

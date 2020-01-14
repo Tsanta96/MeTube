@@ -7,7 +7,7 @@ class NavBar extends React.Component {
     constructor(props){
         super(props)
       
-      this.state = {search: this.props.search ? this.props.search : '' }
+      this.state = {search: this.props.search ? this.props.search: '' }
       this.search = this.search.bind(this)
       this.logoutUser = this.logoutUser.bind(this);
       this.handleUpload = this.handleUpload.bind(this);
@@ -29,7 +29,7 @@ class NavBar extends React.Component {
 
     search(e) {
       e.preventDefault();
-      this.props.fetchSearchVideos(this.state)
+      // this.props.fetchSearchVideos(this.state.search)
       this.props.history.push('/api/search')
     }
 
@@ -44,9 +44,12 @@ class NavBar extends React.Component {
       if (this.props.loggedIn) {
         return (
           <div>
-            <button className='signOut-button' onClick={this.logoutUser}>Sign Out</button>
+            <button className="signOut-button" onClick={this.logoutUser}>
+            <i className="fas fa-sign-out-alt"></i>
+              Sign Out
+            </button>
           </div>
-        )
+        );
       } else {
         return (
           <div className="signin-button-container">

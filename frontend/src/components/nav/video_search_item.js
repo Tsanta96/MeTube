@@ -17,24 +17,17 @@ const VideoSearchItem = (props) => {
 
   
     return (
-
-      
        <div className="main" onClick={handleClick}> 
-         
-                <video width="250" height="140">
-                   <source src={video.videoUrl} />
-                 
-                </video>
-                <section className="video-info">
-                    <h1>{video.title}</h1>
-                    <p>Views</p>
-                    <p>Description</p>
-                </section>
+          <video width="250" height="140">
+              <source src={video.videoURL} />
+          </video>
+          <section className="video-info">
+              <h1>{video.title}</h1>
+              <p>Views</p>
+              <p>Description</p>
+          </section>
        </div>
-
     )
-  
   }
-
 
 export default withRouter(VideoSearchItem);

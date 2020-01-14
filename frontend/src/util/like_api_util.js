@@ -16,6 +16,10 @@ export const fetchLike = likeId => {
     return axios.get(`/api/likes/${likeId}`)
 };
 
+export const fetchLikes = () => {
+    return axios.get('/api/likes')
+};
+
 export const deleteLike = likeId => {
     return axios.delete(`/api/likes/${likeId}`)
 };

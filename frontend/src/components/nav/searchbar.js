@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router-dom'
-import VideoSearchItem from './results_index';
+import VideoSearchItem from './video_search_item';
 
 class SearchBar extends React.Component {
-
     constructor(props) {
         super(props)
 
@@ -15,14 +14,12 @@ class SearchBar extends React.Component {
     }
 
     componentDidMount(){
-
-      debugger
-        if (this.props.search === 'undefined'){
-            
+        debugger;
+        if (this.props.search === 'undefined'){ 
             this.props.search = []
         }
-        this.props.fetchSearchVideos({search: this.props.search}).then(() => {
-            this.props.fetchUsers()
+        this.props.fetchSearchVideos(this.props.search).then(() => {
+           this.props.fetchUsers()
         })
     }
 
@@ -53,30 +50,32 @@ class SearchBar extends React.Component {
     // }
 
     render(){
-        let videoMatches = this.props.videos.map(video =>{
-            
-             const user = this.props.users[video.user_id]
-
+        debugger;
+        console.log(this.props.videos)
+        let videoMatches = this.props.videos.map((video,ind) =>{
+        const user = this.props.users[video.user_id]
             return (
-                 <VideoSearchItem key={video.id} video={video} user={user}  />
+                <ul>
+                    <li key={ind}>
+                        <VideoSearchItem key={video._id} video={video} user={user}/>
+                    </li>
+                </ul>
             )
-
-             
         })
+
         return (
             <div className="search-outer"> 
-                   <ul className="search-list"> 
+                {/* <ul className="search-list"> 
                     <div className="search-main">
-                      <div className="search-results">{`Search Results for "${this.props.search}"`}</div>
-                      {videoMatches.length > 0 ? (
-                           videoMatches 
-
+                        <div className="search-results">{`Search Results for "${this.props.search}"`}</div>
+                        {videoMatches.length > 0 ? (
+                            videoMatches 
                         ):(
                             <p className="no-result-message">Sorry! No matches"</p>
                         )}
-        
                     </div>
-                   </ul> 
+                </ul>  */}
+                {videoMatches}
              </div>
         )
     }
