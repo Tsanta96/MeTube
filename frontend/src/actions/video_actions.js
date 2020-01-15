@@ -54,7 +54,6 @@ export const deleteVideo = (videoId) => dispatch => (
 export const fetchSearchVideos = search => dispatch => {
     return VideoApiUtil.fetchSearchVideos(search)
         .then((search) => {
-              console.log(search.data);
               dispatch(receiveSearchVideos(search.data))
         })
 }

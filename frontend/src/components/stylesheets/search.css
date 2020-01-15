@@ -1,4 +1,15 @@
 .video-main {
   margin-top: 56px;
   margin-left: 72px;
+  display: flex;
+  justify-content:center;
+  border: 2px solid red;
+}
+
+
+.video-info {
+  margin-top: 56px;
+  margin-left: 72px;
+  display: flex;
+  justify-content:center;
 }
