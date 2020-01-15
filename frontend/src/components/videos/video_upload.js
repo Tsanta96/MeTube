@@ -20,10 +20,6 @@ class VideoUpload extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    // componentDidUpdate() {
-    //     debugger;
-    // }
-
     handleSubmit(e) {
         e.preventDefault();
 
@@ -79,7 +75,6 @@ class VideoUpload extends React.Component {
 
     render() {
         const { uniqueId } = this.state;
-        console.log("UNIQUE ID", uniqueId);
         const showHideClassName = this.props.show ? 'modal display-block' : 'modal display-none';
         return (
             <div className={showHideClassName}>

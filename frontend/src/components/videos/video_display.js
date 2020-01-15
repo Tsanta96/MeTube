@@ -46,13 +46,6 @@ class VideoDisplay extends React.Component {
             )
             .then(() => this.props.fetchVideoComments(this.props.video._id))
         }
-		
-    // componentDidUpdate(prevProps) {
-    //     debugger
-    //     if (this.props.subscriptions.length !== prevProps.subscriptions.length) {
-    //         this.props.fetchSubscriptions();
-    //     }
-    // }
 
     upNextVideos(){
         if ((Object.keys(this.props.videos).length > 0)){
@@ -188,10 +181,9 @@ class VideoDisplay extends React.Component {
 	}
 
 	toggleSubscribeButton() {
-		// debugger
 		const subIds = Object.values(this.props.subscriptions.map(subId => subId.subscription_id))
 		const checkSub = subIds.includes(this.props.video.user_id)
-        // debugger
+        
 		if (checkSub) {
 			return (
 				<button onClick={this.unsubscribe} className='subscription-button'>UNSUBSCRIBE</button>
@@ -205,8 +197,6 @@ class VideoDisplay extends React.Component {
 
 
     render() {
-        console.log(this.props)
-
         const { video } = this.props;
         if (!video) return null;
         return (

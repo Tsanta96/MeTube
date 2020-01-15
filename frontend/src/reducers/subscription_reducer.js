@@ -3,7 +3,6 @@ import {
 } from '../actions/subscription_actions';
 
 const SubscriptionsReducer = (state = {}, action) => {
-  // debugger
   Object.freeze(state);
   switch(action.type){
     case RECEIVE_SUBSCRIPTIONS:

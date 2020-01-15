@@ -11,8 +11,6 @@ import { fetchUserProfile, fetchUsers } from '../../actions/user_actions';
 import Subscription from './subscription';
 
 const mapStateToProps = (state, ownProps) => {
-  // console.log(state)
-
   if(state.entities.users){
     // const subIds = state.entities.subscriptions.map(id => id.subscription_id);
     // const subUserIds  = state.entities.users.data.filter(user => 
