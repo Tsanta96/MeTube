@@ -55,7 +55,6 @@ export const fetchSearchVideos = search => dispatch => {
     return VideoApiUtil.fetchSearchVideos(search)
         .then((search) => {
               console.log(search.data);
-              debugger
               dispatch(receiveSearchVideos(search.data))
         })
 }

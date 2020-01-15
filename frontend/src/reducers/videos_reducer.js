@@ -15,7 +15,6 @@ const VideosReducer = (state = {}, action) => {
             delete newState[action.videoId];
             return newState;
         case RECEIVE_SEARCH_VIDEOS: 
-            debugger;
             return  Object.assign({},action.videos)
         default:
             return state;

@@ -4,7 +4,7 @@ import { fetchUsers } from '../../actions/user_actions';
 import SearchBar from './searchbar';
 
 const mapStateToProps = state => {
-    debugger;
+    
     let videos = Object.values(state.entities.videos)
     // console.log(state.entities.videos)
 

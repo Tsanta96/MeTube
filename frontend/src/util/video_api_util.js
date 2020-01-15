@@ -20,5 +20,5 @@ export const fetchSearchVideos = search => {
     return axios.get(`/api/search/${search}`)
 }  
 export const getUserUploads = id => {
-    return axios.get(`http://localhost:5000/api/user/${id}/`)
+    return axios.get(`/api/user/${id}/`)
 }

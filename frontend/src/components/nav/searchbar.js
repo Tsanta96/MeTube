@@ -2,6 +2,8 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router-dom'
 import VideoSearchItem from './video_search_item';
+// import '../stylesheets/splash.css';
+// import '../stylesheets/search.css';
 
 class SearchBar extends React.Component {
     constructor(props) {
@@ -11,10 +13,11 @@ class SearchBar extends React.Component {
         //     searchField: "",
         //     matchedVideos: []
         // }
+        // this.videoMatches = this.videoMatches.bind(this);
     }
 
     componentDidMount(){
-        debugger;
+        
         if (this.props.search === 'undefined'){ 
             this.props.search = []
         }
@@ -49,33 +52,31 @@ class SearchBar extends React.Component {
     //     }
     // }
 
+
+    
     render(){
-        debugger;
-        console.log(this.props.videos)
-        let videoMatches = this.props.videos.map((video,ind) =>{
+        // debugger;
+        let videoMatches = this.props.videos.map((video, ind) => {
         const user = this.props.users[video.user_id]
             return (
-                <ul>
-                    <li key={ind}>
-                        <VideoSearchItem key={video._id} video={video} user={user}/>
-                    </li>
-                </ul>
+                <li key={ind}>
+                    <VideoSearchItem key={video._id} video={video} user={user} />
+                </li>
             )
         })
 
         return (
             <div className="search-outer"> 
-                {/* <ul className="search-list"> 
+                <ul className="search-list"> 
                     <div className="search-main">
                         <div className="search-results">{`Search Results for "${this.props.search}"`}</div>
                         {videoMatches.length > 0 ? (
-                            videoMatches 
+                            videoMatches
                         ):(
                             <p className="no-result-message">Sorry! No matches"</p>
                         )}
                     </div>
-                </ul>  */}
-                {videoMatches}
+                </ul> 
              </div>
         )
     }

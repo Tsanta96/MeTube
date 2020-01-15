@@ -18,7 +18,6 @@ const App = () => {
   return (
   <div>
     <NavBarContainer />
-    {/* <SideNavContainer /> */}
     <Switch>
       <Route exact path="/" component={Splash} />
       <AuthRoute exact path="/api/users/login" component={SignupFormContainer} />
