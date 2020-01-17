@@ -28,7 +28,7 @@ export default class Comment extends React.Component {
     };
 
     createLike(){
-        if (!this.state.liked){
+        if (!this.state.liked){ // only create the like if it's not already liked
             this.props.createLike({
                 dislike: false,
                 likeable_type: 'comment',
@@ -41,17 +41,11 @@ export default class Comment extends React.Component {
                         liked: true
                     })
                 );
-        } else {
-            const like = Object.values(this.props.likes).filter(like => like.userId === this.props.user.id);
-            if (like.length > 0){
-                this.props.deleteLike(like[0]._id)
-                    .then(() => this.setState(
-                        {
-                            numLikes: this.state.numLikes - 1,
-                            liked: false
-                        })
-                    )
-                }
+        } else { // unlike the comment if it's already liked
+            this.removeLike();
+        }
+        if (this.state.disliked){ // if it was previously disliked, remove the dislike
+            this.removeDislike();
         }
     }
 

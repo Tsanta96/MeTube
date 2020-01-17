@@ -8,7 +8,7 @@ const LikesReducer = (state = {}, action) => {
         case RECEIVE_LIKES:
             return Object.assign({}, state, action.likes.data)
         case RECEIVE_VIDEO_LIKES:
-            return Object.assign({}, state, action.likes.data)
+            return action.likes.data
         case RECEIVE_COMMENT_LIKES:
             return action.likes.data
         case REMOVE_LIKE:
