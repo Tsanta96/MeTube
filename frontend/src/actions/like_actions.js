@@ -42,6 +42,7 @@ export const fetchLikes = () => dispatch => (
 );
 
 export const fetchVideoLikes = videoId => dispatch => {
+    debugger;
     return LikeApiUtil.fetchVideoLikes(videoId)
         .then(likes => dispatch(receiveVideoLikes(likes)))
 };

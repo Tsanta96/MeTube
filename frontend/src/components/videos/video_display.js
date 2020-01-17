@@ -16,8 +16,7 @@ class VideoDisplay extends React.Component {
             disliked: false,
             errors: '',
             subscriber_id: '',
-            subscription_id: '',
-            // subscriptions: '',
+            subscription_id: ''
         }
         this.createLike = this.createLike.bind(this);
         this.createDislike = this.createDislike.bind(this);
@@ -25,15 +24,29 @@ class VideoDisplay extends React.Component {
         this.dislikeButton = this.dislikeButton.bind(this);
         this.displayErrors = this.displayErrors.bind(this);
         this.comments = this.comments.bind(this);
-        
         this.subscribe = this.subscribe.bind(this);
         this.unsubscribe = this.unsubscribe.bind(this);
         this.toggleSubscribeButton = this.toggleSubscribeButton.bind(this);
+        this.removeLike = this.removeLike.bind(this);
+        this.removeDislike = this.removeDislike.bind(this);
+        this.fetchEverything = this.fetchEverything.bind(this);
     }
 
     componentDidMount() {
+        this.fetchEverything();
+    }
+
+    componentDidUpdate(prevProps){
+        if (!prevProps.video || this.props.video._id !== prevProps.video._id){
+            this.fetchEverything();
+            debugger;
+        }
+    }
+
+    fetchEverything(){
         this.props.fetchSubscriptions();
         this.props.fetchVideos()
+            .then(() => this.props.fetchVideoComments(this.props.video._id))
             .then(() => this.props.fetchVideoLikes(this.props.video._id)
                 .then(() => this.setState(
                     {
@@ -44,8 +57,7 @@ class VideoDisplay extends React.Component {
                     })
                 )
             )
-            .then(() => this.props.fetchVideoComments(this.props.video._id))
-        }
+    }
 
     upNextVideos(){
         if ((Object.keys(this.props.videos).length > 0)){
@@ -66,9 +78,9 @@ class VideoDisplay extends React.Component {
     }
 
     createLike(){
-        if (!this.props.user.id){
+        if (!this.props.user.id){ // only allow like functionailty if logged in
             this.setState({ errors: 'You must be logged in to like or dislike' })
-        } else if (!this.state.liked){
+        } else if (!this.state.liked){ // only create the like if it's not already liked
             this.props.createLike({
                 dislike: false,
                 likeable_type: 'video',
@@ -81,24 +93,18 @@ class VideoDisplay extends React.Component {
                         liked: true
                     })
                 );
-        } else {
-            const like = Object.values(this.props.likes).filter(like => like.userId === this.props.user.id);
-            if (like.length > 0){
-                this.props.deleteLike(like[0]._id)
-                    .then(() => this.setState(
-                        {
-                            numLikes: this.state.numLikes - 1,
-                            liked: false
-                        })
-                    )
-                }
+        } else { // unlike the video if it's already liked
+            this.removeLike();
+        }
+        if (this.state.disliked){ // if it was previously disliked, remove the dislike
+            this.removeDislike();
         }
     }
 
     createDislike(){
-        if (!this.props.user.id){
+        if (!this.props.user.id){ // only allow like functionailty if logged in
             this.setState({ errors: 'You must be logged in to like or dislike' })
-        } else if (!this.state.disliked){
+        } else if (!this.state.disliked){ // only create the dislike if it's not already disliked
             this.props.createLike({
                 dislike: true,
                 likeable_type: 'video',
@@ -110,21 +116,45 @@ class VideoDisplay extends React.Component {
                     disliked: true
                 })
             });
-        } else {
-            const dislike = Object.values(this.props.dislikes).filter(dislike => dislike.userId === this.props.user.id);
-            if (dislike.length > 0){
-                this.props.deleteLike(dislike[0]._id)
-                    .then(() => this.setState(
-                        {
-                            numDislikes: this.state.numDislikes - 1,
-                            disliked: false
-                        }
-                    ))
-            }
+        } else { // remove the dislike if it's been previously disliked
+            this.removeDislike()
+        }
+        if (this.state.liked){ // remove the like if it's been previously liked
+            this.removeLike();
+        }
+    }
+
+    removeLike(){
+        // find the like with the corresponding userId
+        const like = Object.values(this.props.likes).filter(like => like.userId === this.props.user.id);
+        debugger;
+        if (like.length > 0){
+            this.props.deleteLike(like[0]._id)
+                .then(() => this.setState(
+                    {
+                        numLikes: this.state.numLikes - 1,
+                        liked: false
+                    })
+                )
+        }
+    }
+
+    removeDislike(){
+        // find the dislike with the corresponding userId
+        const dislike = Object.values(this.props.dislikes).filter(dislike => dislike.userId === this.props.user.id);
+        if (dislike.length > 0){
+            this.props.deleteLike(dislike[0]._id)
+                .then(() => this.setState(
+                    {
+                        numDislikes: this.state.numDislikes - 1,
+                        disliked: false
+                    }
+                ))
         }
     }
 
     likeButton(){
+        // change whether the like button will be blue or gray
         let button;
         if (this.state.liked){
             button = <i className="fas fa-thumbs-up liked" onClick={this.createLike}></i>
@@ -135,6 +165,7 @@ class VideoDisplay extends React.Component {
     }
 
     dislikeButton(){
+        // change whether the dislike button will be red or gray
         let button;
         if (this.state.disliked){
             button = <i className="fas fa-thumbs-down disliked" onClick={this.createDislike}></i>
