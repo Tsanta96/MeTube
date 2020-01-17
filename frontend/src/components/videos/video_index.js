@@ -20,7 +20,7 @@ export default class VideoIndex extends Component {
             return (
                 <div className='video-content-container'>
                     <ul className='video-index-ul'>
-                        {this.props.videos.map((video, ind) =>
+                        {Object.values(this.props.videos).map((video, ind) =>
                             <li key={ind} className='video-thumb'>
                                 <VideoIndexItemContainer key={video._id} video={video} />
                             </li>

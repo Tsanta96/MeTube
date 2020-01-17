@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const Subscription = require('../../models/Subscription');
+const toObject = require('../util/toObject');
 
 router.get('/subscriptions', (req, res) => {
   Subscription.find()
-    .then(subscriptions => res.json(subscriptions))
+    .then(subscriptions => res.json(toObject(subscriptions)))
     .catch(errors => res.status(404).json({ noSubs: "No subscriptions found" }))
 });
 

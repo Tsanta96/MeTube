@@ -5,17 +5,17 @@ const VideosReducer = (state = {}, action) => {
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_ALL_VIDEOS:
-            return Object.assign({}, state, action.videos);
+            return Object.assign({}, state, action.videos.data);
         case RECEIVE_VIDEO:  
-            return Object.assign({}, state, {[action.video.id]: action.video})
+            return Object.assign({}, state, {[action.video.id]: action.video.data})
         case RECEIVE_USER_UPLOADS:
-            return Object.assign({}, state, {[state.user]: action.videos})  
+            return Object.assign({}, state, {[state.user]: action.videos.data})  
         case REMOVE_VIDEO:
             let newState = Object.assign({}, state);
             delete newState[action.videoId];
             return newState;
         case RECEIVE_SEARCH_VIDEOS: 
-            return  Object.assign({},action.videos)
+            return  Object.assign({},action.videos.data)
         default:
             return state;
     }

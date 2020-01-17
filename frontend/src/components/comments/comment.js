@@ -21,8 +21,8 @@ export default class Comment extends React.Component {
                 {
                     numLikes: this.props.likes.length,
                     numDislikes: this.props.dislikes.length,
-                    liked: this.props.likes.filter(like => like.userId === this.props.user.id).length > 0,
-                    disliked: this.props.dislikes.filter(dislike => dislike.userId === this.props.user.id).length > 0
+                    liked: Object.values(this.props.likes).filter(like => like.userId === this.props.user.id).length > 0,
+                    disliked: Object.values(this.props.dislikes).filter(dislike => dislike.userId === this.props.user.id).length > 0
                 })
             )
     };
@@ -42,7 +42,7 @@ export default class Comment extends React.Component {
                     })
                 );
         } else {
-            const like = this.props.likes.filter(like => like.userId === this.props.user.id);
+            const like = Object.values(this.props.likes).filter(like => like.userId === this.props.user.id);
             if (like.length > 0){
                 this.props.deleteLike(like[0]._id)
                     .then(() => this.setState(
@@ -69,7 +69,7 @@ export default class Comment extends React.Component {
                 })
             });
         } else {
-            const dislike = this.props.dislikes.filter(dislike => dislike.userId === this.props.user.id);
+            const dislike = Object.values(this.props.dislikes).filter(dislike => dislike.userId === this.props.user.id);
             if (dislike.length > 0){
                 this.props.deleteLike(dislike[0]._id)
                     .then(() => this.setState(

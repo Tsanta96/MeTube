@@ -7,16 +7,17 @@ const URLEncodedParser = bodyParser.urlencoded({extended: false})
 
 // 'video' is key where the video will be sent to the server on request
 const singleUpload = upload.single('video');
+const toObject = require('../util/toObject');
 
 router.get('/videos', (req, res) => {
     Video.find()
-        .then(videos => res.json(videos))
+        .then(videos => res.json(toObject(videos)))
         .catch(error => res.status(404).json({ noVideos: 'No videos found' }))
 });
 
 router.get('/videos/:video_id', (req, res) => {
     Video.findById(req.params.id)
-        .then(video => res.json(video))
+        .then(video => res.json(toObject(video)))
         .catch(error => res.status(404).json({ noVideo: 'No video found with that id' }))
 });
 
@@ -39,8 +40,7 @@ router.get('/search/:search', URLEncodedParser, (req, res) => {
     Video.find()
         .then(videos => {
             let results =  videos.filter(video => video.title.includes(req.params.search));
-            console.log("RESULTS", results);
-            res.json(results);
+            res.json(toObject(results));
         })
         .catch(error => res.status(404).json({ noVideos: "No videos found" }))
 })

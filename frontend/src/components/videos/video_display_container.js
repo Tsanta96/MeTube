@@ -7,14 +7,14 @@ import { fetchSubscriptions, createSubscription, deleteSubscription } from '../.
 import VideoDisplay from './video_display';
 
 const mapStateToProps = (state, ownProps) => {
-    if (!state.entities.videos.data){
+    if (!state.entities.videos){
         return {}
     } else {
         let likes;
         let dislikes;
-        if (state.entities.likes.data){
-            likes = state.entities.likes.data.filter(like => like.dislike === false);
-            dislikes = state.entities.likes.data.filter(like => like.dislike === true);
+        if (state.entities.likes){
+            likes = Object.values(state.entities.likes).filter(like => like.dislike === false);
+            dislikes = Object.values(state.entities.likes).filter(like => like.dislike === true);
         } else {
             likes = 0;
             dislikes = 0;
@@ -27,8 +27,8 @@ const mapStateToProps = (state, ownProps) => {
             comments = null;
         };
         return {
-            video: state.entities.videos.data.filter((video) => video._id === ownProps.match.params.video_id)[0],
-            videos: state.entities.videos.data,
+            video: Object.values(state.entities.videos).filter((video) => video._id === ownProps.match.params.video_id)[0],
+            videos: state.entities.videos,
             likes,
             dislikes,
             user: state.session.user,

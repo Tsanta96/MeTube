@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Like = require('../../models/Like');
+const toObject = require('../util/toObject');
 
 router.post('/likes', (req, res) => {
     const newLike = new Like({
@@ -16,25 +17,27 @@ router.post('/likes', (req, res) => {
 
 router.get('/likes', (req, res) => {
     Like.find()
-        .then(likes => res.json(likes))
+        .then(likes => res.json(toObject(likes)))
         .catch(error => res.status(404).json({noLikes: "No likes found"}))
 });
 
 router.get('/likes/:id', (req, res) => {
     Like.findById(req.params.id)
-        .then(like => res.json(like))
+        .then(like => res.json(toObject(likes)))
         .catch(error => res.status(404).json({ noLike: 'No like found with that id' }))
 });
 
 router.get('/likes/videos/:video_id', (req, res) => {
     Like.find({likeableType: 'video', likeableId: req.params.video_id})
-        .then(likes => res.json(likes))
+        .then(likes => res.json(toObject(likes)))
         .catch(error => res.status(404).json({ noLikes: 'No likes found with that video id' }))
 });
 
 router.get('/likes/comments/:comment_id', (req, res) => {
     Like.find({likeableType: 'comment', likeableId: req.params.comment_id})
-        .then(likes => res.json(likes))
+        .then(likes => {
+            res.json(toObject(likes));
+        })
         .catch(error => res.status(404).json({ noLikes: 'No likes found with that comment id' }))
 });
 
