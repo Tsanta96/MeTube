@@ -41,8 +41,6 @@ router.get('/search/:search', URLEncodedParser, (req, res) => {
         .then(videos => {
             let results =  videos.filter(video => video.title.toLowerCase().includes(req.params.search.toLowerCase()));
             // console.log("RESULTS", results);
-            res.json(results);
-            let results =  videos.filter(video => video.title.includes(req.params.search));
             res.json(toObject(results));
         })
         .catch(error => res.status(404).json({ noVideos: "No videos found" }))
