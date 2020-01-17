@@ -5,9 +5,9 @@ import Comment from './comment';
 const mapStateToProps = (state, { comment, user }) => {
     let likes;
     let dislikes;
-    if (state.entities.likes.data){
-        likes = state.entities.likes.data.filter(like => like.dislike === false);
-        dislikes = state.entities.likes.data.filter(like => like.dislike === true);
+    if (state.entities.likes){
+        likes = Object.values(state.entities.likes).filter(like => like.dislike === false);
+        dislikes = Object.values(state.entities.likes).filter(like => like.dislike === true);
     } else {
         likes = 0;
         dislikes = 0;

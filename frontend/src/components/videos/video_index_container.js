@@ -4,7 +4,7 @@ import { fetchVideos } from '../../actions/video_actions';
 
 const mapStateToProps = (state) => {
     return {
-    videos: state.entities.videos.data
+        videos: state.entities.videos
     }
 }
 

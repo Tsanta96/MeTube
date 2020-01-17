@@ -7,6 +7,7 @@ const User = require('../../models/User');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
+const toObject = require('../util/toObject');
 
 router.post('/register', (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
@@ -88,14 +89,14 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
 
 router.get('/profile/:user_id', (req, res) => {
     User.findById(req.params.id)
-        .then(user => res.json(user))
+        .then(user => res.json(toObject(user)))
         .catch(error => res.status(404).json({ noUser: 'No user found with that id' }))
 });
 
 router.get('/',(req, res) => {
     // console.log('---!!!!!!----I MADE IT----!!!!!!-----')
     User.find()
-        .then(users => res.json(users))
+        .then(users => res.json(toObject(users)))
         .catch(error => res.status(404).json({nousers: "No users found"}))
 });
 

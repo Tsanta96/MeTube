@@ -46,10 +46,10 @@ export const fetchVideoLikes = videoId => dispatch => {
         .then(likes => dispatch(receiveVideoLikes(likes)))
 };
 
-export const fetchCommentLikes = commentId => dispatch => (
-    LikeApiUtil.fetchCommentLikes(commentId)
+export const fetchCommentLikes = commentId => dispatch => {
+    return LikeApiUtil.fetchCommentLikes(commentId)
         .then(likes => dispatch(receiveCommentLikes(likes)))
-);
+};
 
 export const createLike = like => dispatch => {
     return LikeApiUtil.createLike(like)
