@@ -7,7 +7,7 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  background-color: rgb(241, 241, 239);
+  background-color:#F9F9F9;
   /* margin-right: calc(-1 * 16px / 2);
   margin-left: calc(-1 * 16px / 2); */
   font-family: Roboto, Arial, sans-serif;
@@ -68,7 +68,7 @@ video:hover{
 
 .video-thumb-button {
   border-color: transparent;
-  background-color: rgb(240, 238, 238);
+    background-color:#F9F9F9;
 }
 
 .fa-poo {

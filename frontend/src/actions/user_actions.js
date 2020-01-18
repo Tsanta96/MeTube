@@ -1,5 +1,4 @@
 import * as UserApiUtil from '../util/user_api_util';
-import { receiveUserUploads } from './video_actions';
 
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_USERS = 'RECEIVE_USERS';

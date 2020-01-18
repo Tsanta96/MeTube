@@ -18,6 +18,7 @@
   display: block;
   transition: 0.3s;
   margin: 7px auto;
+  
 }
 
 .min-sidenav-icons {
@@ -25,12 +26,14 @@
   flex-direction: column;
   margin: 10px auto;
   padding: 10px 0px;
+  color: #606060
 }
 
 .min-sidenav-icons:hover {
   /* color: red; */
   width: 100%;
   background-color: rgb(236, 233, 233);
+  cursor: pointer;
 }
 
 /* .min-sidenav-cont .fa-home {
@@ -75,6 +78,7 @@
   padding: 10px 10px 10px 32px;
   display: block;
   transition: 0.3s;
+  color: #606060;
 }
 
 .sidenav-cont p:hover {

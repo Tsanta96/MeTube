@@ -33,6 +33,7 @@ class VideoDisplay extends React.Component {
 
     componentDidMount() {
         this.props.fetchSubscriptions();
+        this.props.fetchUsers();
         this.props.fetchVideos()
             .then(() => this.props.fetchVideoLikes(this.props.video._id)
                 .then(() => this.setState(
@@ -145,7 +146,7 @@ class VideoDisplay extends React.Component {
     }
 
     displayErrors(){
-        if (this.state.errors != ''){
+        if (this.state.errors !== ''){
             return (
                 <div className="like-errors">
                     {this.state.errors}
@@ -169,16 +170,31 @@ class VideoDisplay extends React.Component {
 			subscriber_id: this.props.user.id,
 			subscription_id: this.props.video.user_id
 		})
-			// .then(() => this.setState({
-			// 	subscriber_id: this.props.user.id,
-			// 	subscription_id: this.props.video.user_id
-			// }))
-	}
+    }
+    
+    // subscribe() {
+    //     let subs = Object.values(this.props.subscriptions).map(sub => sub.subscription_id);
+    //     subs.forEach(sub => {
+    //         if(!subs.includes(sub)){
+    //             this.props.createSubscription({
+    //                 subscriber_id: this.props.user.id,
+    //                 subscription_id: this.props.video.user_id
+    //             });
+    //         }
+    //     })
+    // }
 
-	unsubscribe() {
-		const subId = Object.values(this.props.subscriptions.map(sub => sub._id))
-		this.props.deleteSubscription(subId);
-	}
+	// unsubscribe() {
+	// 	const subId = Object.values(this.props.subscriptions.map(sub => sub._id))
+	// 	this.props.deleteSubscription(subId);
+    // }
+    
+    unsubscribe(){
+		const subId = Object.values(this.props.subscriptions.map(sub => sub._id));
+        subId.forEach(id => {
+            this.props.deleteSubscription(id)
+        })
+    }
 
 	toggleSubscribeButton() {
 		const subIds = Object.values(this.props.subscriptions.map(subId => subId.subscription_id))
@@ -197,8 +213,13 @@ class VideoDisplay extends React.Component {
 
 
     render() {
-        const { video } = this.props;
-        if (!video) return null;
+        const { video, users } = this.props;
+
+        if (!video || !users) return null;
+
+        const userName = Object.values(users).filter(
+            user => user._id === video.user_id)
+            
         return (
             <div className="entire-video-display-view">
                 <div className="video-display-view">
@@ -210,8 +231,7 @@ class VideoDisplay extends React.Component {
                             <div className="video-description">
                                 <div className='video-title-id'>
                                     <h1>{video.title}</h1>
-                                    {/* <h2>{video._id}</h2> */}
-                                    <h2>{this.props.user.username}</h2>
+                                    <h2>{userName[0].username}</h2>
                                 </div>
                                 {this.displayErrors()}
                                 <div className="likes-dislikes">
