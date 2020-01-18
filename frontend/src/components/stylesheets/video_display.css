@@ -29,10 +29,13 @@
 }
 
 .video-title-id {
-    margin-right: 52%;
+    margin-right: 33%;
+    width: 300px;
 }
 
 .video-description h1 {
+    font-size: 28px;
+    width: 300px;
     margin-top: 10px;
     margin-bottom: 5px;
 }
@@ -40,9 +43,30 @@
 .video-description h2 {
     font-family: Roboto, Arial, sans-serif;
     font-size: 17px;
-    margin-top: 5px;
-    margin-bottom: 30px;
+    margin-top: 3px;
+    margin-bottom: 5px;
     font-weight: 10;
+}
+
+.video-description .views-and-date {
+    color: rgb(128, 128, 128);
+    display: flex;
+    flex-direction: row;
+    font-size: 13px;
+    margin-top: 9px;
+    margin-bottom: 15px;
+}
+
+.views-and-date .views {
+    margin-right: 5px;
+}
+
+.views-and-date .date {
+    margin-left: 5px;
+}
+
+.views-and-date > h3{
+    margin-top: none;
 }
 
 .comments h1 {

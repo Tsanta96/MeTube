@@ -16,6 +16,10 @@ export const deleteVideo = videoId => {
     return axios.delete(`/api/videos/${videoId}`)
 }
 
+// export const incrementViewCount = (videoId) => {
+//     return axios.post(`api/videos/${videoId}`)
+// }
+
 export const fetchSearchVideos = search => {
     return axios.get(`/api/search/${search}`)
 }  

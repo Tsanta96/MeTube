@@ -34,6 +34,7 @@ class VideoIndexItem extends React.Component {
             </div>
             <div className='video-thumb-detail'>
               <p>User ID: {video.user_id}</p>
+              <p>{video.views.length} views</p>
             </div>
           </div>
         );

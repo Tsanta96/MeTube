@@ -53,12 +53,12 @@ export const deleteVideo = (videoId) => dispatch => (
 
 export const fetchSearchVideos = search => dispatch => {
     return VideoApiUtil.fetchSearchVideos(search)
-        .then((search) => {
-              dispatch(receiveSearchVideos(search.data))
-        })
+        .then((search) => dispatch(receiveSearchVideos(search.data)))
 }
 
 export const fetchUserUploads = id => dispatch => (
     VideoApiUtil.getUserUploads(id)
         .then(videos => dispatch(receiveUserUploads(videos)))
 )
+
+
