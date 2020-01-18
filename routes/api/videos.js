@@ -48,11 +48,12 @@ router.post('/videos', singleUpload, (req, res) => {
 });
 
 router.get('/search/:search', URLEncodedParser, (req, res) => {
-    console.log('hihihihihihihihihi');
-    console.log("REQ PARAMS", req.params);
+    // console.log('hihihihihihihihihi');
+    // console.log("REQ PARAMS", req.params);
     Video.find()
         .then(videos => {
-            let results =  videos.filter(video => video.title.includes(req.params.search));
+            let results =  videos.filter(video => video.title.toLowerCase().includes(req.params.search.toLowerCase()));
+            // console.log("RESULTS", results);
             res.json(toObject(results));
         })
         .catch(error => res.status(404).json({ noVideos: "No videos found" }))
