@@ -21,6 +21,19 @@ router.get('/videos/:video_id', (req, res) => {
         .catch(error => res.status(404).json({ noVideo: 'No video found with that id' }))
 });
 
+//Increment views
+router.post('/videos/:id', (req, res) => {
+    // Video.findById(req.params.id)
+    //     .then(video => {
+    //         video.views += 1;
+    //         video.save()
+    //         console.log("VIDEO", video)
+    //         res.send(video)
+    //     })
+    //     .catch(error => res.status(400))
+        
+})
+
 //Create (upload) video route
 router.post('/videos', singleUpload, (req, res) => {
 

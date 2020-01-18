@@ -37,13 +37,31 @@ class VideoDisplay extends React.Component {
             .then(() => this.props.fetchVideoComments(this.props.video._id))
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.video === undefined) {
+            return {}
+        }
+        const vid = document.getElementById(this.props.video._id);
+        const that = this.props;
+        vid.onloadedmetadata = function () {
+            // const viewThresh = vid.duration / 3;
+            // console.log("DURATION:", viewThresh);
+            vid.addEventListener("timeupdate", function () {
+                if (vid.currentTime >= 5 && vid.currentTime < 5.3) {
+                    that.incrementViewCount(that.video._id);
+                }
+            })
+            
+        };
+    }
+
     upNextVideos(){
         if ((Object.keys(this.props.videos).length > 0)){
             return (
                 <ul>
                     {Object.values(this.props.videos).map(video => 
-                        <li>
-                            <VideoIndexItemContainer key={video._id} video={video} />
+                        <li key={video._id}>
+                            <VideoIndexItemContainer video={video} />
                         </li>    
                     )}
                 </ul>
@@ -103,7 +121,7 @@ class VideoDisplay extends React.Component {
                 <div className="video-display-view">
                     <div className="main-section">
                         <div className="video-box">
-                            <video key={video._id} className="video-display" controls height="540" width="900">
+                            <video key={video._id} id={video._id} className="video-display" controls height="540" width="900">
                                 <source src={video.videoURL}></source>
                             </video>
                             <div className="video-description">
@@ -111,6 +129,11 @@ class VideoDisplay extends React.Component {
                                     <h1>{video.title}</h1>
                                     {/* <h2>{video._id}</h2> */}
                                     <h2>{this.props.user.username}</h2>
+                                    <div className="views-and-date">
+                                        <p className="views">{video.views.length} Views</p>
+                                        <p>&bull;</p>
+                                        <p className="date">{video.date}</p>
+                                    </div>
                                 </div>
                                 <LikeButtonsContainer video={this.props.video} user={this.props.user}/>
                                 {this.toggleSubscribeButton()}
@@ -134,3 +157,4 @@ class VideoDisplay extends React.Component {
 }
 
 export default withRouter(VideoDisplay);
+

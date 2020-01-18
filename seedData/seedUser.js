@@ -16,7 +16,6 @@ const firstUser = new User({
 })
 
 const matteo = new User({
-    _id: 2,
     username: "matteo",
     password: "password"
 })
