@@ -29,6 +29,8 @@ class NavBar extends React.Component {
       this.renderSidenav = this.renderSidenav.bind(this);
       this.toggleSidenav = this.toggleSidenav.bind(this);
       this.closeSidenav = this.closeSidenav.bind(this);
+
+      this.renderTrending = this.renderTrending.bind(this);
     }
 
     showModal() {
@@ -96,6 +98,11 @@ class NavBar extends React.Component {
       }
     }
 
+    renderTrending(e) {
+      e.preventDefault();
+      this.props.history.push('/videos/trending');
+    }
+
     renderSidenav(){
       // e.preventDefault();
       if (this.state.sidenav) {
@@ -103,7 +110,7 @@ class NavBar extends React.Component {
           <div className='sidenav-cont'>
             {/* <p className='sidenav-close' onClick={this.closeSidenav}>&times;</p> */}
             <p onClick={this.renderProfile}><i className="fas fa-home fa-fw"></i> Home</p>
-            <p><i className="fas fa-fire fa-fw"></i> Trending</p>
+            <p onClick={this.renderTrending}><i className="fas fa-fire fa-fw"></i> Trending</p>
             <p><i className="fas fa-photo-video fa-fw"></i> Subscriptions</p>
           </div>
         )
@@ -114,7 +121,7 @@ class NavBar extends React.Component {
               <i className="fas fa-home fa-fw" onClick={this.renderProfile}></i><p>Home</p>
             </div>
             <div className='min-sidenav-icons'>
-              <i className="fas fa-fire fa-fw"></i><p>Trending</p>
+              <i className="fas fa-fire fa-fw" onClick={this.renderTrending}></i><p>Trending</p>
             </div>
             <div className='min-sidenav-icons'>
               <i className="fas fa-photo-video fa-fw"></i><p>Subscriptions</p>

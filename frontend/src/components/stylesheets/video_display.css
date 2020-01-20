@@ -21,6 +21,10 @@
     width: 810px;
 }
 
+.video-box .video-display:focus {
+    outline: none;
+}
+
 .video-description {
     font-family: Roboto, Arial, sans-serif;
     display: flex;
@@ -81,10 +85,18 @@
 }
 
 .rightside-vids .up-next{
+    position: fixed;
+    background-color: #f9f9f9;
+    width: 320px;
     font-family: Roboto,Arial,sans-serif;
     color: darkgray;
     font-size: 20px;
     margin-bottom: 15px;
+    opacity: .98;
+}
+
+.rightside-vids .up-next-video-list{
+    margin-top:20px;
 }
 
 .liked {
