@@ -11,6 +11,7 @@ const videos = require("./routes/api/videos");
 const likes = require("./routes/api/likes");
 const comments = require("./routes/api/comments");
 const subscriptions = require("./routes/api/subscriptions");
+const views = require("./routes/api/views");
 
 mongoose
   .connect(db, { useNewUrlParser: true })
@@ -24,6 +25,7 @@ app.use("/api", videos);
 app.use("/api", likes);
 app.use("/api", comments);
 app.use("/api", subscriptions);
+app.use("/api", views);
 app.use(passport.initialize());
 require('./config/passport')(passport);
 

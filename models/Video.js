@@ -21,6 +21,13 @@ const VideoSchema = new Schema ({
     videoURL: {
         type: String,
         required: true
+    },
+    views: {
+        type: Array
+    },
+    date: {
+        type: Date,
+        default: Date.now
     }
 })
 

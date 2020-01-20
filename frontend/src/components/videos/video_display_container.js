@@ -4,8 +4,10 @@ import { fetchVideos } from '../../actions/video_actions';
 import { createLike, fetchVideoLikes, deleteLike } from '../../actions/like_actions';
 import { fetchVideoComments } from '../../actions/comment_actions';
 import { fetchSubscriptions, createSubscription, deleteSubscription } from '../../actions/subscription_actions';
+import { incrementViewCount } from '../../actions/view_actions';
 import VideoDisplay from './video_display';
 import { fetchUsers } from '../../actions/user_actions';
+
 
 const mapStateToProps = (state, ownProps) => {
     if (!state.entities.videos || !state.entities.users){
@@ -52,6 +54,7 @@ const mapDispatchToProps = dispatch => ({
     deleteSubscription: subId => dispatch(deleteSubscription(subId)),
     fetchSubscriptions: () => dispatch(fetchSubscriptions()),
     fetchUsers: () => dispatch(fetchUsers()),
+    incrementViewCount: videoId => dispatch(incrementViewCount(videoId))
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(VideoDisplay));

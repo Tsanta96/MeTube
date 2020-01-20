@@ -37,6 +37,8 @@ class VideoIndexItem extends React.Component {
             <div className='video-thumb-detail'>
               {/* works for every pages except for splash! */}
               {/* <p>{user[0].username}</p>  */}
+              <p>User ID: {video.user_id}</p>
+              <p>{video.views.length} views</p>
             </div>
           </div>
         );
