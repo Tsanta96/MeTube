@@ -78,6 +78,7 @@
 }
 
 .rightside-vids {
+    position: relative;
     margin-top: 60px;
     margin-left: 30px;
     height: 1000px;
@@ -85,7 +86,7 @@
 }
 
 .rightside-vids .up-next{
-    position: fixed;
+    /* position: fixed; */
     background-color: #f9f9f9;
     width: 320px;
     font-family: Roboto,Arial,sans-serif;
