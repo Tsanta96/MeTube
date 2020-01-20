@@ -74,13 +74,17 @@ class VideoDisplay extends React.Component {
     }
 
     comments(){
-        if (!this.props.comments) return '';
-        return this.props.comments.map(comment => 
-            <CommentContainer comment={comment} user={this.props.user}/>
-        )
-		}
+        if (!this.props.comments) {
+            return ''
+        } else {
+            this.props.fetchVideoComments(this.props.video._id)
+            debugger;
+            return this.props.comments.map(comment => 
+                <CommentContainer comment={comment} user={this.props.user}/>
+            )
+        }
+	}
 		
-
 	subscribe() {
 		this.props.createSubscription({
 			subscriber_id: this.props.user.id,

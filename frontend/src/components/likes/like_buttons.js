@@ -27,7 +27,6 @@ export default class LikeButton extends React.Component {
     }
 
     componentDidUpdate(prevProps){
-        debugger;
         if ((!prevProps.video && !prevProps.comment) || 
         ((this.props.video && prevProps.video) && this.props.video._id !== prevProps.video._id) ||
         ((this.props.comment && prevProps.comment) && this.props.comment._id !== prevProps.comment._id)){
