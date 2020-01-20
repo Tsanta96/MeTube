@@ -58,7 +58,7 @@ class VideoDisplay extends React.Component {
     upNextVideos(){
         if ((Object.keys(this.props.videos).length > 0)){
             return (
-                <ul>
+                <ul className="up-next-video-list">
                     {Object.values(this.props.videos).map(video => 
                         <li key={video._id}>
                             <VideoIndexItemContainer video={video} />

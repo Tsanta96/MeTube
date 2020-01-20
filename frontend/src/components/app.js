@@ -13,6 +13,7 @@ import VideoDisplayContainer from "./videos/video_display_container";
 import VideoUploadContainer from "./videos/video_upload_container";
 import SearchBarContainer from "./nav/searchbar_container";
 import SubscriptionsContainer from "./subscriptions/subscription_container";
+import TrendingVideosContainer from "./trending/trending_videos_container";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
       <Route path="/api/upload" component={VideoUploadContainer} />
       <Route path="/profile/:user_id" component={ProfileContainer} />
       <Route path="/subscriptions" component={SubscriptionsContainer} />
+      <Route path="/videos/trending" component={TrendingVideosContainer} />
     </Switch>
 
   </div>

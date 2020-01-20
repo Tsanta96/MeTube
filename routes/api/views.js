@@ -19,13 +19,4 @@ router.post('/views/:id', (req, res) => {
         })
     })
 
-    // Video.findById(req.params.id)
-    //     .then(video => {
-    //         video.views += 1;
-    //         video.save()
-    //         console.log("VIDEO", video)
-    //         res.send(video)
-    //     })
-    //     .catch(error => res.status(400))
-
 module.exports = router;
