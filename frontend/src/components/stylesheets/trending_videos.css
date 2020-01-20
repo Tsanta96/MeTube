@@ -18,6 +18,10 @@
     height: 135px;
 }
 
+.trending-video-button:focus {
+    outline: none;
+}
+
 .description-on-right {
     margin-top: 7px;
     margin-left: 20px;
@@ -37,7 +41,7 @@
     font-family: Roboto, Arial, sans-serif;
 }
 
-.username-views-date .trending-username{
+/* .username-views-date .trending-username{
     
 }
 
@@ -47,4 +51,6 @@
 
 .username-views-date .trending-date {
 
-}
+} */
+
+

@@ -10,6 +10,14 @@ class TrendingVideos extends React.Component {
         this.props.fetchTrendingVideos("timeSpan")
     }
 
+    handleVideoClick(video_id) {
+        this.props.history.push(`/api/videos/${video_id}`)
+    }
+
+    // componentDidUpdate(prevProps) {
+   
+    // }
+
     // convertDate() {
     //     this.props.videos[0].date
     // }
@@ -22,9 +30,11 @@ class TrendingVideos extends React.Component {
                         <li key={idx}>
                             <div className="trending-video-container">
                                 <div className="video-on-left">
-                                    <video width="240" height="135">
-                                        <source src={video.videoURL}></source>
-                                    </video>
+                                    <button className="trending-video-button" onClick={() => this.handleVideoClick(video._id)}>
+                                        <video width="240" height="135">
+                                            <source src={video.videoURL}></source>
+                                        </video>
+                                    </button>
                                 </div>
                                 <div className="description-on-right">
                                     <p>{video.title}</p>

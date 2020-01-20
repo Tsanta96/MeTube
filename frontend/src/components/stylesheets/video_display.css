@@ -21,6 +21,10 @@
     width: 810px;
 }
 
+.video-box .video-display:focus {
+    outline: none;
+}
+
 .video-description {
     font-family: Roboto, Arial, sans-serif;
     display: flex;
