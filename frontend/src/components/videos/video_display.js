@@ -1,5 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom';
+import convertDate from '../../util/format_date';
 import '../stylesheets/video_display.css';
 import VideoIndexItemContainer from './video_index_item_container';
 import CommentFormContainer from '../comments/comment_form_container';
@@ -132,7 +133,7 @@ class VideoDisplay extends React.Component {
                                     <div className="views-and-date">
                                         <p className="views">{video.views.length} Views</p>
                                         <p>&bull;</p>
-                                        <p className="date">{video.date}</p>
+                                        <p className="date">{convertDate(video.date)}</p>
                                     </div>
                                 </div>
                                 <LikeButtonsContainer video={this.props.video} user={this.props.user}/>

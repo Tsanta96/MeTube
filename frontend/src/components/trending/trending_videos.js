@@ -1,31 +1,47 @@
 import React from 'react'
+import convertDate from '../../util/format_date';
 import '../stylesheets/trending_videos.css';
 
 class TrendingVideos extends React.Component {
     constructor() {
         super();
+        
+        this.state = {
+            refresh: false
+        }
     }
 
     componentDidMount() {
         this.props.fetchTrendingVideos("timeSpan")
+        // setTimeout(() => {
+        //     this.setState({
+        //         refresh: true
+        //     })
+        //     console.log(this);
+        // }, 1000)
     }
 
     handleVideoClick(video_id) {
         this.props.history.push(`/api/videos/${video_id}`)
     }
 
-    // componentDidUpdate(prevProps) {
-   
-    // }
+    // convertDate(date) {
+    //     let newDate = new Date(date);
+    //     let day = newDate.getDate();
+    //     let month = newDate.getMonth() + 1;
+    //     let year = newDate.getYear() + 1900;
+    //     let newDateFormat = `${month}/${day}/${year}`
 
-    // convertDate() {
-    //     this.props.videos[0].date
+    //     return newDateFormat;
     // }
 
     render() {
         return (
             <div className="trending-body">
-                <ul>
+                <div className="trending-header">
+                    <h1>Trending</h1>
+                </div>
+                <ul className="trending-videos-list">
                     {this.props.videos.map((video, idx) => 
                         <li key={idx}>
                             <div className="trending-video-container">
@@ -41,7 +57,7 @@ class TrendingVideos extends React.Component {
                                     <div className="username-views-date">
                                         <p className="trending-username">{video.user_id}</p>
                                         <p className="trending-views">{video.views.length} Views</p>
-                                        <p className="trending-date">{video.date}</p>
+                                        <p className="trending-date">Created on {convertDate(video.date)}</p>
                                     </div>
                                 </div>
                             </div>

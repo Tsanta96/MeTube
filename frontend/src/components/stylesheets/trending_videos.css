@@ -6,8 +6,18 @@
     margin-left: 72px;
 }
 
+.trending-header {
+    margin-left: 105px;
+    width: 80%;
+    font-size: 23px;
+    color: #606060;
+    font-family: Roboto, Arial, sans-serif;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 10px;
+}
+
 .trending-video-container {
-    margin-left: 30px;
+    margin-left: 100px;
     display: flex;
     flex-direction: row;
     margin-top: 10px;
