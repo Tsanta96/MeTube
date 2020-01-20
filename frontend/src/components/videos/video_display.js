@@ -78,7 +78,7 @@ class VideoDisplay extends React.Component {
         return this.props.comments.map(comment => 
             <CommentContainer comment={comment} user={this.props.user}/>
         )
-		}
+	}
 		
 
 	subscribe() {

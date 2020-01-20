@@ -35,7 +35,6 @@ const mapStateToProps = (state, ownProps) => {
             dislikes,
             user: state.session.user,
             comments,
-
             subscriptions: Object.values(state.entities.subscriptions)
         }
         
