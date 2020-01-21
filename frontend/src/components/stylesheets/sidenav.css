@@ -7,7 +7,7 @@
   left: 0;
   background-color: white;
   overflow-x: hidden;
-  transition: 0.5s;
+  transition: 0.3s;
   margin-top: 56px;
   display: flex;
   flex-direction: column;
@@ -16,7 +16,7 @@
 .min-sidenav-cont i {
   font-size: 20px;
   display: block;
-  transition: 0.3s;
+  /* transition: 0.3s; */
   margin: 7px auto;
   
 }
@@ -34,6 +34,7 @@
   width: 100%;
   background-color: rgb(236, 233, 233);
   cursor: pointer;
+  color: red;
 }
 
 /* .min-sidenav-cont .fa-home {
@@ -55,7 +56,7 @@
   left: 0;
   background-color: white;
   overflow-x: hidden;
-  transition: 0.5s;
+  /* transition: 0.5s; */
   margin-top: 56px;
   display: flex;
   flex-direction: column;
@@ -86,6 +87,7 @@
   width: 100%;
   background-color: rgb(236, 233, 233);
   cursor: pointer;
+  color: red;
 }
 
 /* .sidenav-cont .fa-home {

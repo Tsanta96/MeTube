@@ -53,16 +53,7 @@ class Subscription extends React.Component {
         }
       })
     }) 
-
-    // let merged = subs.concat(videos).reduce((s, v) => {
-    //   s[v.id] = v._id;
-    //   return s;
-    // }, {})
-    // merged = Object.keys(merged).map(e => {
-    //   return { id: e, _id: merged[e]}
-    // })
     // debugger
-    
     return (
       <ul className='video-index-ul'>
         {mergedVideos.map(video => 
@@ -78,13 +69,6 @@ class Subscription extends React.Component {
     return (
       <div className="subscription-cont">
         Subscription Test Page
-        {/* <div>
-          <ul>
-            {this.renderSubscriptionNames().map((id, idx) => {
-              return <li key={idx}>{id}</li>;
-            })}
-          </ul>
-        </div> */}
         
         <div>{this.renderSubscriptionVideos()}</div>
       </div>

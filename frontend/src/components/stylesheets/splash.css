@@ -2,6 +2,13 @@ body {
   margin: 0;
   width: 100%;
 }
+.splash-section-hearder {
+  margin-left: 20px;
+  max-height: 2rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 2rem;
+}
 
 .video-content-container{
   display: flex;
@@ -11,7 +18,7 @@ body {
   /* margin-right: calc(-1 * 16px / 2);
   margin-left: calc(-1 * 16px / 2); */
   font-family: Roboto, Arial, sans-serif;
-  width: 100%;
+  width: calc(100% - 72px);
   margin-top: 56px;
   padding-top: 40px;
   margin-left: 72px;
@@ -47,13 +54,36 @@ video:hover{
   cursor: pointer;
 }
 
+.border-top {
+  content: '';
+  border-top: 3px solid #E3E3E3;
+  width: 95%;
+  margin: auto;
+  padding: 25px 0;
+  background-color:#F9F9F9
+}
 .video-index-ul {
   display: flex;
   flex-wrap: wrap;
-  margin-left: 25px;
+  margin: 35px 0px 35px 25px;
+  /* border-top: 2px solid #E3E3E3;  */
+  /* padding: 25px; */
   /* margin: auto auto; */
   /* width: 70%; */
 }
+
+/* .video-index-ul::after {
+  content: '';
+  display: block;
+  border-bottom: 2px solid rgb(143, 142, 142);
+  opacity: .3;
+  background-color: rgb(240, 238, 238);
+  width: 70%;
+  margin: 0 auto;
+  position: absolute;
+  top: 100%;
+  right: 15%;
+} */
 
 .video-thumb{
   display: block;
@@ -104,4 +134,18 @@ video:hover{
   content: "";
   display: block;
   clear: both;
+}
+
+.trending-splash-cont {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color:#F9F9F9;
+  /* margin-right: calc(-1 * 16px / 2);
+  margin-left: calc(-1 * 16px / 2); */
+  font-family: Roboto, Arial, sans-serif;
+  width: 100%;
+  margin-top: 56px;
+  padding-top: 40px;
+  margin-left: 72px;
 }

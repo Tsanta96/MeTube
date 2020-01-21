@@ -116,10 +116,8 @@ class NavBar extends React.Component {
           <div className='sidenav-cont'>
             {/* <p className='sidenav-close' onClick={this.closeSidenav}>&times;</p> */}
             <p onClick={this.renderProfile}><i className="fas fa-home fa-fw"></i> Home</p>
-            <p><i className="fas fa-fire fa-fw"></i> Trending</p>
             <p onClick={this.renderSubscriptions}><i className="fas fa-photo-video fa-fw"></i> Subscriptions</p>
             <p onClick={this.renderTrending}><i className="fas fa-fire fa-fw"></i> Trending</p>
-            <p><i className="fas fa-photo-video fa-fw"></i> Subscriptions</p>
           </div>
         )
       } else {

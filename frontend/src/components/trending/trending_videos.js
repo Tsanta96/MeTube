@@ -36,6 +36,7 @@ class TrendingVideos extends React.Component {
     // }
 
     render() {
+        console.log(this.props)
         return (
             <div className="trending-body">
                 <div className="trending-header">

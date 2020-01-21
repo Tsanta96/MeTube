@@ -5,6 +5,7 @@
   font-family: Roboto, Arial, sans-serif;
   margin-top: 56px;
   margin-left: 72px;
+  background-color:#F9F9F9
 }
 
 .username-cont {
@@ -128,7 +129,7 @@
   display: none;
 }
 
-.liked-videos-cont ul::after {
+/* .liked-videos-cont ul::after {
   content: '';
   display: block;
   border-bottom: 2px solid rgb(143, 142, 142);
@@ -139,7 +140,7 @@
   position: absolute;
   top: 99%;
   right: 15%;
-}
+} */
 
 
 .some-other-cont {

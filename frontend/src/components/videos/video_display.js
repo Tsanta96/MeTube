@@ -240,9 +240,9 @@ class VideoDisplay extends React.Component {
                             <div className="video-description">
                                 <div className='video-title-id'>
                                     <h1>{video.title}</h1>
-                                    <h2>{userName[0].username}</h2>
+                                    {/* <h2>{userName[0].username}</h2> */}
                                     {/* <h2>{video._id}</h2> */}
-                                    <h2>{this.props.user.username}</h2>
+                                    {/* <h2>{this.props.user.username}</h2> */}
                                     <div className="views-and-date">
                                         <p className="views">{video.views.length} Views</p>
                                         <p>&bull;</p>
