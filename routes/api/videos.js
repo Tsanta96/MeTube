@@ -12,12 +12,14 @@ const toObject = require('../util/toObject');
 
 router.get('/videos', (req, res) => {
     Video.find()
+        // .populate("User")
         .then(videos => res.json(toObject(videos)))
         .catch(error => res.status(404).json({ noVideos: 'No videos found' }))
 });
 
 router.get('/videos/:video_id', (req, res) => {
     Video.findById(req.params.id)
+        // .populate("User")
         .then(video => res.json(toObject(video)))
         .catch(error => res.status(404).json({ noVideo: 'No video found with that id' }))
 });

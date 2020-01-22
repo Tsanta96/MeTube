@@ -6,10 +6,11 @@ import { fetchVideoComments } from '../../actions/comment_actions';
 import { fetchSubscriptions, createSubscription, deleteSubscription } from '../../actions/subscription_actions';
 import { incrementViewCount } from '../../actions/view_actions';
 import VideoDisplay from './video_display';
+import { fetchUsers } from '../../actions/user_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-    if (!state.entities.videos){
+    if (!state.entities.videos || !state.entities.users){
         return {}
     } else {
         let likes;
@@ -36,7 +37,8 @@ const mapStateToProps = (state, ownProps) => {
             user: state.session.user,
             comments,
 
-            subscriptions: Object.values(state.entities.subscriptions)
+            subscriptions: Object.values(state.entities.subscriptions),
+            users: Object.values(state.entities.users)
         }
         
     }
@@ -51,6 +53,7 @@ const mapDispatchToProps = dispatch => ({
     createSubscription: data => dispatch(createSubscription(data)),
     deleteSubscription: subId => dispatch(deleteSubscription(subId)),
     fetchSubscriptions: () => dispatch(fetchSubscriptions()),
+    fetchUsers: () => dispatch(fetchUsers()),
     incrementViewCount: videoId => dispatch(incrementViewCount(videoId))
 })
 
