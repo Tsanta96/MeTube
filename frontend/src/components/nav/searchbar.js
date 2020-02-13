@@ -26,6 +26,28 @@ class SearchBar extends React.Component {
         })
     }
 
+    componentDidUpdate(prevProps) {
+        window.scrollTo(0, 0);
+        if (this.props.search === 'undefined') {
+            this.props.search = []
+        }
+
+        if (prevProps.search !== this.props.search) {
+             this.props.fetchSearchVideos(this.props.search).then(() => {
+             this.props.fetchUsers()
+        })
+      }
+    }
+
+    // componentDidUpdate(prevProps){
+    //     if (this.props.search === 'undefined') {
+    //         this.props.search = []
+    //     }
+    //     this.props.fetchSearchVideos(this.props.search).then(() => {
+    //         this.props.fetchUsers()
+    //     })
+    // }
+
     // componentDidUpdate(prevProps){
     //     if (prevProps.location.pathname != this.props.location.pathname) {
     //         this.setState({
