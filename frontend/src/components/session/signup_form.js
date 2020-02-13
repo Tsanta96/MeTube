@@ -22,6 +22,12 @@ class SignupForm extends React.Component {
     this.setState({errors: ''});
   }
 
+  componentDidUpdate(prevProps){
+    if (this.props.loginOrSignup !== prevProps.loginOrSignup){
+      this.setState({errors: ''});
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.signedIn === true && this.props.loginOrSignup === "register") {
       this.props.history.push('/api/users/login');
@@ -46,7 +52,7 @@ class SignupForm extends React.Component {
       password2: this.state.password2
     };
 
-    this.props.signup(user, this.props.history); 
+    this.props.signup(user).then(() => this.props.login(user)); 
   }
 
   handleLogin(e){
@@ -158,25 +164,27 @@ class SignupForm extends React.Component {
 
 
               <div className="signup-description-container">
-                <div className="signup-description">
-                  <i className="fas fa-globe-americas"></i>
-                  <p className="signup-description-text">
-                    <span className="signup-span">Connect</span> with the world
-                  </p>
+                <div className='signup-desc-cont-top'>
+                  <div className="signup-description">
+                    <i className="fas fa-globe-americas"></i>
+                    <p className="signup-description-text">
+                      <span className="signup-span">Connect</span> with the world
+                    </p>
+                  </div>
+                  <div className="signup-description">
+                    <i className="fas fa-users"></i>
+                    <p className="signup-description-text">
+                      <span className="signup-span">See</span> what your friends
+                      are doing
+                    </p>
+                  </div>
+                  <div className="signup-description">
+                    <i className="fas fa-video" id="signup-video-logo"></i>
+                    <p className="signup-description-text">
+                      <span className="signup-span">Share</span> your life
+                    </p>
                 </div>
-                <div className="signup-description">
-                  <i className="fas fa-users"></i>
-                  <p className="signup-description-text">
-                    <span className="signup-span">See</span> what your friends
-                    are doing
-                  </p>
-                </div>
-                <div className="signup-description">
-                  <i className="fas fa-video" id="signup-video-logo"></i>
-                  <p className="signup-description-text">
-                    <span className="signup-span">Share</span> your life
-                  </p>
-                </div>
+              </div>
             {this.renderErrors()}
               </div>
           </div>

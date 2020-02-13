@@ -11,7 +11,7 @@ const SubscriptionsReducer = (state = {}, action) => {
       return Object.assign({}, state, {[action.subscription.data._id]: action.subscription.data})
     case REMOVE_SUBSCRIPTION:
       let nextState = Object.assign({}, state);
-      delete nextState[action.subId[0]];
+      delete nextState[action.subId];
       return nextState;
     default:
       return state;

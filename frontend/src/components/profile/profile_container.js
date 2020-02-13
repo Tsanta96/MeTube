@@ -6,28 +6,28 @@ import { fetchUsers, fetchUserProfile } from '../../actions/user_actions';
 
 const mapStatetoProps = (state, ownProps) => {
   
-  if(!state.entities.videos.data || !state.entities.likes.data ||!state.entities.users.data ) {
+  if(!state.entities.videos || !state.entities.likes ||!state.entities.users ) {
     return {
       user: state.session.user, 
       uploadedVideos: '',
       likedVideos: '',
     }
   } else {
-    const likes = state.entities.likes.data.filter(
+    const likes = Object.values(state.entities.likes).filter(
       likedVidIds => likedVidIds.userId === state.session.user.id)
       
       const likedVideoIds = likes.map(like => like.likeableId)
       
-      const likedVids = state.entities.videos.data.filter(
+      const likedVids = Object.values(state.entities.videos).filter(
         video => likedVideoIds.includes(video._id))
         
-      const allUsersIds = state.entities.users.data.map(userId => userId._id)
+      const allUsersIds = Object.values(state.entities.users).map(userId => userId._id)
       const currentUserId = allUsersIds.filter(userId => userId === state.session.user.id)
     return {
       user: state.session.user, 
       userId: currentUserId,
 
-      uploadedVideos: state.entities.videos.data.filter(
+      uploadedVideos: Object.values(state.entities.videos).filter(
         videos => videos.user_id === state.session.user.id
       ),
 

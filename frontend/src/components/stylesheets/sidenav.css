@@ -7,7 +7,7 @@
   left: 0;
   background-color: white;
   overflow-x: hidden;
-  transition: 0.5s;
+  transition: 0.3s;
   margin-top: 56px;
   display: flex;
   flex-direction: column;
@@ -16,8 +16,9 @@
 .min-sidenav-cont i {
   font-size: 20px;
   display: block;
-  transition: 0.3s;
+  /* transition: 0.3s; */
   margin: 7px auto;
+  
 }
 
 .min-sidenav-icons {
@@ -25,12 +26,15 @@
   flex-direction: column;
   margin: 10px auto;
   padding: 10px 0px;
+  color: #606060
 }
 
 .min-sidenav-icons:hover {
   /* color: red; */
   width: 100%;
   background-color: rgb(236, 233, 233);
+  cursor: pointer;
+  color: red;
 }
 
 /* .min-sidenav-cont .fa-home {
@@ -52,7 +56,7 @@
   left: 0;
   background-color: white;
   overflow-x: hidden;
-  transition: 0.5s;
+  /* transition: 0.5s; */
   margin-top: 56px;
   display: flex;
   flex-direction: column;
@@ -75,6 +79,7 @@
   padding: 10px 10px 10px 32px;
   display: block;
   transition: 0.3s;
+  color: #606060;
 }
 
 .sidenav-cont p:hover {
@@ -82,6 +87,7 @@
   width: 100%;
   background-color: rgb(236, 233, 233);
   cursor: pointer;
+  color: red;
 }
 
 /* .sidenav-cont .fa-home {

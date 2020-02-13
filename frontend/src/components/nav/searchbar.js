@@ -1,20 +1,20 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+// import { Link, Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router-dom'
 import VideoSearchItem from './video_search_item';
 // import '../stylesheets/splash.css';
 // import '../stylesheets/search.css';
 
 class SearchBar extends React.Component {
-    constructor(props) {
-        super(props)
+    // constructor(props) {
+    //     super(props)
 
         // this.state = {
         //     searchField: "",
         //     matchedVideos: []
         // }
         // this.videoMatches = this.videoMatches.bind(this);
-    }
+    // }
 
     componentDidMount(){
         

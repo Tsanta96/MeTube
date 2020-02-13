@@ -8,6 +8,10 @@ export const fetchVideo = videoId => {
     return axios.get(`/api/videos/${videoId}`)
 }
 
+export const fetchTrendingVideos = timeSpan => {
+    return axios.get(`/api/trending/${timeSpan}`)
+};
+
 export const createVideo = (videoData, config) => {
     return axios.post('/api/videos', videoData, config)
 };

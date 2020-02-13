@@ -5,6 +5,8 @@ export const RECEIVE_VIDEO = 'RECEIVE_VIDEO';
 export const REMOVE_VIDEO = 'REMOVE_VIDEO';
 export const RECEIVE_SEARCH_VIDEOS = 'RECEIVE_SEARCH_VIDEOS'
 export const RECEIVE_USER_UPLOADS = 'RECEIVE_USER_UPLOADS';
+export const RECEIVE_TRENDING_VIDEOS = 'RECEIVE_TRENDING_VIDEOS';
+// export const RECEIVE_TRENDING_VIDEOS = 'RECEIVE_TRENDING_VIDEOS';
 
 export const receiveAllVideos = videos => ({
     type: RECEIVE_ALL_VIDEOS,
@@ -28,6 +30,11 @@ export const removeVideo = (videoId) => ({
 
 export const receiveUserUploads = videos => ({
     type: RECEIVE_USER_UPLOADS,
+    videos
+})
+
+export const receiveTrendingVideos = videos => ({
+    type: RECEIVE_TRENDING_VIDEOS,
     videos
 })
 
@@ -58,7 +65,14 @@ export const fetchSearchVideos = search => dispatch => {
         })
 }
 
+export const fetchTrendingVideos = timeSpan => dispatch => {
+    return VideoApiUtil.fetchTrendingVideos(timeSpan)
+        .then((videos) => dispatch(receiveTrendingVideos(videos)))
+}
+
 export const fetchUserUploads = id => dispatch => (
     VideoApiUtil.getUserUploads(id)
         .then(videos => dispatch(receiveUserUploads(videos)))
 )
+
+

@@ -1,59 +1,69 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom';
+import convertDate from '../../util/format_date';
 import '../stylesheets/video_display.css';
 import VideoIndexItemContainer from './video_index_item_container';
 import CommentFormContainer from '../comments/comment_form_container';
 import CommentContainer from '../comments/comment_container';
+import LikeButtonsContainer from '../likes/like_buttons_container';
 
 class VideoDisplay extends React.Component {
     constructor(props) {
         super(props);
         this.upNextVideos = this.upNextVideos.bind(this);
         this.state = {
-            numLikes: 0,
-            numDislikes: 0,
-            liked: false,
-            disliked: false,
-            errors: '',
             subscriber_id: '',
-            subscription_id: '',
-            // subscriptions: '',
+            subscription_id: ''
         }
-        this.createLike = this.createLike.bind(this);
-        this.createDislike = this.createDislike.bind(this);
-        this.likeButton = this.likeButton.bind(this);
-        this.dislikeButton = this.dislikeButton.bind(this);
-        this.displayErrors = this.displayErrors.bind(this);
         this.comments = this.comments.bind(this);
-        
         this.subscribe = this.subscribe.bind(this);
         this.unsubscribe = this.unsubscribe.bind(this);
         this.toggleSubscribeButton = this.toggleSubscribeButton.bind(this);
+        this.fetchEverything = this.fetchEverything.bind(this);
     }
 
     componentDidMount() {
-        this.props.fetchSubscriptions();
-        this.props.fetchVideos()
-            .then(() => this.props.fetchVideoLikes(this.props.video._id)
-                .then(() => this.setState(
-                    {
-                        numLikes: this.props.likes.length,
-                        numDislikes: this.props.dislikes.length,
-                        liked: Object.values(this.props.likes).filter(like => like.userId === this.props.user.id).length > 0,
-                        disliked: Object.values(this.props.dislikes).filter(dislike => dislike.userId === this.props.user.id).length > 0
-                    })
-                )
-            )
-            .then(() => this.props.fetchVideoComments(this.props.video._id))
+        this.fetchEverything();
+    }
+
+    componentDidUpdate(prevProps){
+        if (!prevProps.video || this.props.video._id !== prevProps.video._id){
+            this.fetchEverything();
         }
+    }
+
+    fetchEverything(){
+        this.props.fetchSubscriptions();
+        this.props.fetchUsers();
+        this.props.fetchVideos()
+            .then(() => this.props.fetchVideoComments(this.props.video._id))
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.video === undefined) {
+            return {}
+        }
+        const vid = document.getElementById(this.props.video._id);
+        const that = this.props;
+        vid.onloadedmetadata = function () {
+            // const viewThresh = vid.duration / 3;
+            // console.log("DURATION:", viewThresh);
+            vid.addEventListener("timeupdate", function () {
+                if (vid.currentTime >= 5 && vid.currentTime < 5.3) {
+                    that.incrementViewCount(that.video._id);
+                }
+            })
+            
+        };
+    }
 
     upNextVideos(){
         if ((Object.keys(this.props.videos).length > 0)){
             return (
-                <ul>
+                <ul className="up-next-video-list">
                     {Object.values(this.props.videos).map(video => 
-                        <li>
-                            <VideoIndexItemContainer key={video._id} video={video} />
+                        <li key={video._id}>
+                            <VideoIndexItemContainer video={video} />
                         </li>    
                     )}
                 </ul>
@@ -145,7 +155,7 @@ class VideoDisplay extends React.Component {
     }
 
     displayErrors(){
-        if (this.state.errors != ''){
+        if (this.state.errors !== ''){
             return (
                 <div className="like-errors">
                     {this.state.errors}
@@ -169,16 +179,31 @@ class VideoDisplay extends React.Component {
 			subscriber_id: this.props.user.id,
 			subscription_id: this.props.video.user_id
 		})
-			// .then(() => this.setState({
-			// 	subscriber_id: this.props.user.id,
-			// 	subscription_id: this.props.video.user_id
-			// }))
-	}
+    }
+    
+    // subscribe() {
+    //     let subs = Object.values(this.props.subscriptions).map(sub => sub.subscription_id);
+    //     subs.forEach(sub => {
+    //         if(!subs.includes(sub)){
+    //             this.props.createSubscription({
+    //                 subscriber_id: this.props.user.id,
+    //                 subscription_id: this.props.video.user_id
+    //             });
+    //         }
+    //     })
+    // }
 
-	unsubscribe() {
-		const subId = Object.values(this.props.subscriptions.map(sub => sub._id))
-		this.props.deleteSubscription(subId);
-	}
+	// unsubscribe() {
+	// 	const subId = Object.values(this.props.subscriptions.map(sub => sub._id))
+	// 	this.props.deleteSubscription(subId);
+    // }
+    
+    unsubscribe(){
+		const subId = Object.values(this.props.subscriptions.map(sub => sub._id));
+        subId.forEach(id => {
+            this.props.deleteSubscription(id)
+        })
+    }
 
 	toggleSubscribeButton() {
 		const subIds = Object.values(this.props.subscriptions.map(subId => subId.subscription_id))
@@ -197,29 +222,34 @@ class VideoDisplay extends React.Component {
 
 
     render() {
-        const { video } = this.props;
-        if (!video) return null;
+        const { video, users } = this.props;
+
+        if (!video || !users) return null;
+
+        const userName = Object.values(users).filter(
+            user => user._id === video.user_id)
+            
         return (
             <div className="entire-video-display-view">
                 <div className="video-display-view">
                     <div className="main-section">
                         <div className="video-box">
-                            <video key={video._id} className="video-display" controls height="540" width="900">
+                            <video key={video._id} id={video._id} className="video-display" controls height="540" width="900">
                                 <source src={video.videoURL}></source>
                             </video>
                             <div className="video-description">
                                 <div className='video-title-id'>
                                     <h1>{video.title}</h1>
+                                    {/* <h2>{userName[0].username}</h2> */}
                                     {/* <h2>{video._id}</h2> */}
-                                    <h2>{this.props.user.username}</h2>
+                                    {/* <h2>{this.props.user.username}</h2> */}
+                                    <div className="views-and-date">
+                                        <p className="views">{video.views.length} Views</p>
+                                        <p>&bull;</p>
+                                        <p className="date">{convertDate(video.date)}</p>
+                                    </div>
                                 </div>
-                                {this.displayErrors()}
-                                <div className="likes-dislikes">
-                                    {this.likeButton()}
-                                    {this.state.numLikes}
-                                    {this.dislikeButton()}
-                                    {this.state.numDislikes}
-                                </div>
+                                <LikeButtonsContainer video={this.props.video} user={this.props.user}/>
                                 {this.toggleSubscribeButton()}
                             </div>
                         </div>
@@ -241,3 +271,4 @@ class VideoDisplay extends React.Component {
 }
 
 export default withRouter(VideoDisplay);
+

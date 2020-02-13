@@ -25,10 +25,13 @@ class NavBar extends React.Component {
 
       this.renderSplash = this.renderSplash.bind(this);
       this.renderProfile = this.renderProfile.bind(this);
+      this.renderSubscriptions = this.renderSubscriptions.bind(this);
 
       this.renderSidenav = this.renderSidenav.bind(this);
       this.toggleSidenav = this.toggleSidenav.bind(this);
       this.closeSidenav = this.closeSidenav.bind(this);
+
+      this.renderTrending = this.renderTrending.bind(this);
     }
 
     showModal() {
@@ -72,6 +75,11 @@ class NavBar extends React.Component {
       this.props.history.push(`/profile/${this.props.currentUser}`)
     }
 
+    renderSubscriptions(e){
+      e.preventDefault();
+      this.props.history.push('/subscriptions')
+    }
+
     renderSessionButton() {
       if (this.props.loggedIn) {
         return (
@@ -88,12 +96,17 @@ class NavBar extends React.Component {
             <Link to="/api/users/login" className="session-button">
               <i className="fas fa-user-circle"></i> Sign In
             </Link>
-            <Link to="/api/users/register" className="session-button">
+            {/* <Link to="/api/users/register" className="session-button">
               <i className="fas fa-user-plus"></i> Sign Up
-            </Link>
+            </Link> */}
           </div>
         );
       }
+    }
+
+    renderTrending(e) {
+      e.preventDefault();
+      this.props.history.push('/videos/trending');
     }
 
     renderSidenav(){
@@ -103,8 +116,8 @@ class NavBar extends React.Component {
           <div className='sidenav-cont'>
             {/* <p className='sidenav-close' onClick={this.closeSidenav}>&times;</p> */}
             <p onClick={this.renderProfile}><i className="fas fa-home fa-fw"></i> Home</p>
-            <p><i className="fas fa-fire fa-fw"></i> Trending</p>
-            <p><i className="fas fa-photo-video fa-fw"></i> Subscriptions</p>
+            <p onClick={this.renderSubscriptions}><i className="fas fa-photo-video fa-fw"></i> Subscriptions</p>
+            <p onClick={this.renderTrending}><i className="fas fa-fire fa-fw"></i> Trending</p>
           </div>
         )
       } else {
@@ -114,10 +127,10 @@ class NavBar extends React.Component {
               <i className="fas fa-home fa-fw" onClick={this.renderProfile}></i><p>Home</p>
             </div>
             <div className='min-sidenav-icons'>
-              <i className="fas fa-fire fa-fw"></i><p>Trending</p>
+              <i className="fas fa-fire fa-fw" onClick={this.renderTrending}></i><p>Trending</p>
             </div>
             <div className='min-sidenav-icons'>
-              <i className="fas fa-photo-video fa-fw"></i><p>Subscriptions</p>
+              <i className="fas fa-photo-video fa-fw" onClick={this.renderSubscriptions}></i><p>Subscriptions</p>
             </div>
           </div>
         )

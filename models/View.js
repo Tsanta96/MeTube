@@ -1,22 +1,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema ({
-    username: {
+const ViewSchema = new Schema ({
+    user_id: {
         type: String,
         required: true
     },
-    password: {
+    video_id: {
         type: String,
         required: true
     },
     date: {
         type: Date,
         default: Date.now
-    },
-    videos: [{
-        type: Schema.Types.ObjectId, ref: "video"
-    }]
+    }
 })
 
-module.exports = User = mongoose.model('User', UserSchema);
+module.exports = View = mongoose.model('View', ViewSchema);
