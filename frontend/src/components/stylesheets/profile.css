@@ -5,6 +5,7 @@
   font-family: Roboto, Arial, sans-serif;
   margin-top: 56px;
   margin-left: 72px;
+  background-color:#F9F9F9
 }
 
 .username-cont {
@@ -33,7 +34,7 @@
   font-weight: bold;
   letter-spacing: -0.03em;
   font-size: 1.2rem;
-  background-color: rgb(241, 241, 239);
+  background-color:#F9F9F9;
   padding: 30px 0px 10px 30px;
 }
 
@@ -51,7 +52,7 @@
   /* display: flex; */
   /* flex-direction: row; */
   /* flex-wrap: wrap; */
-  background-color: rgb(241, 241, 239);
+  background-color:#F9F9F9;
   padding: 0px 0px 0px 30px;
   height: 295px;
   position: relative;
@@ -98,7 +99,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  background-color: rgb(241, 241, 239);
+  background-color:#F9F9F9;
   padding: 0px 0px 30px 30px;
   height: 295px;
   position: relative;
@@ -128,7 +129,7 @@
   display: none;
 }
 
-.liked-videos-cont ul::after {
+/* .liked-videos-cont ul::after {
   content: '';
   display: block;
   border-bottom: 2px solid rgb(143, 142, 142);
@@ -139,7 +140,7 @@
   position: absolute;
   top: 99%;
   right: 15%;
-}
+} */
 
 
 .some-other-cont {
@@ -147,6 +148,6 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  background-color: rgb(241, 241, 239);
+  background-color:#F9F9F9;
   height: 355px;
 }
