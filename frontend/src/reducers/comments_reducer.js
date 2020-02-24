@@ -4,7 +4,7 @@ const CommentsReducer = (state = {}, action) => {
     Object.freeze(state);
     switch(action.type){
         case RECEIVE_COMMENT:
-            return Object.assign({}, state, {[state.length]: action.comment.data})
+            return Object.assign({}, state, {[Object.keys(state).length]: action.comment.data})
         case RECEIVE_VIDEO_COMMENTS:
             return action.comments.data
         default:
