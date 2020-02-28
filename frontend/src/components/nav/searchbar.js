@@ -86,16 +86,20 @@ class SearchBar extends React.Component {
                 </li>
             )
         })
-
+      
+        
         return (
-            <div className="search-outer"> 
+           
+            <div className="search-outer">  
+             
                 <ul className="search-list"> 
                     <div className="search-main">
                         <div className="search-results">{`Search Results for "${this.props.search}"`}</div>
                         {videoMatches.length > 0 ? (
                             videoMatches
-                        ):(
-                            <p className="no-result-message">Sorry! No matches"</p>
+                        ):(                      
+                            <p className="no-result-message">Sorry! No matches</p>
+                         
                         )}
                     </div>
                 </ul> 
