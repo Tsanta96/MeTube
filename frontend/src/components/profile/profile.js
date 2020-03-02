@@ -71,6 +71,7 @@ class Profile extends React.Component {
 
           <div className="uploaded-video-cont">{this.uploadedVideosRender()}</div>
 
+          <div className='border-top'></div>
           <label className="uploaded-label">
             Liked Videos
             <i className="fas fa-chevron-circle-right"></i>
@@ -78,6 +79,7 @@ class Profile extends React.Component {
 
           <div className="liked-videos-cont">{this.likedVideosRender()}</div>
 
+          <div className='border-top'></div>
           <div className='some-other-cont'>
 
           </div>

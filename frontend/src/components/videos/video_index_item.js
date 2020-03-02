@@ -17,10 +17,12 @@ class VideoIndexItem extends React.Component {
 
     componentDidMount(){
         this.props.fetchVideo(this.props.video);
+        this.props.fetchUsers();
     }
 
     render() {
-        const video = this.props.video;
+      const {video, user} = this.props;
+      if(!user) return null;
         return (
           <div>
             <button className='video-thumb-button' onClick={() => this.handleVideoClick(video._id)}>
@@ -33,6 +35,8 @@ class VideoIndexItem extends React.Component {
               <h1 className="video-thumb-title">{video.title}</h1>
             </div>
             <div className='video-thumb-detail'>
+              {/* works for every pages except for splash! */}
+              {/* <p>{user[0].username}</p>  */}
               <p>User ID: {video.user_id}</p>
               <p>{video.views.length} views</p>
             </div>

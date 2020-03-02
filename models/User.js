@@ -13,7 +13,10 @@ const UserSchema = new Schema ({
     date: {
         type: Date,
         default: Date.now
-    }
+    },
+    videos: [{
+        type: Schema.Types.ObjectId, ref: "video"
+    }]
 })
 
 module.exports = User = mongoose.model('User', UserSchema);

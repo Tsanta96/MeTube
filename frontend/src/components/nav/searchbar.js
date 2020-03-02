@@ -1,20 +1,20 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+// import { Link, Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router-dom'
 import VideoSearchItem from './video_search_item';
 // import '../stylesheets/splash.css';
 // import '../stylesheets/search.css';
 
 class SearchBar extends React.Component {
-    constructor(props) {
-        super(props)
+    // constructor(props) {
+    //     super(props)
 
         // this.state = {
         //     searchField: "",
         //     matchedVideos: []
         // }
         // this.videoMatches = this.videoMatches.bind(this);
-    }
+    // }
 
     componentDidMount(){
         
@@ -25,6 +25,28 @@ class SearchBar extends React.Component {
            this.props.fetchUsers()
         })
     }
+
+    componentDidUpdate(prevProps) {
+        window.scrollTo(0, 0);
+        if (this.props.search === 'undefined') {
+            this.props.search = []
+        }
+
+        if (prevProps.search !== this.props.search) {
+             this.props.fetchSearchVideos(this.props.search).then(() => {
+             this.props.fetchUsers()
+        })
+      }
+    }
+
+    // componentDidUpdate(prevProps){
+    //     if (this.props.search === 'undefined') {
+    //         this.props.search = []
+    //     }
+    //     this.props.fetchSearchVideos(this.props.search).then(() => {
+    //         this.props.fetchUsers()
+    //     })
+    // }
 
     // componentDidUpdate(prevProps){
     //     if (prevProps.location.pathname != this.props.location.pathname) {
@@ -64,16 +86,20 @@ class SearchBar extends React.Component {
                 </li>
             )
         })
-
+      
+        
         return (
-            <div className="search-outer"> 
+           
+            <div className="search-outer">  
+             
                 <ul className="search-list"> 
                     <div className="search-main">
                         <div className="search-results">{`Search Results for "${this.props.search}"`}</div>
                         {videoMatches.length > 0 ? (
                             videoMatches
-                        ):(
-                            <p className="no-result-message">Sorry! No matches"</p>
+                        ):(                      
+                            <p className="no-result-message">Sorry! No matches</p>
+                         
                         )}
                     </div>
                 </ul> 

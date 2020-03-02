@@ -7,6 +7,7 @@ import {
 } from '../../actions/subscription_actions';
 
 import { fetchUserProfile, fetchUsers } from '../../actions/user_actions';
+import { fetchVideos } from "../../actions/video_actions";
 
 import Subscription from './subscription';
 
@@ -17,8 +18,9 @@ const mapStateToProps = (state, ownProps) => {
     //   subIds.includes(subUserIds._id))
 
     return {
-      users: state.entities.users.data,
-      subscriptions: Object.values(state.entities.subscriptions)
+      users: state.entities.users,
+      subscriptions: Object.values(state.entities.subscriptions),
+      videos: state.entities.videos
 
       // subscriptions: subUserIds
 
@@ -26,7 +28,8 @@ const mapStateToProps = (state, ownProps) => {
   } else {
     return { 
       users: '', 
-      subscriptions: Object.values(state.entities.subscriptions) 
+      subscriptions: Object.values(state.entities.subscriptions) ,
+      videos: ''
     }
   }
 }
@@ -35,6 +38,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchUserProfile: userId => dispatch(fetchUserProfile(userId)),
     fetchUsers: () => dispatch(fetchUsers()),
+    fetchVideos: () => dispatch(fetchVideos()),
     createSubscription: data => dispatch(createSubscription(data)),
     fetchSubscription: subId => dispatch(fetchSubscription(subId)),
     fetchSubscriptions: () => dispatch(fetchSubscriptions()),
