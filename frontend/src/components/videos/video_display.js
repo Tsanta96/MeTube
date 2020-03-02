@@ -173,7 +173,6 @@ class VideoDisplay extends React.Component {
         )
 	}
 		
-
 	subscribe() {
 		this.props.createSubscription({
 			subscriber_id: this.props.user.id,
