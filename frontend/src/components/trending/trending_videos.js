@@ -41,6 +41,7 @@ class TrendingVideos extends React.Component {
             <div className="trending-body">
                 <div className="trending-header">
                     <h1>Trending</h1>
+                    <p className="trending-note"> (Videos with the most views over the last week) </p>
                 </div>
                 <ul className="trending-videos-list">
                     {this.props.videos.map((video, idx) => 
