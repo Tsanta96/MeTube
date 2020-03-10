@@ -15,6 +15,7 @@ class SignupForm extends React.Component {
 
     this.handleSignup = this.handleSignup.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
+    this.loginDemoUser = this.loginDemoUser.bind(this);
     this.clearedErrors = false;
   }
 
@@ -63,6 +64,15 @@ class SignupForm extends React.Component {
       password: this.state.password
     };
     this.props.login(user);
+  }
+
+  loginDemoUser(e) {
+    e.preventDefault();
+    let demoUser = {
+      username: 'reilly22',
+      password: 'password'
+    }
+    this.props.login(demoUser);
   }
 
   loginOrSignup(){
@@ -122,6 +132,7 @@ class SignupForm extends React.Component {
           {/* <br/> */}
           <input type="submit" value="Submit" className="session-form-submit"/>
           <p className="signup-to-login">Don't have an account? <Link to='/api/users/register' className="login-link">Sign Up</Link></p>
+          <button className="session-form-demo" onClick={this.loginDemoUser}>Demo</button>
         </form>
       )
     }
