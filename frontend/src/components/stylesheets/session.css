@@ -183,6 +183,35 @@
     transform: translateY(-1px);
 }
 
+.session-form-demo {
+    background-color: #f8380f;
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    transition: all 0.3s ease 0s;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #f83a0fbd;
+}
+
+.session-form-demo:hover {
+    background-color: #f83a0fbd;
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    transition: all 0.3s ease 0s;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #f8380f;
+    cursor: pointer;
+}
+
 .signup-description-container {
     border: 1px transparent;
     display: flex;
